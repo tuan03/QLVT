@@ -25,8 +25,8 @@ namespace QLVT
 
         private void XtraForm1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSet1.NhanVien' table. You can move, or remove it, as needed.
-            this.nhanVienTableAdapter.Fill(this.dataSet1.NhanVien);
+            // TODO: This line of code loads data into the 'DataSet.NhanVien' table. You can move, or remove it, as needed.
+            this.nhanVienTableAdapter.Fill(this.DataSet.NhanVien);
 
         }
     }

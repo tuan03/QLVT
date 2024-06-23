@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.dataSet1 = new QLVT.DataSet1();
+            this.DataSet = new QLVT.DataSet();
             this.nhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nhanVienTableAdapter = new QLVT.DataSet1TableAdapters.NhanVienTableAdapter();
+            this.nhanVienTableAdapter = new QLVT.DataSetTableAdapters.NhanVienTableAdapter();
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTEN = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -46,7 +46,7 @@
             this.colrowguid = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhanVienBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,15 +77,15 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
-            // dataSet1
+            // DataSet
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.DataSet.DataSetName = "DataSet";
+            this.DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // nhanVienBindingSource
             // 
             this.nhanVienBindingSource.DataMember = "NhanVien";
-            this.nhanVienBindingSource.DataSource = this.dataSet1;
+            this.nhanVienBindingSource.DataSource = this.DataSet;
             // 
             // nhanVienTableAdapter
             // 
@@ -189,7 +189,7 @@
             this.Load += new System.EventHandler(this.XtraForm1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhanVienBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -199,9 +199,9 @@
 
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DataSet1 dataSet1;
+        private DataSet DataSet;
         private System.Windows.Forms.BindingSource nhanVienBindingSource;
-        private DataSet1TableAdapters.NhanVienTableAdapter nhanVienTableAdapter;
+        private DataSetTableAdapters.NhanVienTableAdapter nhanVienTableAdapter;
         private DevExpress.XtraGrid.Columns.GridColumn colMANV;
         private DevExpress.XtraGrid.Columns.GridColumn colHO;
         private DevExpress.XtraGrid.Columns.GridColumn colTEN;

@@ -26,64 +26,11 @@ namespace QLVT.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DELL;Initial Catalog=QLVT_DATHANG;Integrated Security=True")]
-        public string QLVT_DATHANGConnectionString {
-            get {
-                return ((string)(this["QLVT_DATHANGConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DELL;Initial Catalog=QLVT_DATHANG;User ID=HTKN")]
-        public string QLVT_DATHANGConnectionString3 {
-            get {
-                return ((string)(this["QLVT_DATHANGConnectionString3"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DELL\\MSSQLSERVER1;Initial Catalog=QLVT_DATHANG;User ID=TT;password=12" +
-            "3456")]
-        public string QLVT_DATHANGConnectionString1 {
-            get {
-                return ((string)(this["QLVT_DATHANGConnectionString1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DELL;Initial Catalog=QLVT_DATHANG;Persist Security Info=True;User ID=" +
-            "sa;password=123456")]
-        public string QLVT_DATHANGConnectionString2 {
-            get {
-                return ((string)(this["QLVT_DATHANGConnectionString2"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NGUYENANHTUAN\\MAIN;Initial Catalog=QLVT;Persist Security Info=True;Us" +
-            "er ID=sa;Password=main;TrustServerCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NGUYENANHTUAN\\MAIN;Initial Catalog=QLVT;Integrated Security=True;Trus" +
+            "tServerCertificate=True")]
         public string QLVTConnectionString {
             get {
                 return ((string)(this["QLVTConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NGUYENANHTUAN\\MAIN;Initial Catalog=QLVT;Integrated Security=True;Encr" +
-            "ypt=True;TrustServerCertificate=True")]
-        public string QLVTConnectionString1 {
-            get {
-                return ((string)(this["QLVTConnectionString1"]));
             }
         }
     }
