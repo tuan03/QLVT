@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT
+namespace QLVT
 {
     partial class FormDangNhap
     {
@@ -29,7 +29,7 @@ namespace QLTVT
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbCHINHANH = new System.Windows.Forms.ComboBox();
+            this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTAIKHOAN = new System.Windows.Forms.TextBox();
@@ -40,15 +40,15 @@ namespace QLTVT
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // cmbCHINHANH
+            // cmbChiNhanh
             // 
-            this.cmbCHINHANH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCHINHANH.FormattingEnabled = true;
-            this.cmbCHINHANH.Location = new System.Drawing.Point(149, 68);
-            this.cmbCHINHANH.Name = "cmbCHINHANH";
-            this.cmbCHINHANH.Size = new System.Drawing.Size(256, 24);
-            this.cmbCHINHANH.TabIndex = 0;
-            this.cmbCHINHANH.SelectedIndexChanged += new System.EventHandler(this.cmbCHINHANH_SelectedIndexChanged);
+            this.cmbChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChiNhanh.FormattingEnabled = true;
+            this.cmbChiNhanh.Location = new System.Drawing.Point(149, 68);
+            this.cmbChiNhanh.Name = "cmbChiNhanh";
+            this.cmbChiNhanh.Size = new System.Drawing.Size(256, 24);
+            this.cmbChiNhanh.TabIndex = 0;
+            this.cmbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cmbChiNhanh_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -144,7 +144,7 @@ namespace QLTVT
             this.Controls.Add(this.txtTAIKHOAN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbCHINHANH);
+            this.Controls.Add(this.cmbChiNhanh);
             this.Name = "FormDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
@@ -156,7 +156,7 @@ namespace QLTVT
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cmbCHINHANH;
+        private System.Windows.Forms.ComboBox cmbChiNhanh;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTAIKHOAN;

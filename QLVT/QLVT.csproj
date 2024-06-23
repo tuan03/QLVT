@@ -78,6 +78,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FormChinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +247,12 @@
     <Compile Include="SubForm\FormChuyenChiNhanh.Designer.cs">
       <DependentUpon>FormChuyenChiNhanh.cs</DependentUpon>
     </Compile>
+    <Compile Include="XtraForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XtraForm1.Designer.cs">
+      <DependentUpon>XtraForm1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormChinh.resx">
       <DependentUpon>FormChinh.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +344,9 @@
     <EmbeddedResource Include="SubForm\FormChuyenChiNhanh.resx">
       <DependentUpon>FormChuyenChiNhanh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="XtraForm1.resx">
+      <DependentUpon>XtraForm1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="DataSet.xsc">
       <DependentUpon>DataSet.xsd</DependentUpon>
@@ -344,6 +358,17 @@
     </None>
     <None Include="DataSet.xss">
       <DependentUpon>DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

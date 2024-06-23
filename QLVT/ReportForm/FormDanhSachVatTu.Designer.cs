@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     partial class FormDanhSachVatTu
     {
@@ -33,10 +33,10 @@ namespace QLTVT.ReportForm
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataSet = new QLTVT.DataSet();
+            this.dataSet = new QLVT.DataSet();
             this.vattuBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vattuTableAdapter = new QLTVT.DataSetTableAdapters.VattuTableAdapter();
-            this.tableAdapterManager = new QLTVT.DataSetTableAdapters.TableAdapterManager();
+            this.vattuTableAdapter = new QLVT.DataSetTableAdapters.VattuTableAdapter();
+            this.tableAdapterManager = new QLVT.DataSetTableAdapters.TableAdapterManager();
             this.vattuGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -111,7 +111,7 @@ namespace QLTVT.ReportForm
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = QLTVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = QLVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = this.vattuTableAdapter;
             // 
             // vattuGridControl

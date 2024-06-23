@@ -1,5 +1,5 @@
 ﻿using DevExpress.XtraBars;
-using QLTVT.ReportForm;
+using QLVT.ReportForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT
+namespace QLVT
 {
 
     public partial class FormChinh : DevExpress.XtraBars.Ribbon.RibbonForm
@@ -53,7 +53,7 @@ namespace QLTVT
             pageBaoCao.Visible = true;
             btnLapTaiKhoan.Enabled = true;
 
-            if( Program.role == "USER")
+            if( Program.role == "User")
             {
                 btnLapTaiKhoan.Enabled = false;
             }    

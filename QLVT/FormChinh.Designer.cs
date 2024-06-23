@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT
+namespace QLVT
 {
     partial class FormChinh
     {
@@ -55,6 +55,7 @@ namespace QLTVT
             this.btnPhieuNhap = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuXuat = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLapTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
             this.pageNhapXuat = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageBaoCao = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -67,7 +68,7 @@ namespace QLTVT
             this.MANHANVIEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.HOTEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.NHOM = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnLapTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
+            this.SERVER = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -78,7 +79,6 @@ namespace QLTVT
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
-            this.ribbon.SearchEditItem,
             this.btnNhanVien,
             this.btnVatTu,
             this.btnKho,
@@ -306,6 +306,16 @@ namespace QLTVT
             this.barButtonItem2.Id = 23;
             this.barButtonItem2.Name = "barButtonItem2";
             // 
+            // btnLapTaiKhoan
+            // 
+            this.btnLapTaiKhoan.Caption = "TẠO TÀI KHOẢN";
+            this.btnLapTaiKhoan.Enabled = false;
+            this.btnLapTaiKhoan.Id = 27;
+            this.btnLapTaiKhoan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLapTaiKhoan.ImageOptions.SvgImage")));
+            this.btnLapTaiKhoan.LargeWidth = 100;
+            this.btnLapTaiKhoan.Name = "btnLapTaiKhoan";
+            this.btnLapTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLapTaiKhoan_ItemClick);
+            // 
             // pageNhapXuat
             // 
             this.pageNhapXuat.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -376,41 +386,38 @@ namespace QLTVT
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MANHANVIEN,
             this.HOTEN,
+            this.SERVER,
             this.NHOM});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 823);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 828);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1598, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(1598, 26);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // MANHANVIEN
             // 
             this.MANHANVIEN.Name = "MANHANVIEN";
-            this.MANHANVIEN.Size = new System.Drawing.Size(145, 25);
+            this.MANHANVIEN.Size = new System.Drawing.Size(115, 20);
             this.MANHANVIEN.Text = "MÃ NHÂN VIÊN";
             this.MANHANVIEN.Click += new System.EventHandler(this.toolStripStatusLabel1_Click_1);
             // 
             // HOTEN
             // 
             this.HOTEN.Name = "HOTEN";
-            this.HOTEN.Size = new System.Drawing.Size(78, 25);
+            this.HOTEN.Size = new System.Drawing.Size(62, 20);
             this.HOTEN.Text = "HỌ TÊN";
             // 
             // NHOM
             // 
             this.NHOM.Name = "NHOM";
-            this.NHOM.Size = new System.Drawing.Size(80, 25);
+            this.NHOM.Size = new System.Drawing.Size(63, 20);
             this.NHOM.Text = "VAI TRÒ";
             // 
-            // btnLapTaiKhoan
+            // SERVER
             // 
-            this.btnLapTaiKhoan.Caption = "TẠO TÀI KHOẢN";
-            this.btnLapTaiKhoan.Enabled = false;
-            this.btnLapTaiKhoan.Id = 27;
-            this.btnLapTaiKhoan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.btnLapTaiKhoan.LargeWidth = 100;
-            this.btnLapTaiKhoan.Name = "btnLapTaiKhoan";
-            this.btnLapTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLapTaiKhoan_ItemClick);
+            this.SERVER.Name = "SERVER";
+            this.SERVER.Size = new System.Drawing.Size(60, 20);
+            this.SERVER.Text = "SERVER";
             // 
             // FormChinh
             // 
@@ -476,5 +483,6 @@ namespace QLTVT
         private DevExpress.XtraBars.BarButtonItem btnPhieuXuat;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem btnLapTaiKhoan;
+        public System.Windows.Forms.ToolStripStatusLabel SERVER;
     }
 }

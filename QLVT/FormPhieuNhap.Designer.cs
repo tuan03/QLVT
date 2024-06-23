@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT
+namespace QLVT
 {
     partial class FormPhieuNhap
     {
@@ -59,15 +59,15 @@ namespace QLTVT
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.btnCHUYENCHINHANH = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCHUYENChiNhanh = new DevExpress.XtraBars.BarButtonItem();
             this.btnThemChiTietDonDatHang = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.cmbCHINHANH = new System.Windows.Forms.ComboBox();
+            this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataSet = new QLTVT.DataSet();
+            this.dataSet = new QLVT.DataSet();
             this.bdsPhieuNhap = new System.Windows.Forms.BindingSource(this.components);
-            this.phieuNhapTableAdapter = new QLTVT.DataSetTableAdapters.PhieuNhapTableAdapter();
-            this.tableAdapterManager = new QLTVT.DataSetTableAdapters.TableAdapterManager();
+            this.phieuNhapTableAdapter = new QLVT.DataSetTableAdapters.PhieuNhapTableAdapter();
+            this.tableAdapterManager = new QLVT.DataSetTableAdapters.TableAdapterManager();
             this.gcPhieuNhap = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAPN = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -98,7 +98,7 @@ namespace QLTVT
             this.txtSoLuong = new DevExpress.XtraEditors.SpinEdit();
             this.btnChonVatTu = new System.Windows.Forms.Button();
             this.txtMaVatTu = new DevExpress.XtraEditors.TextEdit();
-            this.chiTietPhieuNhapTableAdapter = new QLTVT.DataSetTableAdapters.CTPNTableAdapter();
+            this.chiTietPhieuNhapTableAdapter = new QLVT.DataSetTableAdapters.CTPNTableAdapter();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             dONGIALabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
@@ -262,7 +262,7 @@ namespace QLTVT
             this.btnGHI,
             this.btnHOANTAC,
             this.btnLAMMOI,
-            this.btnCHUYENCHINHANH,
+            this.btnCHUYENChiNhanh,
             this.btnTHOAT,
             this.btnThemChiTietDonDatHang,
             this.btnMENU,
@@ -421,12 +421,12 @@ namespace QLTVT
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 721);
             // 
-            // btnCHUYENCHINHANH
+            // btnCHUYENChiNhanh
             // 
-            this.btnCHUYENCHINHANH.Caption = "Chuyển Chi Nhánh";
-            this.btnCHUYENCHINHANH.Id = 5;
-            this.btnCHUYENCHINHANH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCHUYENCHINHANH.ImageOptions.SvgImage")));
-            this.btnCHUYENCHINHANH.Name = "btnCHUYENCHINHANH";
+            this.btnCHUYENChiNhanh.Caption = "Chuyển Chi Nhánh";
+            this.btnCHUYENChiNhanh.Id = 5;
+            this.btnCHUYENChiNhanh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCHUYENChiNhanh.ImageOptions.SvgImage")));
+            this.btnCHUYENChiNhanh.Name = "btnCHUYENChiNhanh";
             // 
             // btnThemChiTietDonDatHang
             // 
@@ -437,7 +437,7 @@ namespace QLTVT
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.cmbCHINHANH);
+            this.panelControl1.Controls.Add(this.cmbChiNhanh);
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 31);
@@ -446,17 +446,17 @@ namespace QLTVT
             this.panelControl1.Size = new System.Drawing.Size(1082, 69);
             this.panelControl1.TabIndex = 6;
             // 
-            // cmbCHINHANH
+            // cmbChiNhanh
             // 
-            this.cmbCHINHANH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCHINHANH.Enabled = false;
-            this.cmbCHINHANH.FormattingEnabled = true;
-            this.cmbCHINHANH.Location = new System.Drawing.Point(350, 24);
-            this.cmbCHINHANH.Margin = new System.Windows.Forms.Padding(8);
-            this.cmbCHINHANH.Name = "cmbCHINHANH";
-            this.cmbCHINHANH.Size = new System.Drawing.Size(362, 24);
-            this.cmbCHINHANH.TabIndex = 1;
-            this.cmbCHINHANH.SelectedIndexChanged += new System.EventHandler(this.cmbCHINHANH_SelectedIndexChanged_1);
+            this.cmbChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChiNhanh.Enabled = false;
+            this.cmbChiNhanh.FormattingEnabled = true;
+            this.cmbChiNhanh.Location = new System.Drawing.Point(350, 24);
+            this.cmbChiNhanh.Margin = new System.Windows.Forms.Padding(8);
+            this.cmbChiNhanh.Name = "cmbChiNhanh";
+            this.cmbChiNhanh.Size = new System.Drawing.Size(362, 24);
+            this.cmbChiNhanh.TabIndex = 1;
+            this.cmbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cmbChiNhanh_SelectedIndexChanged_1);
             // 
             // label1
             // 
@@ -495,7 +495,7 @@ namespace QLTVT
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = this.phieuNhapTableAdapter;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = QLTVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = QLVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
             // gcPhieuNhap
@@ -1021,10 +1021,10 @@ namespace QLTVT
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem btnCHUYENCHINHANH;
+        private DevExpress.XtraBars.BarButtonItem btnCHUYENChiNhanh;
         private DevExpress.XtraBars.BarButtonItem btnThemChiTietDonDatHang;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private System.Windows.Forms.ComboBox cmbCHINHANH;
+        private System.Windows.Forms.ComboBox cmbChiNhanh;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource bdsPhieuNhap;
         private DataSet dataSet;

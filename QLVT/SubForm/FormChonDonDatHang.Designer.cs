@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT.SubForm
+namespace QLVT.SubForm
 {
     partial class FormChonDonDatHang
     {
@@ -30,10 +30,10 @@ namespace QLTVT.SubForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataSet = new QLTVT.DataSet();
+            this.dataSet = new QLVT.DataSet();
             this.bdsDonDatHang = new System.Windows.Forms.BindingSource(this.components);
-            this.datHangTableAdapter = new QLTVT.DataSetTableAdapters.DatHangTableAdapter();
-            this.tableAdapterManager = new QLTVT.DataSetTableAdapters.TableAdapterManager();
+            this.datHangTableAdapter = new QLVT.DataSetTableAdapters.DatHangTableAdapter();
+            this.tableAdapterManager = new QLVT.DataSetTableAdapters.TableAdapterManager();
             this.datHangGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.btnCHON = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@ namespace QLTVT.SubForm
             this.tableAdapterManager.NhanVienTableAdapter = null;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = QLTVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = QLVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
             // datHangGridControl

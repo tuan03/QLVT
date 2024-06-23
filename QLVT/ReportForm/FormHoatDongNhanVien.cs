@@ -1,5 +1,5 @@
 ﻿using DevExpress.XtraReports.UI;
-using QLTVT.SubForm;
+using QLVT.SubForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     public partial class FormHoatDongNhanVien : Form
     {

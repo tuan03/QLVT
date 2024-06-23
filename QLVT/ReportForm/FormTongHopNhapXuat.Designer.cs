@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     partial class FormTongHopNhapXuat
     {
@@ -31,7 +31,7 @@ namespace QLTVT.ReportForm
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbCHINHANH = new System.Windows.Forms.ComboBox();
+            this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,17 +65,17 @@ namespace QLTVT.ReportForm
             this.label2.TabIndex = 5;
             this.label2.Text = "Chi Nhánh";
             // 
-            // cmbCHINHANH
+            // cmbChiNhanh
             // 
-            this.cmbCHINHANH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCHINHANH.Enabled = false;
-            this.cmbCHINHANH.FormattingEnabled = true;
-            this.cmbCHINHANH.Location = new System.Drawing.Point(260, 130);
-            this.cmbCHINHANH.Margin = new System.Windows.Forms.Padding(8);
-            this.cmbCHINHANH.Name = "cmbCHINHANH";
-            this.cmbCHINHANH.Size = new System.Drawing.Size(432, 24);
-            this.cmbCHINHANH.TabIndex = 4;
-            this.cmbCHINHANH.SelectedIndexChanged += new System.EventHandler(this.cmbCHINHANH_SelectedIndexChanged);
+            this.cmbChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChiNhanh.Enabled = false;
+            this.cmbChiNhanh.FormattingEnabled = true;
+            this.cmbChiNhanh.Location = new System.Drawing.Point(260, 130);
+            this.cmbChiNhanh.Margin = new System.Windows.Forms.Padding(8);
+            this.cmbChiNhanh.Name = "cmbChiNhanh";
+            this.cmbChiNhanh.Size = new System.Drawing.Size(432, 24);
+            this.cmbChiNhanh.TabIndex = 4;
+            this.cmbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cmbChiNhanh_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -158,7 +158,7 @@ namespace QLTVT.ReportForm
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmbCHINHANH);
+            this.Controls.Add(this.cmbChiNhanh);
             this.Controls.Add(this.label1);
             this.Name = "FormTongHopNhapXuat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -177,7 +177,7 @@ namespace QLTVT.ReportForm
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbCHINHANH;
+        private System.Windows.Forms.ComboBox cmbChiNhanh;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;

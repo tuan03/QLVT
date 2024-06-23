@@ -1,4 +1,4 @@
-﻿using QLTVT.SubForm;
+﻿using QLVT.SubForm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT
+namespace QLVT
 {
     public partial class FormNhanVien : Form
     {
@@ -37,7 +37,7 @@ namespace QLTVT
          * 
          * nếu btnGHI sẽ ứng với INSERT
          * nếu btnXOA sẽ ứng với DELETE
-         * nếu btnCHUYENCHINHANH sẽ ứng với CHANGEBRAND
+         * nếu btnCHUYENChiNhanh sẽ ứng với CHANGEBRAND
          **********************************************************/
         Stack undoList = new Stack();
 
@@ -113,16 +113,16 @@ namespace QLTVT
             /*van con ton tai loi chua sua duoc*/
             maChiNhanh = ((DataRowView)bdsNhanVien[0])["MACN"].ToString();
             /*Step 2*/
-            cmbCHINHANH.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
-            cmbCHINHANH.DisplayMember = "TENCN";
-            cmbCHINHANH.ValueMember = "TENSERVER";
-            cmbCHINHANH.SelectedIndex = Program.brand;
+            cmbChiNhanh.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
+            cmbChiNhanh.DisplayMember = "TENCN";
+            cmbChiNhanh.ValueMember = "TENSERVER";
+            cmbChiNhanh.SelectedIndex = Program.brand;
             
             /*Step 3*/
             /*CONG TY chi xem du lieu*/
-            if( Program.role == "CONGTY")
+            if( Program.role == "CongTy")
             {
-                cmbCHINHANH.Enabled = true;
+                cmbChiNhanh.Enabled = true;
 
                 this.btnTHEM.Enabled = false;
                 this.btnXOA.Enabled = false;
@@ -130,7 +130,7 @@ namespace QLTVT
 
                 this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
-                this.btnCHUYENCHINHANH.Enabled = false;
+                this.btnCHUYENChiNhanh.Enabled = false;
                 this.btnTHOAT.Enabled = true;
 
                 this.panelNhapLieu.Enabled = false;
@@ -138,9 +138,9 @@ namespace QLTVT
 
             /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
-            if( Program.role == "CHINHANH" || Program.role == "USER")
+            if( Program.role == "ChiNhanh" || Program.role == "User")
             {
-                cmbCHINHANH.Enabled = false;
+                cmbChiNhanh.Enabled = false;
 
                 this.btnTHEM.Enabled = true;
                 this.btnXOA.Enabled = true;
@@ -148,7 +148,7 @@ namespace QLTVT
 
                 this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
-                this.btnCHUYENCHINHANH.Enabled = true;
+                this.btnCHUYENChiNhanh.Enabled = true;
                 this.btnTHOAT.Enabled = true;
 
                 this.panelNhapLieu.Enabled = true;
@@ -202,7 +202,7 @@ namespace QLTVT
 
             this.btnHOANTAC.Enabled = true;
             this.btnLAMMOI.Enabled = false;
-            this.btnCHUYENCHINHANH.Enabled = false;
+            this.btnCHUYENChiNhanh.Enabled = false;
             this.btnTHOAT.Enabled = false;
             this.trangThaiXoaCheckBox.Checked = false;
 
@@ -238,7 +238,7 @@ namespace QLTVT
 
                 this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
-                this.btnCHUYENCHINHANH.Enabled = true;
+                this.btnCHUYENChiNhanh.Enabled = true;
                 this.btnTHOAT.Enabled = true;
                 this.trangThaiXoaCheckBox.Checked = false;
 
@@ -272,10 +272,10 @@ namespace QLTVT
             {
                 try
                 {
-                    String chiNhanhHienTai = Program.serverName;
-                    String chiNhanhChuyenToi = Program.serverNameLeft;
+                    String ChiNhanhHienTai = Program.serverName;
+                    String ChiNhanhChuyenToi = Program.serverNameLeft;
 
-                    Program.serverName = chiNhanhChuyenToi;
+                    Program.serverName = ChiNhanhChuyenToi;
                     Program.loginName = Program.remoteLogin;
                     Program.loginPassword = Program.remotePassword;
 
@@ -288,7 +288,7 @@ namespace QLTVT
                     int n = Program.ExecSqlNonQuery(cauTruyVanHoanTac);
 
                     MessageBox.Show("Chuyển nhân viên trở lại thành công", "Thông báo", MessageBoxButtons.OK);
-                    Program.serverName = chiNhanhHienTai;
+                    Program.serverName = ChiNhanhHienTai;
                     Program.loginName = Program.currentLogin;
                     Program.loginPassword = Program.currentPassword;
                 }
@@ -433,17 +433,17 @@ namespace QLTVT
             }    
         }
 
-        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
             /*Neu combobox khong co so lieu thi ket thuc luon*/
-            if (cmbCHINHANH.SelectedValue.ToString() == "System.Data.DataRowView")
+            if (cmbChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
 
-            Program.serverName = cmbCHINHANH.SelectedValue.ToString();
+            Program.serverName = cmbChiNhanh.SelectedValue.ToString();
 
             /*Neu chon sang chi nhanh khac voi chi nhanh hien tai*/
-            if( cmbCHINHANH.SelectedIndex != Program.brand )
+            if( cmbChiNhanh.SelectedIndex != Program.brand )
             {
                 Program.loginName = Program.remoteLogin;
                 Program.loginPassword = Program.remotePassword;
@@ -688,7 +688,7 @@ namespace QLTVT
                         btnHOANTAC.Enabled = true;
 
                         btnLAMMOI.Enabled = true;
-                        btnCHUYENCHINHANH.Enabled = true;
+                        btnCHUYENChiNhanh.Enabled = true;
                         btnTHOAT.Enabled = true;
 
                         this.txtMANV.Enabled = false;
@@ -754,12 +754,12 @@ namespace QLTVT
          * Step 3: trước khi thực hiện, lưu sẵn câu lệnh hoàn tác vào undoList + tên chi nhánh tới
          * Step 4: thực hiện chuyển chi nhánh với sp_ChuyenChiNhanh
          **************************************************************/
-        public void chuyenChiNhanh(String chiNhanh )
+        public void chuyenChiNhanh(String ChiNhanh )
         {
-            //Console.WriteLine("Chi nhánh được chọn là " + chiNhanh);
+            //Console.WriteLine("Chi nhánh được chọn là " + ChiNhanh);
             
             /*Step 1*/
-            if ( Program.serverName == chiNhanh)
+            if ( Program.serverName == ChiNhanh)
             {
                 MessageBox.Show("Hãy chọn chi nhánh khác chi nhánh bạn đang đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -773,12 +773,12 @@ namespace QLTVT
             int viTriHienTai = bdsNhanVien.Position;
             String maNhanVien = ((DataRowView)bdsNhanVien[viTriHienTai])["MANV"].ToString();
 
-            if (chiNhanh.Contains("1"))
+            if (ChiNhanh.Contains("1"))
             {
                 maChiNhanhHienTai = "CN2";
                 maChiNhanhMoi = "CN1";
             }
-            else if( chiNhanh.Contains("2"))
+            else if( ChiNhanh.Contains("2"))
             {
                 maChiNhanhHienTai = "CN1";
                 maChiNhanhMoi = "CN2";
@@ -797,7 +797,7 @@ namespace QLTVT
             String cauTruyVanHoanTac = "EXEC sp_ChuyenChiNhanh "+maNhanVien+",'"+maChiNhanhHienTai+"'";
             undoList.Push(cauTruyVanHoanTac);
            
-            Program.serverNameLeft = chiNhanh; /*Lấy tên chi nhánh tới để làm tính năng hoàn tác*/
+            Program.serverNameLeft = ChiNhanh; /*Lấy tên chi nhánh tới để làm tính năng hoàn tác*/
             Console.WriteLine("Ten server con lai" + Program.serverNameLeft);
 
 
@@ -829,7 +829,7 @@ namespace QLTVT
 
 
         }
-        private void btnCHUYENCHINHANH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnCHUYENChiNhanh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
 

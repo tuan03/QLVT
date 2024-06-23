@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT.SubForm
+namespace QLVT.SubForm
 {
     public partial class FormChuyenChiNhanh : DevExpress.XtraEditors.XtraForm
     {
@@ -25,11 +25,11 @@ namespace QLTVT.SubForm
         { 
             /*Lấy dữ liệu từ form đăng nhập đổ vào nhưng chỉ lấn đúng danh sách
              phân mảnh mà thôi*/
-            cmbCHINHANH.DataSource  = Program.bindingSource.DataSource;
+            cmbChiNhanh.DataSource  = Program.bindingSource.DataSource;
             /*sao chep bingding source tu form dang nhap*/
-            cmbCHINHANH.DisplayMember = "tencn";
-            cmbCHINHANH.ValueMember = "tenserver";
-            cmbCHINHANH.SelectedIndex = Program.brand;
+            cmbChiNhanh.DisplayMember = "tencn";
+            cmbChiNhanh.ValueMember = "tenserver";
+            cmbChiNhanh.SelectedIndex = Program.brand;
 
         }
         private Form CheckExists(Type ftype)
@@ -39,7 +39,7 @@ namespace QLTVT.SubForm
                     return f;
             return null;
         }
-        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -57,11 +57,11 @@ namespace QLTVT.SubForm
          * là tên server được chọn ở formChuyenChiNhanh này. Để gọi được hàm chuyển chi nhánh ở formNHANVIEN
          * Chúng ta khai báo 1 delete là branchTransfer để gọi hàm chuyển chi nhánh về form này
          *************************************************************/
-        public delegate void MyDelegate(string chiNhanh);
+        public delegate void MyDelegate(string ChiNhanh);
         public MyDelegate branchTransfer;
         private void btnXACNHAN_Click(object sender, EventArgs e)
         {
-            if (cmbCHINHANH.Text.Trim().Equals(""))
+            if (cmbChiNhanh.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Vui lòng chọn chi nhánh", "Thông báo", MessageBoxButtons.OK);
                 return;
@@ -71,7 +71,7 @@ namespace QLTVT.SubForm
 
             if( dialogResult == DialogResult.OK)
             {
-                branchTransfer(cmbCHINHANH.SelectedValue.ToString());
+                branchTransfer(cmbChiNhanh.SelectedValue.ToString());
             }
                 
             this.Dispose();
@@ -82,7 +82,7 @@ namespace QLTVT.SubForm
 
         }
 
-        private void cCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

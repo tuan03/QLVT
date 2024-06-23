@@ -1,7 +1,7 @@
 ﻿using DevExpress.Skins;
 using DevExpress.UserSkins;
-using QLTVT.ReportForm;
-using QLTVT.SubForm;
+using QLVT.ReportForm;
+using QLVT.SubForm;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace QLTVT
+namespace QLVT
 {
     /*
     * Lý do bắt buộc phải viết biến tại đây là chỉ khi ta mở form
@@ -33,7 +33,7 @@ namespace QLTVT
          **********************************************/
         public static SqlConnection conn = new SqlConnection();//conn
         public static String connstr = "";//connstr
-        public static String connstrPublisher = "Data Source=DELL;Initial Catalog=QLVT_DATHANG;Integrated Security=true";
+        public static String connstrPublisher = "Data Source=Nguyenanhtuan\\main;Initial Catalog=QLVT;Integrated Security=true";
         public static SqlDataReader myReader;//myReader
 
 
@@ -73,7 +73,7 @@ namespace QLTVT
          *Ví dụ: LT là loginName của server 1 thì qua server 2 dùng HTKN.
          *Quay về server 1 thì dùng currentLogin
          ***********************************************/
-        public static String database = "QLVT_DATHANG";
+        public static String database = "QLVT";
         
         public static String remoteLogin = "HTKN";//remotelogin
         public static String remotePassword = "123456";//remotepassword
@@ -85,7 +85,7 @@ namespace QLTVT
 
 
         /**********************************************
-         * role: tên nhóm quyền đang đăng nhập: CONGTY - CHINHANH - USER
+         * role: tên nhóm quyền đang đăng nhập: CongTy - ChiNhanh - USER
          * staff: tên nhân viên đang đăng nhập
          * brand: chi nhánh đang đăng nhập
          **********************************************/
@@ -171,7 +171,7 @@ namespace QLTVT
                        Program.database + ";User ID=" +
                        Program.loginName + ";password=" + Program.loginPassword;
                 Program.conn.ConnectionString = Program.connstr;
-
+                Console.WriteLine("Using str connect ::: "+Program.connstr);
                 Program.conn.Open();
                 return 1;
             }

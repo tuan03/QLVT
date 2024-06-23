@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT
+namespace QLVT
 {
     partial class FormTaoTaiKhoan
     {

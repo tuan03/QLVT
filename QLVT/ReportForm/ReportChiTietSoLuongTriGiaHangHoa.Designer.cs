@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     partial class ReportChiTietSoLuongTriGiaHangHoa
     {
@@ -78,7 +78,7 @@ namespace QLTVT.ReportForm
             // 
             // sqlDataSource1
             // 
-            this.sqlDataSource1.ConnectionName = "QLTVT.Properties.Settings.QLVT_DATHANGConnectionString1";
+            this.sqlDataSource1.ConnectionName = "QLVT.Properties.Settings.QLVT_DATHANGConnectionString1";
             this.sqlDataSource1.Name = "sqlDataSource1";
             storedProcQuery1.Name = "sp_ChiTietSoLuongTriGiaHangHoaNhapXuat";
             queryParameter1.Name = "@ROLE";

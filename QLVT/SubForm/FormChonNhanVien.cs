@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT.SubForm
+namespace QLVT.SubForm
 {
     public partial class FormChonNhanVien : DevExpress.XtraEditors.XtraForm
     {
@@ -32,29 +32,29 @@ namespace QLTVT.SubForm
             this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
             this.nhanVienTableAdapter.Fill(this.dataSet.NhanVien);
 
-            cmbCHINHANH.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
-            cmbCHINHANH.DisplayMember = "TENCN";
-            cmbCHINHANH.ValueMember = "TENSERVER";
-            cmbCHINHANH.SelectedIndex = Program.brand;
+            cmbChiNhanh.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
+            cmbChiNhanh.DisplayMember = "TENCN";
+            cmbChiNhanh.ValueMember = "TENSERVER";
+            cmbChiNhanh.SelectedIndex = Program.brand;
 
-            if( Program.role == "CONGTY")
+            if( Program.role == "CongTy")
             {
-                cmbCHINHANH.Enabled = true;
+                cmbChiNhanh.Enabled = true;
             }   
 
         }
 
-        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
             /*Neu combobox khong co so lieu thi ket thuc luon*/
-            if (cmbCHINHANH.SelectedValue.ToString() == "System.Data.DataRowView")
+            if (cmbChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
 
-            Program.serverName = cmbCHINHANH.SelectedValue.ToString();
+            Program.serverName = cmbChiNhanh.SelectedValue.ToString();
 
             /*Neu chon sang chi nhanh khac voi chi nhanh hien tai*/
-            if (cmbCHINHANH.SelectedIndex != Program.brand)
+            if (cmbChiNhanh.SelectedIndex != Program.brand)
             {
                 Program.loginName = Program.remoteLogin;
                 Program.loginPassword = Program.remotePassword;

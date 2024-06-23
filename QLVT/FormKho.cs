@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT
+namespace QLVT
 {
     public partial class FormKho : Form
     {
@@ -36,7 +36,7 @@ namespace QLTVT
          * 
          * nếu btnGHI sẽ ứng với INSERT
          * nếu btnXOA sẽ ứng với DELETE
-         * nếu btnCHUYENCHINHANH sẽ ứng với CHANGEBRAND
+         * nếu btnCHUYENChiNhanh sẽ ứng với CHANGEBRAND
          **********************************************************/
         Stack undoList = new Stack();
 
@@ -79,16 +79,16 @@ namespace QLTVT
             /*van con ton tai loi chua sua duoc*/
             maChiNhanh = ((DataRowView)bdsKho[0])["MACN"].ToString();
             /*Step 2*/
-            cmbCHINHANH.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
-            cmbCHINHANH.DisplayMember = "TENCN";
-            cmbCHINHANH.ValueMember = "TENSERVER";
-            cmbCHINHANH.SelectedIndex = Program.brand;
+            cmbChiNhanh.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
+            cmbChiNhanh.DisplayMember = "TENCN";
+            cmbChiNhanh.ValueMember = "TENSERVER";
+            cmbChiNhanh.SelectedIndex = Program.brand;
 
             /*Step 3*/
             /*CONG TY chi xem du lieu*/
-            if (Program.role == "CONGTY")
+            if (Program.role == "CongTy")
             {
-                cmbCHINHANH.Enabled = true;
+                cmbChiNhanh.Enabled = true;
 
                 this.btnTHEM.Enabled = false;
                 this.btnXOA.Enabled = false;
@@ -96,17 +96,17 @@ namespace QLTVT
 
                 this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
-                this.btnCHUYENCHINHANH.Enabled = true;
+                this.btnCHUYENChiNhanh.Enabled = true;
                 this.btnTHOAT.Enabled = true;
 
                 this.panelNhapLieu.Enabled = false;
             }
 
-            /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
+            /* CHI NHANH & User co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
-            if (Program.role == "CHINHANH" || Program.role == "USER")
+            if (Program.role == "ChiNhanh" || Program.role == "User")
             {
-                cmbCHINHANH.Enabled = false;
+                cmbChiNhanh.Enabled = false;
 
                 this.btnTHEM.Enabled = true;
                 this.btnXOA.Enabled = true;
@@ -122,17 +122,17 @@ namespace QLTVT
 
         }
 
-        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
             /*Neu combobox khong co so lieu thi ket thuc luon*/
-            if (cmbCHINHANH.SelectedValue.ToString() == "System.Data.DataRowView")
+            if (cmbChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
 
-            Program.serverName = cmbCHINHANH.SelectedValue.ToString();
+            Program.serverName = cmbChiNhanh.SelectedValue.ToString();
 
             /*Neu chon sang chi nhanh khac voi chi nhanh hien tai*/
-            if (cmbCHINHANH.SelectedIndex != Program.brand)
+            if (cmbChiNhanh.SelectedIndex != Program.brand)
             {
                 Program.loginName = Program.remoteLogin;
                 Program.loginPassword = Program.remotePassword;
@@ -176,7 +176,7 @@ namespace QLTVT
             /*Step 2*/
             /*AddNew tự động nhảy xuống cuối thêm 1 dòng mới*/
             bdsKho.AddNew();
-            txtMACHINHANH.Text = maChiNhanh;
+            txtMAChiNhanh.Text = maChiNhanh;
 
             /*Step 3*/
             this.txtMAKHO.Enabled = true;
@@ -351,7 +351,7 @@ namespace QLTVT
                         btnHOANTAC.Enabled = true;
 
                         btnLAMMOI.Enabled = true;
-                        btnCHUYENCHINHANH.Enabled = true;
+                        btnCHUYENChiNhanh.Enabled = true;
                         btnTHOAT.Enabled = true;
 
                         this.txtMAKHO.Enabled = false;
@@ -482,7 +482,7 @@ namespace QLTVT
             " VALUES( '" + txtMAKHO.Text + "','" +
                         txtDIACHI.Text + "','" +
                         txtDIACHI.Text + "', '" +
-                        txtMACHINHANH.Text.Trim() + "' ) ";
+                        txtMAChiNhanh.Text.Trim() + "' ) ";
 
             Console.WriteLine(cauTruyVanHoanTac);
             undoList.Push(cauTruyVanHoanTac);

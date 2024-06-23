@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT.SubForm
+namespace QLVT.SubForm
 {
     partial class FormChuyenChiNhanh
     {
@@ -30,7 +30,7 @@ namespace QLTVT.SubForm
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbCHINHANH = new System.Windows.Forms.ComboBox();
+            this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             this.btnXACNHAN = new System.Windows.Forms.Button();
             this.btnTHOAT = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -46,14 +46,14 @@ namespace QLTVT.SubForm
             this.label1.Text = "CHUYỂN CHI NHÁNH";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // cmbCHINHANH
+            // cmbChiNhanh
             // 
-            this.cmbCHINHANH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCHINHANH.FormattingEnabled = true;
-            this.cmbCHINHANH.Location = new System.Drawing.Point(106, 109);
-            this.cmbCHINHANH.Name = "cmbCHINHANH";
-            this.cmbCHINHANH.Size = new System.Drawing.Size(294, 24);
-            this.cmbCHINHANH.TabIndex = 4;
+            this.cmbChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChiNhanh.FormattingEnabled = true;
+            this.cmbChiNhanh.Location = new System.Drawing.Point(106, 109);
+            this.cmbChiNhanh.Name = "cmbChiNhanh";
+            this.cmbChiNhanh.Size = new System.Drawing.Size(294, 24);
+            this.cmbChiNhanh.TabIndex = 4;
             // 
             // btnXACNHAN
             // 
@@ -87,7 +87,7 @@ namespace QLTVT.SubForm
             this.ClientSize = new System.Drawing.Size(502, 285);
             this.Controls.Add(this.btnTHOAT);
             this.Controls.Add(this.btnXACNHAN);
-            this.Controls.Add(this.cmbCHINHANH);
+            this.Controls.Add(this.cmbChiNhanh);
             this.Controls.Add(this.label1);
             this.Name = "FormChuyenChiNhanh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -101,7 +101,7 @@ namespace QLTVT.SubForm
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbCHINHANH;
+        private System.Windows.Forms.ComboBox cmbChiNhanh;
         private System.Windows.Forms.Button btnXACNHAN;
         private System.Windows.Forms.Button btnTHOAT;
     }

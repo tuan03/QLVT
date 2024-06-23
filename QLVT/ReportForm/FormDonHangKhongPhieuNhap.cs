@@ -11,12 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     public partial class FormDonHangKhongPhieuNhap : Form
     {
         private SqlConnection connPublisher = new SqlConnection();
-        private string chiNhanh = "";
+        private string ChiNhanh = "";
 
         private void layDanhSachPhanManh(String cmd)
         {
@@ -35,9 +35,9 @@ namespace QLTVT.ReportForm
             Program.bindingSource.DataSource = dt;
 
 
-            cmbCHINHANH.DataSource = Program.bindingSource;
-            cmbCHINHANH.DisplayMember = "TENCN";
-            cmbCHINHANH.ValueMember = "TENSERVER";
+            cmbChiNhanh.DataSource = Program.bindingSource;
+            cmbChiNhanh.DisplayMember = "TENCN";
+            cmbChiNhanh.ValueMember = "TENSERVER";
 
         }
 
@@ -75,17 +75,17 @@ namespace QLTVT.ReportForm
 
 
 
-        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
             /*Neu combobox khong co so lieu thi ket thuc luon*/
-            if (cmbCHINHANH.SelectedValue.ToString() == "System.Data.DataRowView")
+            if (cmbChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
 
-            Program.serverName = cmbCHINHANH.SelectedValue.ToString();
+            Program.serverName = cmbChiNhanh.SelectedValue.ToString();
 
             /*Neu chon sang chi nhanh khac voi chi nhanh hien tai*/
-            if (cmbCHINHANH.SelectedIndex != Program.brand)
+            if (cmbChiNhanh.SelectedIndex != Program.brand)
             {
                 Program.loginName = Program.remoteLogin;
                 Program.loginPassword = Program.remotePassword;
@@ -102,14 +102,14 @@ namespace QLTVT.ReportForm
                 MessageBox.Show("Xảy ra lỗi kết nối với chi nhánh hiện tại", "Thông báo", MessageBoxButtons.OK);
             }
 
-            chiNhanh = cmbCHINHANH.SelectedValue.ToString().Contains("1") ? "Helsinki" : "Lisbon";
+            ChiNhanh = cmbChiNhanh.SelectedValue.ToString().Contains("1") ? "Helsinki" : "Lisbon";
         }
 
         private void FormDonHangKhongPhieuNhap_Load(object sender, EventArgs e)
         {
-            if (Program.role == "CONGTY")
+            if (Program.role == "CongTy")
             {
-                this.cmbCHINHANH.Enabled = true;
+                this.cmbChiNhanh.Enabled = true;
             }
             // TODO: This line of code loads data into the 'dataSet.NhanVien' table. You can move, or remove it, as needed.
             //dataSet.EnforceConstraints = false;
@@ -118,15 +118,15 @@ namespace QLTVT.ReportForm
                 return;
 
             layDanhSachPhanManh("SELECT TOP 2 * FROM view_DanhSachPhanManh");
-            cmbCHINHANH.SelectedIndex = 0;
-            cmbCHINHANH.SelectedIndex = 1;
+            cmbChiNhanh.SelectedIndex = 0;
+            cmbChiNhanh.SelectedIndex = 1;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             ReportDonHangKhongPhieuNhap report = new ReportDonHangKhongPhieuNhap();
             /*GAN TEN CHI NHANH CHO BAO CAO*/
-            report.txtChiNhanh.Text = chiNhanh.ToUpper();
+            report.txtChiNhanh.Text = ChiNhanh.ToUpper();
             ReportPrintTool printTool = new ReportPrintTool(report);
             printTool.ShowPreviewDialog();
         }
@@ -137,7 +137,7 @@ namespace QLTVT.ReportForm
             {
                 ReportDonHangKhongPhieuNhap report = new ReportDonHangKhongPhieuNhap();
                 /*GAN TEN CHI NHANH CHO BAO CAO*/
-                report.txtChiNhanh.Text = chiNhanh.ToUpper();
+                report.txtChiNhanh.Text = ChiNhanh.ToUpper();
                 if (File.Exists(@"D:\ReportDonHangKhongPhieuNhap.pdf"))
                 {
                     DialogResult dr = MessageBox.Show("File ReportDonHangKhongPhieuNhap.pdf tại ổ D đã có!\nBạn có muốn tạo lại?",

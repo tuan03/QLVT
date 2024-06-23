@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     partial class FormDanhSachNhanVien
     {
@@ -34,11 +34,11 @@ namespace QLTVT.ReportForm
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbCHINHANH = new System.Windows.Forms.ComboBox();
-            this.dataSet = new QLTVT.DataSet();
+            this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
+            this.dataSet = new QLVT.DataSet();
             this.nhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nhanVienTableAdapter = new QLTVT.DataSetTableAdapters.NhanVienTableAdapter();
-            this.tableAdapterManager = new QLTVT.DataSetTableAdapters.TableAdapterManager();
+            this.nhanVienTableAdapter = new QLVT.DataSetTableAdapters.NhanVienTableAdapter();
+            this.tableAdapterManager = new QLVT.DataSetTableAdapters.TableAdapterManager();
             this.nhanVienGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -102,15 +102,15 @@ namespace QLTVT.ReportForm
             this.label2.TabIndex = 3;
             this.label2.Text = "Chi Nhánh";
             // 
-            // cmbCHINHANH
+            // cmbChiNhanh
             // 
-            this.cmbCHINHANH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCHINHANH.Enabled = false;
-            this.cmbCHINHANH.Location = new System.Drawing.Point(370, 121);
-            this.cmbCHINHANH.Name = "cmbCHINHANH";
-            this.cmbCHINHANH.Size = new System.Drawing.Size(331, 24);
-            this.cmbCHINHANH.TabIndex = 0;
-            this.cmbCHINHANH.SelectedIndexChanged += new System.EventHandler(this.cmbCHINHANH_SelectedIndexChanged);
+            this.cmbChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChiNhanh.Enabled = false;
+            this.cmbChiNhanh.Location = new System.Drawing.Point(370, 121);
+            this.cmbChiNhanh.Name = "cmbChiNhanh";
+            this.cmbChiNhanh.Size = new System.Drawing.Size(331, 24);
+            this.cmbChiNhanh.TabIndex = 0;
+            this.cmbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cmbChiNhanh_SelectedIndexChanged);
             // 
             // dataSet
             // 
@@ -138,7 +138,7 @@ namespace QLTVT.ReportForm
             this.tableAdapterManager.NhanVienTableAdapter = this.nhanVienTableAdapter;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = QLTVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = QLVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
             // nhanVienGridControl
@@ -262,7 +262,7 @@ namespace QLTVT.ReportForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(978, 612);
             this.Controls.Add(this.nhanVienGridControl);
-            this.Controls.Add(this.cmbCHINHANH);
+            this.Controls.Add(this.cmbChiNhanh);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -286,7 +286,7 @@ namespace QLTVT.ReportForm
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbCHINHANH;
+        private System.Windows.Forms.ComboBox cmbChiNhanh;
         private DataSet dataSet;
         private System.Windows.Forms.BindingSource nhanVienBindingSource;
         private DataSetTableAdapters.NhanVienTableAdapter nhanVienTableAdapter;

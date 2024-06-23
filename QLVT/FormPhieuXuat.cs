@@ -1,5 +1,5 @@
 ﻿using DevExpress.XtraGrid;
-using QLTVT.SubForm;
+using QLVT.SubForm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT
+namespace QLVT
 {
     public partial class FormPhieuXuat : Form
     {
@@ -37,7 +37,7 @@ namespace QLTVT
          * 
          * nếu btnGHI sẽ ứng với INSERT
          * nếu btnXOA sẽ ứng với DELETE
-         * nếu btnCHUYENCHINHANH sẽ ứng với CHANGEBRAND
+         * nếu btnCHUYENChiNhanh sẽ ứng với CHANGEBRAND
          **********************************************************/
         Stack undoList = new Stack();
 
@@ -76,10 +76,10 @@ namespace QLTVT
             this.chiTietPhieuXuatTableAdapter.Fill(this.dataSet.CTPX);
 
             /*Step 2*/
-            cmbCHINHANH.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
-            cmbCHINHANH.DisplayMember = "TENCN";
-            cmbCHINHANH.ValueMember = "TENSERVER";
-            cmbCHINHANH.SelectedIndex = Program.brand;
+            cmbChiNhanh.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
+            cmbChiNhanh.DisplayMember = "TENCN";
+            cmbChiNhanh.ValueMember = "TENSERVER";
+            cmbChiNhanh.SelectedIndex = Program.brand;
         }
 
         private void btnTHOAT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -122,9 +122,9 @@ namespace QLTVT
 
             /*Step 3*/
             /*CONG TY chi xem du lieu*/
-            if (Program.role == "CONGTY")
+            if (Program.role == "CongTy")
             {
-                cmbCHINHANH.Enabled = true;
+                cmbChiNhanh.Enabled = true;
 
                 this.btnTHEM.Enabled = false;
                 this.btnXOA.Enabled = false;
@@ -142,9 +142,9 @@ namespace QLTVT
 
             /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
-            if (Program.role == "CHINHANH" || Program.role == "USER")
+            if (Program.role == "ChiNhanh" || Program.role == "User")
             {
-                cmbCHINHANH.Enabled = false;
+                cmbChiNhanh.Enabled = false;
 
                 this.btnTHEM.Enabled = true;
                 bool turnOn = (bdsPhieuXuat.Count > 0) ? true : false;
@@ -195,9 +195,9 @@ namespace QLTVT
 
             /*Step 3*/
             /*CONG TY chi xem du lieu*/
-            if (Program.role == "CONGTY")
+            if (Program.role == "CongTy")
             {
-                cmbCHINHANH.Enabled = true;
+                cmbChiNhanh.Enabled = true;
 
                 this.btnTHEM.Enabled = false;
                 this.btnXOA.Enabled = false;
@@ -215,9 +215,9 @@ namespace QLTVT
 
             /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
-            if (Program.role == "CHINHANH" || Program.role == "USER")
+            if (Program.role == "ChiNhanh" || Program.role == "User")
             {
-                cmbCHINHANH.Enabled = false;
+                cmbChiNhanh.Enabled = false;
 
                 this.btnTHEM.Enabled = true;
                 bool turnOn = (bdsPhieuXuat.Count > 0) ? true : false;
@@ -233,17 +233,17 @@ namespace QLTVT
             }
         }
 
-        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
             /*Neu combobox khong co so lieu thi ket thuc luon*/
-            if (cmbCHINHANH.SelectedValue.ToString() == "System.Data.DataRowView")
+            if (cmbChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
 
-            Program.serverName = cmbCHINHANH.SelectedValue.ToString();
+            Program.serverName = cmbChiNhanh.SelectedValue.ToString();
 
             /*Neu chon sang chi nhanh khac voi chi nhanh hien tai*/
-            if (cmbCHINHANH.SelectedIndex != Program.brand)
+            if (cmbChiNhanh.SelectedIndex != Program.brand)
             {
                 Program.loginName = Program.remoteLogin;
                 Program.loginPassword = Program.remotePassword;

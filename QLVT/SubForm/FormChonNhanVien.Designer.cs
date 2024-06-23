@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT.SubForm
+namespace QLVT.SubForm
 {
     partial class FormChonNhanVien
     {
@@ -30,10 +30,10 @@ namespace QLTVT.SubForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataSet = new QLTVT.DataSet();
+            this.dataSet = new QLVT.DataSet();
             this.bdsNhanVien = new System.Windows.Forms.BindingSource(this.components);
-            this.nhanVienTableAdapter = new QLTVT.DataSetTableAdapters.NhanVienTableAdapter();
-            this.tableAdapterManager = new QLTVT.DataSetTableAdapters.TableAdapterManager();
+            this.nhanVienTableAdapter = new QLVT.DataSetTableAdapters.NhanVienTableAdapter();
+            this.tableAdapterManager = new QLVT.DataSetTableAdapters.TableAdapterManager();
             this.nhanVienGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -46,7 +46,7 @@ namespace QLTVT.SubForm
             this.colTrangThaiXoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbCHINHANH = new System.Windows.Forms.ComboBox();
+            this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             this.btnCHON = new System.Windows.Forms.Button();
             this.btnTHOAT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
@@ -83,7 +83,7 @@ namespace QLTVT.SubForm
             this.tableAdapterManager.NhanVienTableAdapter = this.nhanVienTableAdapter;
             this.tableAdapterManager.PhieuNhapTableAdapter = null;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = QLTVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = QLVT.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
             // nhanVienGridControl
@@ -202,7 +202,7 @@ namespace QLTVT.SubForm
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.label2);
-            this.panelControl1.Controls.Add(this.cmbCHINHANH);
+            this.panelControl1.Controls.Add(this.cmbChiNhanh);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(8);
@@ -221,17 +221,17 @@ namespace QLTVT.SubForm
             this.label2.TabIndex = 3;
             this.label2.Text = "Chi Nhánh";
             // 
-            // cmbCHINHANH
+            // cmbChiNhanh
             // 
-            this.cmbCHINHANH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCHINHANH.Enabled = false;
-            this.cmbCHINHANH.FormattingEnabled = true;
-            this.cmbCHINHANH.Location = new System.Drawing.Point(289, 41);
-            this.cmbCHINHANH.Margin = new System.Windows.Forms.Padding(8);
-            this.cmbCHINHANH.Name = "cmbCHINHANH";
-            this.cmbCHINHANH.Size = new System.Drawing.Size(432, 24);
-            this.cmbCHINHANH.TabIndex = 1;
-            this.cmbCHINHANH.SelectedIndexChanged += new System.EventHandler(this.cmbCHINHANH_SelectedIndexChanged);
+            this.cmbChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChiNhanh.Enabled = false;
+            this.cmbChiNhanh.FormattingEnabled = true;
+            this.cmbChiNhanh.Location = new System.Drawing.Point(289, 41);
+            this.cmbChiNhanh.Margin = new System.Windows.Forms.Padding(8);
+            this.cmbChiNhanh.Name = "cmbChiNhanh";
+            this.cmbChiNhanh.Size = new System.Drawing.Size(432, 24);
+            this.cmbChiNhanh.TabIndex = 1;
+            this.cmbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cmbChiNhanh_SelectedIndexChanged);
             // 
             // btnCHON
             // 
@@ -300,7 +300,7 @@ namespace QLTVT.SubForm
         private DevExpress.XtraGrid.Columns.GridColumn colTrangThaiXoa;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbCHINHANH;
+        private System.Windows.Forms.ComboBox cmbChiNhanh;
         private System.Windows.Forms.Button btnCHON;
         private System.Windows.Forms.Button btnTHOAT;
     }

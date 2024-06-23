@@ -1,5 +1,5 @@
 ﻿
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     partial class ReportDanhSachVatTu
     {
@@ -73,7 +73,7 @@ namespace QLTVT.ReportForm
             // 
             // sqlDataSource1
             // 
-            this.sqlDataSource1.ConnectionName = "QLTVT.Properties.Settings.QLVT_DATHANGConnectionString2";
+            this.sqlDataSource1.ConnectionName = "QLVT.Properties.Settings.QLVT_DATHANGConnectionString2";
             this.sqlDataSource1.Name = "sqlDataSource1";
             columnExpression1.ColumnName = "MAVT";
             table3.Name = "Vattu";

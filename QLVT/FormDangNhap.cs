@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT
+namespace QLVT
 {
     public partial class FormDangNhap : DevExpress.XtraEditors.XtraForm
     {
@@ -33,9 +33,9 @@ namespace QLTVT
             Program.bindingSource.DataSource = dt;
 
 
-            cmbCHINHANH.DataSource = Program.bindingSource;
-            cmbCHINHANH.DisplayMember = "TENCN";
-            cmbCHINHANH.ValueMember = "TENSERVER";
+            cmbChiNhanh.DataSource = Program.bindingSource;
+            cmbChiNhanh.DisplayMember = "TENCN";
+            cmbChiNhanh.ValueMember = "TENSERVER";
         }
         public FormDangNhap()
         {
@@ -88,15 +88,10 @@ namespace QLTVT
 
         private void FormDangNhap_Load(object sender, EventArgs e)
         {
-            // đặt sẵn mật khẩu để đỡ nhập lại nhiều lần
-            txtTAIKHOAN.Text = "HN";// nguyen long - chi nhanh
-            txtMATKHAU.Text = "123456";
             if ( KetNoiDatabaseGoc() == 0 )
                 return;
             //Lấy 2 cái đầu tiên của danh sách
             layDanhSachPhanManh("SELECT TOP 2 * FROM view_DanhSachPhanManh");
-            cmbCHINHANH.SelectedIndex = 0;
-            cmbCHINHANH.SelectedIndex = 1;
         }
 
 
@@ -120,12 +115,38 @@ namespace QLTVT
             /* Step 2*/
             Program.loginName = txtTAIKHOAN.Text.Trim();
             Program.loginPassword = txtMATKHAU.Text.Trim();
+
+
+            Program.serverName = cmbChiNhanh.SelectedValue.ToString();
+
+            // Tìm serverNameLeft dựa trên serverName
+            if (Program.serverName != null)
+            {
+                foreach (var item in Program.bindingSource)
+                {
+                    DataRowView row = item as DataRowView;
+                    if (row["TENSERVER"].ToString() != Program.serverName)
+                    {
+                        Program.serverNameLeft = row["TENSERVER"].ToString();
+                        break;
+                    }
+                }
+            }
+
+
+            Console.WriteLine("Debug:");
+            Console.WriteLine(Program.serverName);
+            Console.WriteLine(Program.serverNameLeft);
+
             if (Program.KetNoi() == 0)
                 return;
             /* Step 3*/
-            Program.brand = cmbCHINHANH.SelectedIndex;
+            Program.brand = cmbChiNhanh.SelectedIndex;
             Program.currentLogin = Program.loginName;
             Program.currentPassword = Program.loginPassword;
+            //Program.serverName = cmbChiNhanh.SelectedValue.ToString();
+            //Program.serverNameLeft = cmbChiNhanh.
+
 
 
             /* Step 4*/
@@ -155,10 +176,13 @@ namespace QLTVT
             Program.formChinh.MANHANVIEN.Text = "MÃ NHÂN VIÊN: " + Program.userName;
             Program.formChinh.HOTEN.Text = "HỌ TÊN: " + Program.staff;
             Program.formChinh.NHOM.Text = "VAI TRÒ: " + Program.role;
+            Program.formChinh.SERVER.Text = "Server: " + Program.serverName;
 
             /* Step 6*/
             this.Visible = false;
             Program.formChinh.enableButtons();
+            
+
         }
 
         private void btnTHOAT_Click(object sender, EventArgs e)
@@ -172,17 +196,9 @@ namespace QLTVT
 
         }
 
-        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                Program.serverName = cmbCHINHANH.SelectedValue.ToString();
-                //Console.WriteLine(cmbCHINHANH.SelectedValue.ToString());
-            }
-            catch( Exception )
-            {
-                
-            }
+            
         }
 
         private void txtMATKHAU_TextChanged(object sender, EventArgs e)

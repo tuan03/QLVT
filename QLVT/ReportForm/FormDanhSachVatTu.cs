@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     public partial class FormDanhSachVatTu : Form
     {

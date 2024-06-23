@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT.SubForm
+namespace QLVT.SubForm
 {
     public partial class FormChonVatTu : Form
     {

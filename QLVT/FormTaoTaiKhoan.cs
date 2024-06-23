@@ -1,5 +1,5 @@
 ﻿using DevExpress.XtraEditors;
-using QLTVT.SubForm;
+using QLVT.SubForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT
+namespace QLVT
 {
     public partial class FormTaoTaiKhoan : DevExpress.XtraEditors.XtraForm
     {
@@ -74,7 +74,7 @@ namespace QLTVT
              taiKhoan = Program.hoTen;
              matKhau = txtMatKhau.Text;
              maNhanVien = Program.maNhanVienDuocChon;
-             vaiTro = (rdChiNhanh.Checked == true) ? "CHINHANH" : "USER";
+             vaiTro = (rdChiNhanh.Checked == true) ? "ChiNhanh" : "User";
 
             Console.WriteLine(taiKhoan);
             Console.WriteLine(matKhau);
@@ -112,16 +112,16 @@ namespace QLTVT
             
         }
 
-        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
         private void FormTaoTaiKhoan_Load(object sender, EventArgs e)
         {
-            if( Program.role == "CONGTY")
+            if( Program.role == "CongTy")
             {
-                vaiTro = "CONGTY";
+                vaiTro = "CongTy";
                 rdChiNhanh.Enabled = false;
                 rdUser.Enabled = false;
             }

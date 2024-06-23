@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     public partial class FormTongHopNhapXuat : Form
     {
@@ -21,31 +21,31 @@ namespace QLTVT.ReportForm
         private void FormTongHopNhapXuat_Load(object sender, EventArgs e)
         {
             /*Step 2*/
-            cmbCHINHANH.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
-            cmbCHINHANH.DisplayMember = "TENCN";
-            cmbCHINHANH.ValueMember = "TENSERVER";
-            cmbCHINHANH.SelectedIndex = Program.brand;
+            cmbChiNhanh.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
+            cmbChiNhanh.DisplayMember = "TENCN";
+            cmbChiNhanh.ValueMember = "TENSERVER";
+            cmbChiNhanh.SelectedIndex = Program.brand;
 
             dteTuNgay.EditValue = "01-05-2000";
             dteToiNgay.EditValue = DateTime.Today.ToString("dd-MM-yyyy");
 
-            if (Program.role == "CONGTY")
+            if (Program.role == "CongTy")
             {
-                cmbCHINHANH.Enabled = true;
+                cmbChiNhanh.Enabled = true;
             }    
         }
 
-        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
             /*Neu combobox khong co so lieu thi ket thuc luon*/
-            if (cmbCHINHANH.SelectedValue.ToString() == "System.Data.DataRowView")
+            if (cmbChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
 
-            Program.serverName = cmbCHINHANH.SelectedValue.ToString();
+            Program.serverName = cmbChiNhanh.SelectedValue.ToString();
 
             /*Neu chon sang chi nhanh khac voi chi nhanh hien tai*/
-            if (cmbCHINHANH.SelectedIndex != Program.brand)
+            if (cmbChiNhanh.SelectedIndex != Program.brand)
             {
                 Program.loginName = Program.remoteLogin;
                 Program.loginPassword = Program.remotePassword;
@@ -67,14 +67,14 @@ namespace QLTVT.ReportForm
         {
             DateTime fromDate = (DateTime)dteTuNgay.DateTime;
             DateTime toDate = (DateTime)dteToiNgay.DateTime;
-            string chiNhanh = cmbCHINHANH.SelectedValue.ToString().Contains("1") ? "Helsinki" : "Lisbon";
+            string ChiNhanh = cmbChiNhanh.SelectedValue.ToString().Contains("1") ? "Helsinki" : "Lisbon";
 
             
 
             ReportTongHopNhapXuat report = new ReportTongHopNhapXuat(fromDate, toDate);
             report.txtTuNgay.Text = dteTuNgay.EditValue.ToString();
             report.txtToiNgay.Text = dteToiNgay.EditValue.ToString();
-            report.txtChiNhanh.Text = chiNhanh;
+            report.txtChiNhanh.Text = ChiNhanh;
 
             ReportPrintTool printTool = new ReportPrintTool(report);
             printTool.ShowPreviewDialog();
