@@ -572,7 +572,7 @@ namespace QLVT
                                 (int)txtDonGia.Value;
 
                             cauTruyVanHoanTac =
-                                "DELETE FROM DBO.CTDDH " +
+                                "DELETE FROM CTDDH " +
                                 "WHERE MasoDDH = '" + maDonDatHang + "' " +
                                 "AND MAVT = '" + txtMaVatTu.Text.Trim() + "'";
                         }

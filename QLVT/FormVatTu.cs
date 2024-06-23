@@ -298,7 +298,7 @@ namespace QLVT
                 return false;
             }
             
-            if (Regex.IsMatch(txtTENVT.Text, @"^[a-zA-Z0-9 ]+$") == false)
+            if (Regex.IsMatch(txtTENVT.Text, @"^[\p{L}0-9 ]+$") == false)
             {
                 MessageBox.Show("Tên vật tư chỉ chấp nhận chữ, số và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
                 txtTENVT.Focus();
@@ -319,7 +319,7 @@ namespace QLVT
                 return false;
             }
 
-            if (Regex.IsMatch(txtDONVIVATTU.Text, @"^[a-zA-Z ]+$") == false)
+            if (Regex.IsMatch(txtDONVIVATTU.Text, @"^[\p{L} ]+$") == false)
             {
                 MessageBox.Show("Đơn vị vật tư chỉ có chữ cái", "Thông báo", MessageBoxButtons.OK);
                 txtDONVIVATTU.Focus();

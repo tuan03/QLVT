@@ -243,9 +243,9 @@ namespace QLVT
                 return false;
             }
 
-            if (Regex.IsMatch(txtTENKHO.Text, @"^[a-zA-Z0-9 ]+$") == false)
+            if (Regex.IsMatch(txtTENKHO.Text, @"^[\p{L}0-9 ]+$") == false)
             {
-                MessageBox.Show("Mã kho chỉ chấp nhận chữ cái, số và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Tên kho chỉ chấp nhận chữ cái, số và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
                 txtTENKHO.Focus();
                 return false;
             }
@@ -264,7 +264,7 @@ namespace QLVT
                 return false;
             }
 
-            if (Regex.IsMatch(txtDIACHI.Text, @"^[a-zA-Z0-9, ]+$") == false)
+            if (Regex.IsMatch(txtDIACHI.Text, @"^[\p{L}0-9, ]+$") == false)
             {
                 MessageBox.Show("Địa chỉ chỉ gồm chữ cái, số và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
                 txtDIACHI.Focus();

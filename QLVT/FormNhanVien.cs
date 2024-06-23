@@ -192,7 +192,7 @@ namespace QLVT
             txtMACN.Text = maChiNhanh;
             dteNGAYSINH.EditValue = "2000-05-01";
             txtLUONG.Value = 4000000;// dat san muc luong toi thieu
-
+            txtMANV.Text = "1";
 
             /*Step 3*/
             this.txtMANV.Enabled = true;
@@ -205,6 +205,7 @@ namespace QLVT
             this.btnCHUYENChiNhanh.Enabled = false;
             this.btnTHOAT.Enabled = false;
             this.trangThaiXoaCheckBox.Checked = false;
+            this.trangThaiXoaCheckBox.Enabled = false;
 
             this.gcNhanVien.Enabled = false;
             this.panelNhapLieu.Enabled = true;
@@ -390,11 +391,11 @@ namespace QLVT
             int trangThai = (trangThaiXoaCheckBox.Checked == true) ? 1 : 0;
             /*Lấy ngày sinh trong grid view*/
             DateTime NGAYSINH = (DateTime)((DataRowView)bdsNhanVien[bdsNhanVien.Position])["NGAYSINH"];
-
+            
 
             string cauTruyVanHoanTac =
-                string.Format("INSERT INTO DBO.NHANVIEN( MANV,HO,TEN,DIACHI,NGAYSINH,LUONG,MACN)" +
-            "VALUES({0},'{1}','{2}','{3}',CAST({4} AS DATETIME), {5},'{6}')", txtMANV.Text, txtHO.Text, txtTEN.Text, txtDIACHI.Text, NGAYSINH.ToString("yyyy-MM-dd"), txtLUONG.Value, txtMACN.Text.Trim());
+                string.Format("INSERT INTO DBO.NHANVIEN( MANV,HO,TEN,SOCMND,DIACHI,NGAYSINH,LUONG,MACN,TrangThaiXoa)" +
+            "VALUES({0},'{1}','{2}','{3}','{4}',CAST({5} AS DATETIME), {6},'{7}', {8})", txtMANV.Text, txtHO.Text, txtTEN.Text, txtCMND.Text, txtDIACHI.Text, NGAYSINH.ToString("yyyy-MM-dd"), txtLUONG.Value, txtMACN.Text.Trim(), trangThai);
 
             Console.WriteLine(cauTruyVanHoanTac);
             undoList.Push(cauTruyVanHoanTac);
@@ -504,7 +505,7 @@ namespace QLVT
                 return false;
             }
 
-            if (Regex.IsMatch(txtMANV.Text, @"^[a-zA-Z0-9]+$") == false)
+            if (Regex.IsMatch(txtMANV.Text, @"^[0-9]+$") == false)
             {
                 MessageBox.Show("Mã nhân viên chỉ chấp nhận số", "Thông báo", MessageBoxButtons.OK);
                 txtMANV.Focus();
@@ -518,7 +519,7 @@ namespace QLVT
                 return false;
             }
             //"^[0-9A-Za-z ]+$"
-            if ( Regex.IsMatch(txtHO.Text, @"^[A-Za-z ]+$") == false)
+            if ( Regex.IsMatch(txtHO.Text, @"^[\p{L} ]+$") == false)
             {
                 MessageBox.Show("Họ của người chỉ có chữ cái và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
                 txtHO.Focus();
@@ -530,6 +531,28 @@ namespace QLVT
                 txtHO.Focus();
                 return false;
             }
+
+
+            /*kiem tra txtCMND*/
+            if (txtCMND.Text == "")
+            {
+                MessageBox.Show("Không bỏ trống CMND", "Thông báo", MessageBoxButtons.OK);
+                txtCMND.Focus();
+                return false;
+            }
+       
+            if (Regex.IsMatch(txtCMND.Text, @"^[0-9]+$") == false)
+            {
+                MessageBox.Show("CMND chỉ chứa kí tự số", "Thông báo", MessageBoxButtons.OK);
+                txtCMND.Focus();
+                return false;
+            }
+            if (txtCMND.Text.Length > 20)
+            {
+                MessageBox.Show("CMND không thể lớn hơn 20 kí tự", "Thông báo", MessageBoxButtons.OK);
+                txtCMND.Focus();
+                return false;
+            }
             /*kiem tra txtTEN*/
             if (txtTEN.Text == "")
             {
@@ -538,7 +561,7 @@ namespace QLVT
                 return false;
             }
 
-            if (Regex.IsMatch(txtTEN.Text, @"^[a-zA-Z ]+$") == false)
+            if (Regex.IsMatch(txtTEN.Text, @"^[\p{L} ]+$") == false)
             {
                 MessageBox.Show("Tên người chỉ có chữ cái và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
                 txtTEN.Focus();
@@ -559,7 +582,7 @@ namespace QLVT
                 return false;
             }
 
-            if (Regex.IsMatch(txtDIACHI.Text, @"^[a-zA-Z0-9, ]+$") == false)
+            if (Regex.IsMatch(txtDIACHI.Text, @"^[\p{L}0-9, ]+$") == false)
             {
                 MessageBox.Show("Địa chỉ chỉ chấp nhận chữ cái, số và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
                 txtDIACHI.Focus();
@@ -622,6 +645,7 @@ namespace QLVT
             DataRowView drv = ((DataRowView)bdsNhanVien[bdsNhanVien.Position]);
             String ho = drv["HO"].ToString();
             String ten = drv["TEN"].ToString();
+            String cmnd = drv["SOCMND"].ToString();
 
             String diaChi = drv["DIACHI"].ToString();
 
@@ -715,6 +739,7 @@ namespace QLVT
                                 "SET " +
                                 "HO = '" + ho + "'," +
                                 "TEN = '" + ten + "'," +
+                                "SOCMND = '" + cmnd + "'," +
                                 "DIACHI = '" + diaChi + "'," +
                                 "NGAYSINH = CAST('" + ngaySinh.ToString("yyyy-MM-dd") + "' AS DATETIME)," +
                                 "LUONG = '" + luong + "',"+
@@ -795,7 +820,7 @@ namespace QLVT
 
             /*Step 3*/
             String cauTruyVanHoanTac = "EXEC sp_ChuyenChiNhanh "+maNhanVien+",'"+maChiNhanhHienTai+"'";
-            undoList.Push(cauTruyVanHoanTac);
+            //undoList.Push(cauTruyVanHoanTac);
            
             Program.serverNameLeft = ChiNhanh; /*Lấy tên chi nhánh tới để làm tính năng hoàn tác*/
             Console.WriteLine("Ten server con lai" + Program.serverNameLeft);
@@ -812,7 +837,6 @@ namespace QLVT
             {
                 Program.myReader = Program.ExecSqlDataReader(cauTruyVan);
                 MessageBox.Show("Chuyển chi nhánh thành công", "thông báo", MessageBoxButtons.OK);
-
                 if (Program.myReader == null)
                 {
                     return;/*khong co ket qua tra ve thi ket thuc luon*/
@@ -825,6 +849,7 @@ namespace QLVT
                 Console.WriteLine(ex.Message);
                 return;
             }
+            Program.myReader.Close();
             this.nhanVienTableAdapter.Update(this.dataSet.NhanVien);
 
 
@@ -834,7 +859,7 @@ namespace QLVT
 
 
             int viTriHienTai = bdsNhanVien.Position;
-            int trangThaiXoa = int.Parse( ( (DataRowView) (bdsNhanVien[viTriHienTai]) )["TrangThaiXoa"].ToString());
+            bool trangThaiXoa = (bool)(( (DataRowView) (bdsNhanVien[viTriHienTai]) )["TrangThaiXoa"]);
             string maNhanVien = ((DataRowView)(bdsNhanVien[viTriHienTai]))["MANV"].ToString();
 
             if( maNhanVien == Program.userName)
@@ -844,7 +869,7 @@ namespace QLVT
             }    
 
             /*Step 1 - Kiem tra trang thai xoa*/
-            if ( trangThaiXoa == 1 )
+            if ( trangThaiXoa == true )
             {
                 MessageBox.Show("Nhân viên này không có ở chi nhánh này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -865,7 +890,12 @@ namespace QLVT
             form.branchTransfer = new FormChuyenChiNhanh.MyDelegate(chuyenChiNhanh);
             
             /*Step 4*/
-            this.btnHOANTAC.Enabled = true;
+            //this.btnHOANTAC.Enabled = true;
+        }
+
+        private void gcNhanVien_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
