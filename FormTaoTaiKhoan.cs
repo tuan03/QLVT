@@ -39,13 +39,13 @@ namespace QLTVT
 
         private bool kiemTraDuLieuDauVao()
         {
-            if( txtMaNhanVien.Text == "")
+            if (txtMaNhanVien.Text == "")
             {
-                MessageBox.Show("Thiếu mã nhân viên","Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Thiếu mã nhân viên", "Thông báo", MessageBoxButtons.OK);
                 return false;
             }
 
-            if( txtMatKhau.Text == "" )
+            if (txtMatKhau.Text == "")
             {
                 MessageBox.Show("Thiếu mật khẩu", "Thông báo", MessageBoxButtons.OK);
                 return false;
@@ -57,29 +57,30 @@ namespace QLTVT
                 return false;
             }
 
-            if( txtMatKhau.Text != txtXacNhanMatKhau.Text)
+            if (txtMatKhau.Text != txtXacNhanMatKhau.Text)
             {
                 MessageBox.Show("Mật khẩu không khớp với mật khẩu xác nhận", "Thông báo", MessageBoxButtons.OK);
                 return false;
-            }    
+            }
 
             return true;
-        } 
+        }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             bool ketQua = kiemTraDuLieuDauVao();
             if (ketQua == false) return;
 
-             taiKhoan = Program.hoTen;
-             matKhau = txtMatKhau.Text;
-             maNhanVien = Program.maNhanVienDuocChon;
-             vaiTro = (rdChiNhanh.Checked == true) ? "CHINHANH" : "USER";
+            taiKhoan = Program.hoTen;
+            matKhau = txtMatKhau.Text;
+            maNhanVien = Program.maNhanVienDuocChon;
+            vaiTro = (rdChiNhanh.Checked == true) ? "CHINHANH" : "USER";
 
-            Console.WriteLine(taiKhoan);
-            Console.WriteLine(matKhau);
-            Console.WriteLine(maNhanVien);
-            Console.WriteLine(vaiTro);
+            Console.WriteLine("\n\n>>> Confirm to create login:\n");
+            Console.WriteLine($">>> Tai khoan: {taiKhoan}");
+            Console.WriteLine($">>> Mat khau: {matKhau}");
+            Console.WriteLine($">>> Ma nhan vien: {maNhanVien}");
+            Console.WriteLine($">>> Vai tro: {vaiTro}\n");
 
             /*declare @returnedResult int
              exec @returnedResult = sp_TraCuu_KiemTraMaNhanVien '20'
@@ -91,7 +92,7 @@ namespace QLTVT
             SqlCommand sqlCommand = new SqlCommand(cauTruyVan, Program.conn);
             try
             {
-                
+
 
                 Program.myReader = Program.ExecSqlDataReader(cauTruyVan);
                 /*khong co ket qua tra ve thi ket thuc luon*/
@@ -100,16 +101,16 @@ namespace QLTVT
                     return;
                 }
 
-                MessageBox.Show("Đăng kí tài khoản thành công\n\nTài khoản: "+taiKhoan+"\nMật khẩu: " + matKhau + "\n Mã Nhân Viên: " + maNhanVien + "\n Vai Trò: " + vaiTro,"Thông Báo",MessageBoxButtons.OK);
+                MessageBox.Show("Đăng kí tài khoản thành công\n\nTài khoản: " + taiKhoan + "\nMật khẩu: " + matKhau + "\n Mã Nhân Viên: " + maNhanVien + "\n Vai Trò: " + vaiTro, "Thông Báo", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Thực thi database thất bại!\n\n" + ex.Message, "Thông báo",
+                MessageBox.Show("Đăng kí tài khoản thất bại!\n\n" + ex.Message, "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.Message);
                 return;
             }
-            
+
         }
 
         private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,7 +120,7 @@ namespace QLTVT
 
         private void FormTaoTaiKhoan_Load(object sender, EventArgs e)
         {
-            if( Program.role == "CONGTY")
+            if (Program.role == "CONGTY")
             {
                 vaiTro = "CONGTY";
                 rdChiNhanh.Enabled = false;
@@ -127,6 +128,16 @@ namespace QLTVT
             }
             rdChiNhanh.Enabled = true;
             rdUser.Enabled = true;
+        }
+
+        private void txtMatKhau_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtXacNhanMatKhau_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

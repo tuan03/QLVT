@@ -46,13 +46,13 @@ namespace QLTVT
             InitializeComponent();
         }
 
-        private void khoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bdsKho.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dataSet);
+        //private void khoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        //{
+        //    this.Validate();
+        //    this.bdsKho.EndEdit();
+        //    this.tableAdapterManager.UpdateAll(this.dataSet);
 
-        }
+        //}
         /*
          *Step 1: tat kiem tra khoa ngoai & do du lieu vao form
          *Step 2: lay du lieu dang nhap tu form dang nhap
@@ -82,6 +82,7 @@ namespace QLTVT
             cmbCHINHANH.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
             cmbCHINHANH.DisplayMember = "TENCN";
             cmbCHINHANH.ValueMember = "TENSERVER";
+            Console.WriteLine($"\n\n>>> FormKho - brand: {Program.brand}\n");
             cmbCHINHANH.SelectedIndex = Program.brand;
 
             /*Step 3*/
@@ -250,7 +251,7 @@ namespace QLTVT
                 return false;
             }
 
-            if ( txtTENKHO.Text.Length > 30)
+            if (txtTENKHO.Text.Length > 30)
             {
                 MessageBox.Show("Tên kho không thể quá 30 kí tự", "Thông báo", MessageBoxButtons.OK);
                 txtTENKHO.Focus();
@@ -264,7 +265,7 @@ namespace QLTVT
                 return false;
             }
 
-            if (Regex.IsMatch(txtDIACHI.Text, @"^[a-zA-Z0-9, ]+$") == false)
+            if (Regex.IsMatch(txtDIACHI.Text, @"^[a-zA-Z0-9, -]+$") == false)
             {
                 MessageBox.Show("Địa chỉ chỉ gồm chữ cái, số và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
                 txtDIACHI.Focus();
@@ -324,12 +325,13 @@ namespace QLTVT
             }
             Program.myReader.Read();
             int result = int.Parse(Program.myReader.GetValue(0).ToString());
-            //Console.WriteLine(result);
+            Console.WriteLine($"\n\n>>> ghi kho - result: {result}\n");
             Program.myReader.Close();
 
             /*Step 2*/
             int viTriConTro = bdsKho.Position;
             int viTriMaKhoHang = bdsKho.Find("MAKHO", txtMAKHO.Text);
+            Console.WriteLine($"\n>>> ghi kho - vi tri con tro: {result} , vi tri ma kho hang: {viTriMaKhoHang}\n");
 
             if (result == 1 && viTriConTro != viTriMaKhoHang)
             {
@@ -384,6 +386,25 @@ namespace QLTVT
                         undoList.Push(cauTruyVanHoanTac);
 
                         this.bdsKho.EndEdit();
+                        if (this.dataSet.Kho.Rows.Count > 0)
+                        {
+                            Console.WriteLine("\n\n>>> DataTable filled with data");
+
+                            // Duyệt qua từng hàng trong DataTable
+                            foreach (DataRow row in this.dataSet.Kho.Rows)
+                            {
+                                // In ra từng cột trong hàng
+                                foreach (DataColumn column in this.dataSet.Kho.Columns)
+                                {
+                                    Console.Write($"{column.ColumnName}: {row[column]} , ");
+                                }
+                                Console.WriteLine();
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\n>>> DataTable aren't be filled with data !!!\n");
+                        }
                         this.khoTableAdapter.Update(this.dataSet.Kho);
                         /*cập nhật lại trạng thái thêm mới cho chắc*/
                         dangThemMoi = false;
@@ -480,7 +501,7 @@ namespace QLTVT
             string cauTruyVanHoanTac =
             "INSERT INTO DBO.KHO( MAKHO,TENKHO,DIACHI,MACN) " +
             " VALUES( '" + txtMAKHO.Text + "','" +
-                        txtDIACHI.Text + "','" +
+                        txtTENKHO.Text + "','" +
                         txtDIACHI.Text + "', '" +
                         txtMACHINHANH.Text.Trim() + "' ) ";
 
@@ -517,11 +538,6 @@ namespace QLTVT
                 // xoa cau truy van hoan tac di
                 undoList.Pop();
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -88,6 +88,7 @@ namespace QLTVT
 
         private void FormDangNhap_Load(object sender, EventArgs e)
         {
+            Console.WriteLine($"\n\n>>> Form Dang Nhap Load - Server Name: {Program.serverName}\n");
             // đặt sẵn mật khẩu để đỡ nhập lại nhiều lần
             txtTAIKHOAN.Text = "TT";// nguyen long - chi nhanh
             txtMATKHAU.Text = "12345";
@@ -132,12 +133,13 @@ namespace QLTVT
             Program.myReader = Program.ExecSqlDataReader(statement);
             if (Program.myReader == null)
                 return;
-            // đọc một dòng của myReader - điều này là hiển nhiên vì kết quả chỉ có 1 dùng duy nhất
+            // đọc một dòng của myReader - điều này là hiển nhiên vì kết quả chỉ có 1 người dùng duy nhất
             Program.myReader.Read();
 
 
             /* Step 5*/
             Program.userName = Program.myReader.GetString(0);// lấy userName
+            Console.WriteLine($"\n\n>>> userName DANG NHAP: {Program.userName}\n");
             if (Convert.IsDBNull(Program.userName))
             {
                 MessageBox.Show("Tài khoản này không có quyền truy cập \n Hãy thử tài khoản khác", "Thông Báo", MessageBoxButtons.OK);
@@ -174,7 +176,10 @@ namespace QLTVT
         {
             try
             {
-                Program.serverName = cmbCHINHANH.SelectedValue.ToString();
+                string selected = cmbCHINHANH.SelectedValue.ToString();
+                Console.WriteLine($">>> Name of Server selected: {selected}\n");
+                Program.serverName = selected;
+                Program.brand = cmbCHINHANH.SelectedIndex;
             }
             catch (Exception)
             {
@@ -186,7 +191,7 @@ namespace QLTVT
         {
             try
             {
-                Program.serverName = txtMATKHAU.Text;
+                Program.loginPassword = txtMATKHAU.Text;
                 //Console.WriteLine(cmbCHINHANH.SelectedValue.ToString());
             }
             catch (Exception)
@@ -199,7 +204,7 @@ namespace QLTVT
         {
             try
             {
-                Program.serverName = txtTAIKHOAN.Text;
+                Program.loginName = txtTAIKHOAN.Text;
                 //Console.WriteLine(cmbCHINHANH.SelectedValue.ToString());
             }
             catch (Exception)

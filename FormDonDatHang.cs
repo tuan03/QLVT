@@ -2,14 +2,8 @@
 using QLTVT.SubForm;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLTVT
@@ -29,7 +23,7 @@ namespace QLTVT
          * trong btnGHI - việc này để phục vụ cho btnHOANTAC
          ********************************************/
         bool dangThemMoi = false;
-        public string makho = "";   
+        public string makho = "";
         string maChiNhanh = "";
         /**********************************************************
          * undoList - phục vụ cho btnHOANTAC -  chứa các thông tin của đối tượng bị tác động 
@@ -84,7 +78,7 @@ namespace QLTVT
 
         private void FormDonDatHang_Load(object sender, EventArgs e)
         {
-            
+
             /*Step 1*/
             dataSet.EnforceConstraints = false;
 
@@ -105,10 +99,10 @@ namespace QLTVT
             cmbCHINHANH.ValueMember = "TENSERVER";
             cmbCHINHANH.SelectedIndex = Program.brand;
 
-            
+
             bds = bdsDonDatHang;
             gc = gcDonDatHang;
-            
+
         }
 
         private void sOLUONGSpinEdit_EditValueChanged(object sender, EventArgs e)
@@ -220,7 +214,7 @@ namespace QLTVT
 
             /*Bat chuc nang cua chi tiet don hang*/
             txtMaVatTu.Enabled = false;
-            btnChonVatTu.Enabled = false;
+            btnChonVatTu.Enabled = true;
             txtSoLuong.Enabled = true;
             txtDonGia.Enabled = true;
 
@@ -258,7 +252,7 @@ namespace QLTVT
                 this.btnTHEM.Enabled = true;
                 bool turnOn = (bdsChiTietDonDatHang.Count > 0) ? true : false;
                 this.btnXOA.Enabled = turnOn;
-                this.btnGHI.Enabled = false;
+                this.btnGHI.Enabled = turnOn;
 
                 this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
@@ -312,7 +306,7 @@ namespace QLTVT
                     return;
                 }
 
-                
+
 
                 this.txtMaVatTu.Enabled = false;
                 this.btnChonVatTu.Enabled = true;
@@ -333,7 +327,7 @@ namespace QLTVT
             this.btnHOANTAC.Enabled = true;
             this.btnLAMMOI.Enabled = false;
             this.btnMENU.Enabled = false;
-            this.btnTHOAT.Enabled = false;            
+            this.btnTHOAT.Enabled = false;
         }
 
 
@@ -346,9 +340,9 @@ namespace QLTVT
         {
             if (cheDo == "Đơn Đặt Hàng")
             {
-                if( txtMaDonDatHang.Text == "")
+                if (txtMaDonDatHang.Text == "")
                 {
-                    MessageBox.Show("Không thể bỏ trống mã đơn hàng","Thông báo",MessageBoxButtons.OK);
+                    MessageBox.Show("Không thể bỏ trống mã đơn hàng", "Thông báo", MessageBoxButtons.OK);
                     return false;
                 }
                 if (txtMaDonDatHang.Text.Length > 8)
@@ -356,12 +350,12 @@ namespace QLTVT
                     MessageBox.Show("Mã đơn đặt hàng không quá 8 kí tự", "Thông báo", MessageBoxButtons.OK);
                     return false;
                 }
-                if ( txtMaNhanVien.Text == "")
+                if (txtMaNhanVien.Text == "")
                 {
                     MessageBox.Show("Không thể bỏ trống mã nhân viên", "Thông báo", MessageBoxButtons.OK);
                     return false;
                 }
-                if( txtNhaCungCap.Text == "")
+                if (txtNhaCungCap.Text == "")
                 {
                     MessageBox.Show("Không thể bỏ trống nhà cung cấp", "Thông báo", MessageBoxButtons.OK);
                     return false;
@@ -371,21 +365,21 @@ namespace QLTVT
                     MessageBox.Show("Tên nhà cung cấp không quá 100 kí tự", "Thông báo", MessageBoxButtons.OK);
                     return false;
                 }
-                if ( txtMaKho.Text == "")
+                if (txtMaKho.Text == "")
                 {
                     MessageBox.Show("Không thể bỏ trống mã kho", "Thông báo", MessageBoxButtons.OK);
                     return false;
-                }    
+                }
             }
 
             if (cheDo == "Chi Tiết Đơn Đặt Hàng")
             {
-                if( txtMaVatTu.Text == "")
+                if (txtMaVatTu.Text == "")
                 {
                     MessageBox.Show("Không thể bỏ trống mã vật tư", "Thông báo", MessageBoxButtons.OK);
                     return false;
                 }
-                if( txtSoLuong.Value < 0 || txtDonGia.Value < 0)
+                if (txtSoLuong.Value < 0 || txtDonGia.Value < 0)
                 {
                     MessageBox.Show("Không thể nhỏ hơn 1", "Thông báo", MessageBoxButtons.OK);
                     return false;
@@ -414,7 +408,7 @@ namespace QLTVT
 
 
             /*Dang chinh sua don dat hang*/
-            if ( cheDo == "Đơn Đặt Hàng" && dangThemMoi == false)
+            if (cheDo == "Đơn Đặt Hàng" && dangThemMoi == false)
             {
                 drv = ((DataRowView)bdsDonDatHang[bdsDonDatHang.Position]);
                 /*Ngay can duoc xu ly dac biet hon*/
@@ -427,9 +421,9 @@ namespace QLTVT
                     "MANV = '" + drv["MANV"].ToString().Trim() + "', " +
                     "MAKHO = '" + drv["MAKHO"].ToString().Trim() + "' " +
                     "WHERE MasoDDH = '" + drv["MasoDDH"].ToString().Trim() + "'";
-            }  
+            }
             /*Dang xoa don dat hang*/
-            if ( cheDo == "Đơn Đặt Hàng" && dangThemMoi == true)
+            if (cheDo == "Đơn Đặt Hàng" && dangThemMoi == true)
             {
                 drv = ((DataRowView)bdsDonDatHang[bdsDonDatHang.Position]);
                 DateTime ngay = ((DateTime)drv["NGAY"]);
@@ -443,16 +437,16 @@ namespace QLTVT
             }
 
             /*Dang chinh sua chi tiet don dat hang*/
-            if(cheDo == "Chi Tiết Đơn Đặt Hàng" && dangThemMoi == false)
+            if (cheDo == "Chi Tiết Đơn Đặt Hàng" && dangThemMoi == false)
             {
                 drv = ((DataRowView)bdsChiTietDonDatHang[bdsChiTietDonDatHang.Position]);
 
                 cauTruyVan = "UPDATE DBO.CTDDH " +
                     "SET " +
-                    "SOLUONG = " + drv["SOLUONG"].ToString() + " , "+
+                    "SOLUONG = " + drv["SOLUONG"].ToString() + " , " +
                     "DONGIA = " + drv["DONGIA"].ToString() + " " +
-                    "WHERE MasoDDH = '" + drv["MasoDDH"].ToString().Trim() + "'" + 
-                    " AND MAVT = '" + drv["MAVT"].ToString().Trim() +"'";
+                    "WHERE MasoDDH = '" + drv["MasoDDH"].ToString().Trim() + "'" +
+                    " AND MAVT = '" + drv["MAVT"].ToString().Trim() + "'";
 
             }
             return cauTruyVan;
@@ -533,7 +527,7 @@ namespace QLTVT
              * truong hop them moi don dat hang moi quan tam xem no ton tai hay
              * chua ?
              ******************************************************************/
-            if ( result == 1 && cheDo == "Đơn Đặt Hàng" && viTriHienTai != viTriMaDonDatHang)
+            if (result == 1 && cheDo == "Đơn Đặt Hàng" && viTriHienTai != viTriMaDonDatHang)
             {
                 MessageBox.Show("Mã đơn hàng này đã được sử dụng !\n\n", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -542,7 +536,7 @@ namespace QLTVT
             /*****************************************************************
              * tat ca cac truong hop khac ko can quan tam !!
              *****************************************************************/
-            
+
             else
             {
                 DialogResult dr = MessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào cơ sở dữ liệu ?", "Thông báo",
@@ -582,9 +576,28 @@ namespace QLTVT
                         undoList.Push(cauTruyVanHoanTac);
                         //Console.WriteLine("cau truy van hoan tac");
                         //Console.WriteLine(cauTruyVanHoanTac);
-                        
+
                         this.bdsDonDatHang.EndEdit();
                         this.bdsChiTietDonDatHang.EndEdit();
+                        if (this.dataSet.CTDDH.Rows.Count > 0)
+                        {
+                            Console.WriteLine("\n\n>>> DataTable filled with data");
+
+                            // Duyệt qua từng hàng trong DataTable
+                            foreach (DataRow row in this.dataSet.CTDDH.Rows)
+                            {
+                                // In ra từng cột trong hàng
+                                foreach (DataColumn column in this.dataSet.CTDDH.Columns)
+                                {
+                                    Console.Write($"{column.ColumnName}: {row[column]} , ");
+                                }
+                                Console.WriteLine();
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\n>>> DataTable aren't be filled with data !!!\n");
+                        }
                         this.donDatHangTableAdapter.Update(this.dataSet.DatHang);
                         this.chiTietDonDatHangTableAdapter.Update(this.dataSet.CTDDH);
 
@@ -603,7 +616,7 @@ namespace QLTVT
                         dangThemMoi = false;
                         MessageBox.Show("Ghi thành công", "Thông báo", MessageBoxButtons.OK);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                         bds.RemoveCurrent();
@@ -612,8 +625,8 @@ namespace QLTVT
                         return;
                     }
                 }
-            }    
-            
+            }
+
         }
 
         private void panelControl1_Paint(object sender, PaintEventArgs e)
@@ -731,9 +744,9 @@ namespace QLTVT
         private void btnChonKhoHang_Click(object sender, EventArgs e)
         {
             FormChonKhoHang form = new FormChonKhoHang();
-            form.ShowDialog(); 
-                
-            
+            form.ShowDialog();
+
+
             this.txtMaKho.Text = Program.maKhoDuocChon;
         }
 
@@ -765,7 +778,7 @@ namespace QLTVT
                 /*Cái bdsChiTietDonHangHang là đại diện cho binding source riêng biệt của CTDDH
                  *Còn cTDDHBindingSource là lấy ngay từ trong data source DATHANG
                  */
-                if(bdsChiTietDonDatHang.Count > 0)
+                if (bdsChiTietDonDatHang.Count > 0)
                 {
                     MessageBox.Show("Không thể xóa đơn đặt hàng này vì có chi tiết đơn đặt hàng", "Thông báo", MessageBoxButtons.OK);
                     return;
@@ -777,9 +790,9 @@ namespace QLTVT
                     return;
                 }
 
-                
+
             }
-            if( cheDo == "Chi Tiết Đơn Đặt Hàng")
+            if (cheDo == "Chi Tiết Đơn Đặt Hàng")
             {
                 DataRowView drv = ((DataRowView)bdsDonDatHang[bdsDonDatHang.Position]);
                 String maNhanVien = drv["MANV"].ToString();
@@ -804,15 +817,15 @@ namespace QLTVT
                 {
                     /*Step 3*/
                     viTri = bds.Position;
-                    if(cheDo == "Đơn Đặt Hàng" )
+                    if (cheDo == "Đơn Đặt Hàng")
                     {
                         bdsDonDatHang.RemoveCurrent();
                     }
-                    if(cheDo == "Chi Tiết Đơn Đặt Hàng")
+                    if (cheDo == "Chi Tiết Đơn Đặt Hàng")
                     {
                         bdsChiTietDonDatHang.RemoveCurrent();
                     }
-                    
+
 
                     this.donDatHangTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.donDatHangTableAdapter.Update(this.dataSet.DatHang);

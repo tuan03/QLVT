@@ -37,11 +37,10 @@ namespace QLTVT.SubForm
             cmbCHINHANH.ValueMember = "TENSERVER";
             cmbCHINHANH.SelectedIndex = Program.brand;
 
-            if( Program.role == "CONGTY")
+            if (Program.role == "CONGTY")
             {
                 cmbCHINHANH.Enabled = true;
-            }   
-
+            }
         }
 
         private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,7 +87,7 @@ namespace QLTVT.SubForm
 
             string ngaySinh = ((DateTime)drv["NGAYSINH"]).ToString("dd-MM-yyyy");
             string diaChi = drv["DIACHI"].ToString().Trim();
-            
+
             Program.maNhanVienDuocChon = maNhanVien;
             Program.hoTen = hoTen;
             //Console.WriteLine(Program.hoTen);

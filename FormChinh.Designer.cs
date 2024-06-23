@@ -68,11 +68,9 @@ namespace QLTVT
             this.MANHANVIEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.HOTEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.NHOM = new System.Windows.Forms.ToolStripStatusLabel();
-            this.stackPanel1 = new DevExpress.Utils.Layout.StackPanel();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -418,21 +416,11 @@ namespace QLTVT
             this.NHOM.Size = new System.Drawing.Size(78, 29);
             this.NHOM.Text = "VAI TRÒ";
             // 
-            // stackPanel1
-            // 
-            this.stackPanel1.Location = new System.Drawing.Point(213, 343);
-            this.stackPanel1.Name = "stackPanel1";
-            this.stackPanel1.Size = new System.Drawing.Size(340, 140);
-            this.stackPanel1.TabIndex = 6;
-            this.stackPanel1.UseSkinIndents = true;
-            this.stackPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.stackPanel1_Paint);
-            // 
             // FormChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1944, 1050);
-            this.Controls.Add(this.stackPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
@@ -449,7 +437,6 @@ namespace QLTVT
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,6 +481,5 @@ namespace QLTVT
         private DevExpress.XtraBars.BarButtonItem btnPhieuXuat;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem btnLapTaiKhoan;
-        private DevExpress.Utils.Layout.StackPanel stackPanel1;
     }
 }

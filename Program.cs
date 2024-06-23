@@ -168,11 +168,11 @@ namespace QLTVT
             try
             {
                 Console.WriteLine("\n\n>>> info KET NOI:\n");
-                Console.WriteLine($">>> serverName: {Program.database}");
+                Console.WriteLine($">>> serverName: {Program.serverName}");
                 Console.WriteLine($">>> database: {Program.database}");
                 Console.WriteLine($">>> loginName: {Program.loginName}");
                 Console.WriteLine($">>> loginPassword: {Program.loginPassword}");
-                Console.WriteLine($">>> connstr: {Program.connstr}");
+                Console.WriteLine($">>> connstr: {Program.connstr}\n");
 
                 Program.connstr = "Data Source=" + Program.serverName + ";Initial Catalog=" +
                        Program.database + ";User ID=" +

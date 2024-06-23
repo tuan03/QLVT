@@ -45,7 +45,7 @@ namespace QLTVT
          ************************************************************/
         public void enableButtons()
         {
-            
+
             btnDangNhap.Enabled = false;
             btnDangXuat.Enabled = true;
 
@@ -53,10 +53,10 @@ namespace QLTVT
             pageBaoCao.Visible = true;
             btnLapTaiKhoan.Enabled = true;
 
-            if( Program.role == "USER")
+            if (Program.role == "USER")
             {
                 btnLapTaiKhoan.Enabled = false;
-            }    
+            }
 
             //pageTaiKhoan.Visible = true;
 
@@ -88,6 +88,7 @@ namespace QLTVT
 
             btnDangNhap.Enabled = true;
             btnDangXuat.Enabled = false;
+            btnLapTaiKhoan.Enabled = false;
 
             pageNhapXuat.Visible = false;
             pageBaoCao.Visible = false;
@@ -144,7 +145,7 @@ namespace QLTVT
         }
 
         private void btnThoat_ItemClick(object sender, ItemClickEventArgs e)
-        { 
+        {
             this.Close();
         }
 
@@ -361,11 +362,6 @@ namespace QLTVT
                 //form.MdiParent = this;
                 form.Show();
             }
-        }
-
-        private void stackPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
