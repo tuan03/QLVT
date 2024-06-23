@@ -867,5 +867,15 @@ namespace QLTVT
             /*Step 4*/
             this.btnHOANTAC.Enabled = true;
         }
+
+        private void txtLUONG_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cMNDLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

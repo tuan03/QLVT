@@ -98,36 +98,41 @@ namespace QLTVT
             // mAVTLabel
             // 
             mAVTLabel.AutoSize = true;
+            mAVTLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            mAVTLabel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             mAVTLabel.Location = new System.Drawing.Point(12, 60);
             mAVTLabel.Name = "mAVTLabel";
-            mAVTLabel.Size = new System.Drawing.Size(67, 17);
+            mAVTLabel.Size = new System.Drawing.Size(71, 16);
             mAVTLabel.TabIndex = 0;
             mAVTLabel.Text = "Mã vật tư";
             // 
             // tENVTLabel
             // 
             tENVTLabel.AutoSize = true;
+            tENVTLabel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tENVTLabel.Location = new System.Drawing.Point(186, 60);
             tENVTLabel.Name = "tENVTLabel";
-            tENVTLabel.Size = new System.Drawing.Size(73, 17);
+            tENVTLabel.Size = new System.Drawing.Size(75, 16);
             tENVTLabel.TabIndex = 2;
             tENVTLabel.Text = "Tên vật tư";
             // 
             // dVTLabel
             // 
             dVTLabel.AutoSize = true;
+            dVTLabel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dVTLabel.Location = new System.Drawing.Point(511, 60);
             dVTLabel.Name = "dVTLabel";
-            dVTLabel.Size = new System.Drawing.Size(75, 17);
+            dVTLabel.Size = new System.Drawing.Size(77, 16);
             dVTLabel.TabIndex = 4;
             dVTLabel.Text = "Đơn vị tính";
             // 
             // sOLUONGTONLabel
             // 
             sOLUONGTONLabel.AutoSize = true;
+            sOLUONGTONLabel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             sOLUONGTONLabel.Location = new System.Drawing.Point(776, 57);
             sOLUONGTONLabel.Name = "sOLUONGTONLabel";
-            sOLUONGTONLabel.Size = new System.Drawing.Size(88, 17);
+            sOLUONGTONLabel.Size = new System.Drawing.Size(89, 16);
             sOLUONGTONLabel.TabIndex = 6;
             sOLUONGTONLabel.Text = "Số lượng tồn";
             // 
@@ -304,7 +309,7 @@ namespace QLTVT
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(173, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 24);
+            this.label1.Size = new System.Drawing.Size(101, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Chi Nhánh";
             // 
@@ -362,6 +367,10 @@ namespace QLTVT
             // 
             // colMAVT
             // 
+            this.colMAVT.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colMAVT.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colMAVT.AppearanceHeader.Options.UseBackColor = true;
+            this.colMAVT.AppearanceHeader.Options.UseFont = true;
             this.colMAVT.Caption = "Mã Vật Tư";
             this.colMAVT.FieldName = "MAVT";
             this.colMAVT.MinWidth = 25;
@@ -373,6 +382,10 @@ namespace QLTVT
             // 
             // colTENVT
             // 
+            this.colTENVT.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colTENVT.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colTENVT.AppearanceHeader.Options.UseBackColor = true;
+            this.colTENVT.AppearanceHeader.Options.UseFont = true;
             this.colTENVT.Caption = "Tên Vật Tư";
             this.colTENVT.FieldName = "TENVT";
             this.colTENVT.MinWidth = 25;
@@ -384,6 +397,10 @@ namespace QLTVT
             // 
             // colDVT
             // 
+            this.colDVT.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colDVT.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colDVT.AppearanceHeader.Options.UseBackColor = true;
+            this.colDVT.AppearanceHeader.Options.UseFont = true;
             this.colDVT.Caption = "Đơn Vị Tính";
             this.colDVT.FieldName = "DVT";
             this.colDVT.MinWidth = 25;
@@ -395,6 +412,10 @@ namespace QLTVT
             // 
             // colSOLUONGTON
             // 
+            this.colSOLUONGTON.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colSOLUONGTON.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colSOLUONGTON.AppearanceHeader.Options.UseBackColor = true;
+            this.colSOLUONGTON.AppearanceHeader.Options.UseFont = true;
             this.colSOLUONGTON.Caption = "Số Lượng Tồn";
             this.colSOLUONGTON.FieldName = "SOLUONGTON";
             this.colSOLUONGTON.MinWidth = 25;
@@ -505,6 +526,7 @@ namespace QLTVT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1080, 618);
             this.Controls.Add(this.panelNhapLieu);
             this.Controls.Add(this.gcVATTU);

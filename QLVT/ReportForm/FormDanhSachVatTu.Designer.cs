@@ -55,7 +55,7 @@ namespace QLTVT.ReportForm
             this.label1.Font = new System.Drawing.Font("Tahoma", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(125, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(683, 43);
+            this.label1.Size = new System.Drawing.Size(624, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "Danh Sách Thông Tin Chi Tiết Vật Tư";
             // 
@@ -137,6 +137,10 @@ namespace QLTVT.ReportForm
             // 
             // colMAVT
             // 
+            this.colMAVT.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colMAVT.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colMAVT.AppearanceHeader.Options.UseBackColor = true;
+            this.colMAVT.AppearanceHeader.Options.UseFont = true;
             this.colMAVT.Caption = "Mã Vật Tư";
             this.colMAVT.FieldName = "MAVT";
             this.colMAVT.MinWidth = 25;
@@ -148,6 +152,10 @@ namespace QLTVT.ReportForm
             // 
             // colTENVT
             // 
+            this.colTENVT.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colTENVT.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colTENVT.AppearanceHeader.Options.UseBackColor = true;
+            this.colTENVT.AppearanceHeader.Options.UseFont = true;
             this.colTENVT.Caption = "Tên Vật Tư";
             this.colTENVT.FieldName = "TENVT";
             this.colTENVT.MinWidth = 25;
@@ -159,6 +167,10 @@ namespace QLTVT.ReportForm
             // 
             // colDVT
             // 
+            this.colDVT.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colDVT.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colDVT.AppearanceHeader.Options.UseBackColor = true;
+            this.colDVT.AppearanceHeader.Options.UseFont = true;
             this.colDVT.Caption = "Đơn Vị Tính";
             this.colDVT.FieldName = "DVT";
             this.colDVT.MinWidth = 25;
@@ -170,6 +182,10 @@ namespace QLTVT.ReportForm
             // 
             // colSOLUONGTON
             // 
+            this.colSOLUONGTON.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colSOLUONGTON.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colSOLUONGTON.AppearanceHeader.Options.UseBackColor = true;
+            this.colSOLUONGTON.AppearanceHeader.Options.UseFont = true;
             this.colSOLUONGTON.Caption = "Số Lượng Tồn";
             this.colSOLUONGTON.FieldName = "SOLUONGTON";
             this.colSOLUONGTON.MinWidth = 25;

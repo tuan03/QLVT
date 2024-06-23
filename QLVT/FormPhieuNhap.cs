@@ -340,8 +340,7 @@ namespace QLTVT
                 ((DataRowView)(bdsPhieuNhap.Current))["NGAY"] = DateTime.Now;
                 ((DataRowView)(bdsPhieuNhap.Current))["MasoDDH"] = Program.maDonDatHangDuocChon;
                 ((DataRowView)(bdsPhieuNhap.Current))["MANV"] = Program.userName;
-                ((DataRowView)(bdsPhieuNhap.Current))["MAKHO"] =
-                Program.maKhoDuocChon;
+                ((DataRowView)(bdsPhieuNhap.Current))["MAKHO"] =Program.maKhoDuocChon;
 
             }
 
@@ -910,6 +909,11 @@ namespace QLTVT
                 // xoa cau truy van hoan tac di
                 undoList.Pop();
             }
+        }
+
+        private void gcDDH_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

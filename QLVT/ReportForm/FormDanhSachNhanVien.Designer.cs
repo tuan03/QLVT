@@ -98,7 +98,7 @@ namespace QLTVT.ReportForm
             this.label2.Location = new System.Drawing.Point(217, 121);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 24);
+            this.label2.Size = new System.Drawing.Size(101, 23);
             this.label2.TabIndex = 3;
             this.label2.Text = "Chi Nhánh";
             // 
@@ -145,6 +145,7 @@ namespace QLTVT.ReportForm
             // 
             this.nhanVienGridControl.DataSource = this.nhanVienBindingSource;
             this.nhanVienGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6);
+            this.nhanVienGridControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nhanVienGridControl.Location = new System.Drawing.Point(15, 249);
             this.nhanVienGridControl.MainView = this.gridView1;
             this.nhanVienGridControl.Margin = new System.Windows.Forms.Padding(6);
@@ -171,6 +172,10 @@ namespace QLTVT.ReportForm
             // 
             // colMANV
             // 
+            this.colMANV.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colMANV.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colMANV.AppearanceHeader.Options.UseBackColor = true;
+            this.colMANV.AppearanceHeader.Options.UseFont = true;
             this.colMANV.Caption = "Mã Nhân Viên";
             this.colMANV.FieldName = "MANV";
             this.colMANV.MinWidth = 39;
@@ -182,6 +187,10 @@ namespace QLTVT.ReportForm
             // 
             // colHO
             // 
+            this.colHO.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colHO.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colHO.AppearanceHeader.Options.UseBackColor = true;
+            this.colHO.AppearanceHeader.Options.UseFont = true;
             this.colHO.Caption = "Họ";
             this.colHO.FieldName = "HO";
             this.colHO.MinWidth = 39;
@@ -193,6 +202,10 @@ namespace QLTVT.ReportForm
             // 
             // colTEN
             // 
+            this.colTEN.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colTEN.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colTEN.AppearanceHeader.Options.UseBackColor = true;
+            this.colTEN.AppearanceHeader.Options.UseFont = true;
             this.colTEN.Caption = "Tên";
             this.colTEN.FieldName = "TEN";
             this.colTEN.MinWidth = 39;
@@ -204,6 +217,10 @@ namespace QLTVT.ReportForm
             // 
             // colDIACHI
             // 
+            this.colDIACHI.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colDIACHI.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colDIACHI.AppearanceHeader.Options.UseBackColor = true;
+            this.colDIACHI.AppearanceHeader.Options.UseFont = true;
             this.colDIACHI.Caption = "Địa Chỉ";
             this.colDIACHI.FieldName = "DIACHI";
             this.colDIACHI.MinWidth = 39;
@@ -215,6 +232,10 @@ namespace QLTVT.ReportForm
             // 
             // colNGAYSINH
             // 
+            this.colNGAYSINH.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colNGAYSINH.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colNGAYSINH.AppearanceHeader.Options.UseBackColor = true;
+            this.colNGAYSINH.AppearanceHeader.Options.UseFont = true;
             this.colNGAYSINH.Caption = "Ngày Sinh";
             this.colNGAYSINH.FieldName = "NGAYSINH";
             this.colNGAYSINH.MinWidth = 39;
@@ -226,6 +247,10 @@ namespace QLTVT.ReportForm
             // 
             // colLUONG
             // 
+            this.colLUONG.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colLUONG.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colLUONG.AppearanceHeader.Options.UseBackColor = true;
+            this.colLUONG.AppearanceHeader.Options.UseFont = true;
             this.colLUONG.Caption = "Lương";
             this.colLUONG.FieldName = "LUONG";
             this.colLUONG.MinWidth = 39;
@@ -237,6 +262,10 @@ namespace QLTVT.ReportForm
             // 
             // colMACN
             // 
+            this.colMACN.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colMACN.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colMACN.AppearanceHeader.Options.UseBackColor = true;
+            this.colMACN.AppearanceHeader.Options.UseFont = true;
             this.colMACN.Caption = "Mã Chi Nhánh";
             this.colMACN.FieldName = "MACN";
             this.colMACN.MinWidth = 39;
@@ -248,6 +277,10 @@ namespace QLTVT.ReportForm
             // 
             // colTrangThaiXoa
             // 
+            this.colTrangThaiXoa.AppearanceHeader.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.colTrangThaiXoa.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.colTrangThaiXoa.AppearanceHeader.Options.UseBackColor = true;
+            this.colTrangThaiXoa.AppearanceHeader.Options.UseFont = true;
             this.colTrangThaiXoa.FieldName = "TrangThaiXoa";
             this.colTrangThaiXoa.MinWidth = 39;
             this.colTrangThaiXoa.Name = "colTrangThaiXoa";

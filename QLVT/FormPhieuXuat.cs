@@ -877,5 +877,10 @@ namespace QLTVT
                 undoList.Pop();
             }
         }
+
+        private void gcChiTietPhieuXuat_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
