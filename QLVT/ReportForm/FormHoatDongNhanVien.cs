@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraReports.UI;
+using QLVT.ReportForm;
 using QLVT.SubForm;
 using System;
 using System.Collections.Generic;
@@ -27,16 +28,17 @@ namespace QLVT.ReportForm
 
             txtMaNhanVien.Text = Program.maNhanVienDuocChon;
             txtHoVaTen.Text = Program.hoTen;
-
-            txtNgaySinh.Text = Program.ngaySinh;
-            txtDiaChi.Text = Program.diaChi;
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string maNhanVien = txtMaNhanVien.Text;
-            string loaiPhieu = (cmbLoaiPhieu.SelectedItem.ToString() == "NHAP") ? "NHAP" : "XUAT";
+            if (maNhanVien.Length > 0)
+            {
+                MessageBox.Show("Vui lòng chọn Nhân Viên",
+                "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                return;
+            }
             DateTime fromDate = dteTuNgay.DateTime;
             DateTime toDate = dteToiNgay.DateTime;
             /*
@@ -45,23 +47,17 @@ namespace QLVT.ReportForm
             int toYear = dteToiNgay.DateTime.Year;
             int toMonth = dteToiNgay.DateTime.Month;
             */
-            ReportHoatDongNhanVien report = new ReportHoatDongNhanVien(maNhanVien, loaiPhieu, fromDate, toDate);
+            XtraReport1 report = new XtraReport1(maNhanVien, fromDate, toDate);
             /*GAN TEN CHI NHANH CHO BAO CAO*/
-            report.txtLoaiPhieu.Text = cmbLoaiPhieu.SelectedItem.ToString().ToUpper();
-            report.txtMaNhanVien.Text = Program.maNhanVienDuocChon;
-            report.txtHoTen.Text = Program.hoTen;
-            report.txtNgaySinh.Text = Program.ngaySinh;
-            report.txtDiaChi.Text = Program.diaChi;
-            report.txtTuNgay.Text = dteTuNgay.EditValue.ToString();
-            report.txtToiNgay.Text = dteToiNgay.EditValue.ToString();
-
+            report.txtHoTenNV.Text = txtHoVaTen.Text;
+            report.txtFrom.Text = dteTuNgay.EditValue.ToString();
+            report.txtTo.Text = dteToiNgay.EditValue.ToString();
             ReportPrintTool printTool = new ReportPrintTool(report);
             printTool.ShowPreviewDialog();
         }
 
         private void FormHoatDongNhanVien_Load(object sender, EventArgs e)
         {
-            cmbLoaiPhieu.SelectedIndex = 1;
             dteTuNgay.EditValue = "01-05-2000";
             dteToiNgay.EditValue = DateTime.Today.ToString("dd-MM-yyyy");
         }
@@ -76,7 +72,13 @@ namespace QLVT.ReportForm
             try
             {
                 string maNhanVien = txtMaNhanVien.Text;
-                string loaiPhieu = (cmbLoaiPhieu.SelectedItem.ToString() == "NHAP") ? "NHAP" : "XUAT";
+
+                if (maNhanVien.Length > 0)
+                {
+                    MessageBox.Show("Vui lòng chọn Nhân Viên",
+                    "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 DateTime fromDate = dteTuNgay.DateTime;
                 DateTime toDate = dteToiNgay.DateTime;
@@ -86,15 +88,11 @@ namespace QLVT.ReportForm
                 int toYear = dteToiNgay.DateTime.Year;
                 int toMonth = dteToiNgay.DateTime.Month;
                 */
-                ReportHoatDongNhanVien report = new ReportHoatDongNhanVien(maNhanVien, loaiPhieu, fromDate, toDate);
-
-                report.txtLoaiPhieu.Text = cmbLoaiPhieu.SelectedItem.ToString().ToUpper();
-                report.txtMaNhanVien.Text = Program.maNhanVienDuocChon;
-                report.txtHoTen.Text = Program.hoTen;
-                report.txtNgaySinh.Text = Program.ngaySinh;
-                report.txtDiaChi.Text = Program.diaChi;
-                report.txtTuNgay.Text = dteTuNgay.EditValue.ToString();
-                report.txtToiNgay.Text = dteToiNgay.EditValue.ToString();
+                XtraReport1 report = new XtraReport1(maNhanVien, fromDate, toDate);
+                /*GAN TEN CHI NHANH CHO BAO CAO*/
+                report.txtHoTenNV.Text = txtHoVaTen.Text;
+                report.txtFrom.Text = dteTuNgay.EditValue.ToString();
+                report.txtTo.Text = dteToiNgay.EditValue.ToString();
 
                 if (File.Exists(@"D:\ReportHoatDongNhanVien.pdf"))
                 {
@@ -121,6 +119,16 @@ namespace QLVT.ReportForm
                     "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dteTuNgay_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

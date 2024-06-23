@@ -5,7 +5,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace QLTVT.ReportForm
+namespace QLVT.ReportForm
 {
     public partial class ReportDanhSachNhanVien : DevExpress.XtraReports.UI.XtraReport
     {

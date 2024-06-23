@@ -206,6 +206,12 @@
     <Compile Include="ReportForm\ReportTongHopNhapXuat.Designer.cs">
       <DependentUpon>ReportTongHopNhapXuat.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportForm\XtraReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportForm\XtraReport1.Designer.cs">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\FormChonChiTietDonHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -321,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm\ReportTongHopNhapXuat.resx">
       <DependentUpon>ReportTongHopNhapXuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm\XtraReport1.resx">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\FormChonChiTietDonHang.resx">
       <DependentUpon>FormChonChiTietDonHang.cs</DependentUpon>

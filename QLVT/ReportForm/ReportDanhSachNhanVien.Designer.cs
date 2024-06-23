@@ -1,4 +1,4 @@
-﻿namespace QLTVT.ReportForm
+﻿namespace QLVT.ReportForm
 {
     partial class ReportDanhSachNhanVien
     {
