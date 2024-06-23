@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraReports.UI;
+using QLVT.ReportForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -44,6 +44,7 @@ namespace QLVT.ReportForm
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTEN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CMND = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNGAYSINH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -98,7 +99,7 @@ namespace QLVT.ReportForm
             this.label2.Location = new System.Drawing.Point(217, 121);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 24);
+            this.label2.Size = new System.Drawing.Size(101, 23);
             this.label2.TabIndex = 3;
             this.label2.Text = "Chi Nhánh";
             // 
@@ -160,6 +161,7 @@ namespace QLVT.ReportForm
             this.colMANV,
             this.colHO,
             this.colTEN,
+            this.CMND,
             this.colDIACHI,
             this.colNGAYSINH,
             this.colLUONG,
@@ -171,90 +173,85 @@ namespace QLVT.ReportForm
             // 
             // colMANV
             // 
-            this.colMANV.Caption = "Mã Nhân Viên";
             this.colMANV.FieldName = "MANV";
-            this.colMANV.MinWidth = 39;
+            this.colMANV.MinWidth = 25;
             this.colMANV.Name = "colMANV";
-            this.colMANV.OptionsColumn.AllowEdit = false;
             this.colMANV.Visible = true;
             this.colMANV.VisibleIndex = 0;
-            this.colMANV.Width = 146;
+            this.colMANV.Width = 94;
             // 
             // colHO
             // 
-            this.colHO.Caption = "Họ";
             this.colHO.FieldName = "HO";
-            this.colHO.MinWidth = 39;
+            this.colHO.MinWidth = 25;
             this.colHO.Name = "colHO";
-            this.colHO.OptionsColumn.AllowEdit = false;
             this.colHO.Visible = true;
             this.colHO.VisibleIndex = 1;
-            this.colHO.Width = 146;
+            this.colHO.Width = 94;
             // 
             // colTEN
             // 
-            this.colTEN.Caption = "Tên";
             this.colTEN.FieldName = "TEN";
-            this.colTEN.MinWidth = 39;
+            this.colTEN.MinWidth = 25;
             this.colTEN.Name = "colTEN";
-            this.colTEN.OptionsColumn.AllowEdit = false;
             this.colTEN.Visible = true;
             this.colTEN.VisibleIndex = 2;
-            this.colTEN.Width = 146;
+            this.colTEN.Width = 94;
+            // 
+            // CMND
+            // 
+            this.CMND.Caption = "CMND";
+            this.CMND.FieldName = "SOCMND";
+            this.CMND.MinWidth = 25;
+            this.CMND.Name = "CMND";
+            this.CMND.Visible = true;
+            this.CMND.VisibleIndex = 3;
+            this.CMND.Width = 94;
             // 
             // colDIACHI
             // 
-            this.colDIACHI.Caption = "Địa Chỉ";
             this.colDIACHI.FieldName = "DIACHI";
-            this.colDIACHI.MinWidth = 39;
+            this.colDIACHI.MinWidth = 25;
             this.colDIACHI.Name = "colDIACHI";
-            this.colDIACHI.OptionsColumn.AllowEdit = false;
             this.colDIACHI.Visible = true;
-            this.colDIACHI.VisibleIndex = 3;
-            this.colDIACHI.Width = 146;
+            this.colDIACHI.VisibleIndex = 4;
+            this.colDIACHI.Width = 94;
             // 
             // colNGAYSINH
             // 
-            this.colNGAYSINH.Caption = "Ngày Sinh";
             this.colNGAYSINH.FieldName = "NGAYSINH";
-            this.colNGAYSINH.MinWidth = 39;
+            this.colNGAYSINH.MinWidth = 25;
             this.colNGAYSINH.Name = "colNGAYSINH";
-            this.colNGAYSINH.OptionsColumn.AllowEdit = false;
             this.colNGAYSINH.Visible = true;
-            this.colNGAYSINH.VisibleIndex = 4;
-            this.colNGAYSINH.Width = 146;
+            this.colNGAYSINH.VisibleIndex = 5;
+            this.colNGAYSINH.Width = 94;
             // 
             // colLUONG
             // 
-            this.colLUONG.Caption = "Lương";
             this.colLUONG.FieldName = "LUONG";
-            this.colLUONG.MinWidth = 39;
+            this.colLUONG.MinWidth = 25;
             this.colLUONG.Name = "colLUONG";
-            this.colLUONG.OptionsColumn.AllowEdit = false;
             this.colLUONG.Visible = true;
-            this.colLUONG.VisibleIndex = 5;
-            this.colLUONG.Width = 146;
+            this.colLUONG.VisibleIndex = 6;
+            this.colLUONG.Width = 94;
             // 
             // colMACN
             // 
-            this.colMACN.Caption = "Mã Chi Nhánh";
             this.colMACN.FieldName = "MACN";
-            this.colMACN.MinWidth = 39;
+            this.colMACN.MinWidth = 25;
             this.colMACN.Name = "colMACN";
-            this.colMACN.OptionsColumn.AllowEdit = false;
             this.colMACN.Visible = true;
-            this.colMACN.VisibleIndex = 6;
-            this.colMACN.Width = 146;
+            this.colMACN.VisibleIndex = 7;
+            this.colMACN.Width = 94;
             // 
             // colTrangThaiXoa
             // 
             this.colTrangThaiXoa.FieldName = "TrangThaiXoa";
-            this.colTrangThaiXoa.MinWidth = 39;
+            this.colTrangThaiXoa.MinWidth = 25;
             this.colTrangThaiXoa.Name = "colTrangThaiXoa";
-            this.colTrangThaiXoa.OptionsColumn.AllowEdit = false;
             this.colTrangThaiXoa.Visible = true;
-            this.colTrangThaiXoa.VisibleIndex = 7;
-            this.colTrangThaiXoa.Width = 146;
+            this.colTrangThaiXoa.VisibleIndex = 8;
+            this.colTrangThaiXoa.Width = 94;
             // 
             // FormDanhSachNhanVien
             // 
@@ -296,6 +293,7 @@ namespace QLVT.ReportForm
         private DevExpress.XtraGrid.Columns.GridColumn colMANV;
         private DevExpress.XtraGrid.Columns.GridColumn colHO;
         private DevExpress.XtraGrid.Columns.GridColumn colTEN;
+        private DevExpress.XtraGrid.Columns.GridColumn CMND;
         private DevExpress.XtraGrid.Columns.GridColumn colDIACHI;
         private DevExpress.XtraGrid.Columns.GridColumn colNGAYSINH;
         private DevExpress.XtraGrid.Columns.GridColumn colLUONG;

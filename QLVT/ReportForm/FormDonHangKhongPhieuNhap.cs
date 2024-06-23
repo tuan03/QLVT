@@ -38,7 +38,7 @@ namespace QLVT.ReportForm
             cmbChiNhanh.DataSource = Program.bindingSource;
             cmbChiNhanh.DisplayMember = "TENCN";
             cmbChiNhanh.ValueMember = "TENSERVER";
-
+            cmbChiNhanh_SelectedIndexChanged(cmbChiNhanh, EventArgs.Empty);
         }
 
 
@@ -102,7 +102,7 @@ namespace QLVT.ReportForm
                 MessageBox.Show("Xảy ra lỗi kết nối với chi nhánh hiện tại", "Thông báo", MessageBoxButtons.OK);
             }
 
-            ChiNhanh = cmbChiNhanh.SelectedValue.ToString().Contains("1") ? "Helsinki" : "Lisbon";
+            ChiNhanh = cmbChiNhanh.SelectedValue.ToString().Contains("1") ? "Chi Nhánh 1" : "Chi Nhánh 2";
         }
 
         private void FormDonHangKhongPhieuNhap_Load(object sender, EventArgs e)
@@ -118,8 +118,6 @@ namespace QLVT.ReportForm
                 return;
 
             layDanhSachPhanManh("SELECT TOP 2 * FROM view_DanhSachPhanManh");
-            cmbChiNhanh.SelectedIndex = 0;
-            cmbChiNhanh.SelectedIndex = 1;
         }
 
         private void button1_Click(object sender, EventArgs e)

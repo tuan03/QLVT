@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
+using QLTVT.ReportForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +40,9 @@ namespace QLVT.ReportForm
             cmbChiNhanh.DataSource = Program.bindingSource;
             cmbChiNhanh.DisplayMember = "TENCN";
             cmbChiNhanh.ValueMember = "TENSERVER";
-            
+
+            cmbChiNhanh_SelectedIndexChanged(cmbChiNhanh, EventArgs.Empty);
+
         }
         public FormDanhSachNhanVien()
         {
@@ -153,7 +157,7 @@ namespace QLVT.ReportForm
                 MessageBox.Show("Xảy ra lỗi kết nối với chi nhánh hiện tại", "Thông báo", MessageBoxButtons.OK);
             }
 
-            ChiNhanh = cmbChiNhanh.SelectedValue.ToString().Contains("1") ? "Helsinki" : "Lisbon";
+            ChiNhanh = cmbChiNhanh.SelectedValue.ToString().Contains("1") ? "Chi Nhánh 1" : "Chi Nhánh 2";
 
             this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
             this.nhanVienTableAdapter.Fill(this.dataSet.NhanVien);

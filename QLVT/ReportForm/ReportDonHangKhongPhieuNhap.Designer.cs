@@ -72,7 +72,7 @@ namespace QLVT.ReportForm
             // 
             // sqlDataSource1
             // 
-            this.sqlDataSource1.ConnectionName = "QLVT.Properties.Settings.QLVT_DATHANGConnectionString1";
+            this.sqlDataSource1.ConnectionName = "QLVT.Properties.Settings.QLVTConnectionString";
             this.sqlDataSource1.Name = "sqlDataSource1";
             storedProcQuery1.Name = "sp_DonHangKhongPhieuNhap";
             storedProcQuery1.StoredProcName = "sp_DonHangKhongPhieuNhap";
@@ -171,7 +171,8 @@ namespace QLVT.ReportForm
             // 
             // txtChiNhanh
             // 
-            this.txtChiNhanh.Font = new DevExpress.Drawing.DXFont("Arial", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.txtChiNhanh.Font = new DevExpress.Drawing.DXFont("Arial", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
             this.txtChiNhanh.LocationFloat = new DevExpress.Utils.PointFloat(330F, 51.16666F);
             this.txtChiNhanh.Multiline = true;
             this.txtChiNhanh.Name = "txtChiNhanh";
@@ -184,7 +185,8 @@ namespace QLVT.ReportForm
             // 
             // xrLabel1
             // 
-            this.xrLabel1.Font = new DevExpress.Drawing.DXFont("Arial", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.xrLabel1.Font = new DevExpress.Drawing.DXFont("Arial", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(170.4319F, 51.16666F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
@@ -197,7 +199,8 @@ namespace QLVT.ReportForm
             // 
             // label1
             // 
-            this.label1.Font = new DevExpress.Drawing.DXFont("Arial", 19.8F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.label1.Font = new DevExpress.Drawing.DXFont("Arial", 19.8F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
             this.label1.LocationFloat = new DevExpress.Utils.PointFloat(5F, 5F);
             this.label1.Name = "label1";
             this.label1.SizeF = new System.Drawing.SizeF(640F, 31.69434F);
@@ -243,7 +246,7 @@ namespace QLVT.ReportForm
             this.tableCell1.StyleName = "DetailCaption1";
             this.tableCell1.StylePriority.UseBorders = false;
             this.tableCell1.StylePriority.UseTextAlignment = false;
-            this.tableCell1.Text = "Mã Đơn Hàng";
+            this.tableCell1.Text = "MSĐĐH";
             this.tableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell1.Weight = 0.13603913713865226D;
             // 
@@ -252,7 +255,7 @@ namespace QLVT.ReportForm
             this.tableCell2.Name = "tableCell2";
             this.tableCell2.StyleName = "DetailCaption1";
             this.tableCell2.StylePriority.UseTextAlignment = false;
-            this.tableCell2.Text = "Ngày";
+            this.tableCell2.Text = "Ngày lập";
             this.tableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell2.Weight = 0.14342579581657611D;
             // 
@@ -420,7 +423,7 @@ namespace QLVT.ReportForm
             this.DetailData1,
             this.DetailData3_Odd,
             this.PageInfo});
-            this.Version = "19.2";
+            this.Version = "23.2";
             ((System.ComponentModel.ISupportInitialize)(this.table1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();

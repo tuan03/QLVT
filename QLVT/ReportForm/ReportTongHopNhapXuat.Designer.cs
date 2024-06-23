@@ -82,7 +82,7 @@ namespace QLVT.ReportForm
             // 
             // sqlDataSource1
             // 
-            this.sqlDataSource1.ConnectionName = "QLVT.Properties.Settings.QLVT_DATHANGConnectionString1";
+            this.sqlDataSource1.ConnectionName = "QLVT.Properties.Settings.QLVTConnectionString";
             this.sqlDataSource1.Name = "sqlDataSource1";
             storedProcQuery1.Name = "sp_TongHopNhapXuat";
             queryParameter1.Name = "@FromDate";
