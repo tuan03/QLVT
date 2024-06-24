@@ -48,7 +48,6 @@ namespace QLVT
             this.cmbChiNhanh.Name = "cmbChiNhanh";
             this.cmbChiNhanh.Size = new System.Drawing.Size(256, 24);
             this.cmbChiNhanh.TabIndex = 0;
-            this.cmbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cmbChiNhanh_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -59,7 +58,6 @@ namespace QLVT
             this.label1.Size = new System.Drawing.Size(79, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "CHI NHÁNH";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -119,7 +117,6 @@ namespace QLVT
             this.txtMATKHAU.PasswordChar = '*';
             this.txtMATKHAU.Size = new System.Drawing.Size(256, 23);
             this.txtMATKHAU.TabIndex = 4;
-            this.txtMATKHAU.TextChanged += new System.EventHandler(this.txtMATKHAU_TextChanged);
             // 
             // label4
             // 

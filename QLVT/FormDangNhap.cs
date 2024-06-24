@@ -133,11 +133,6 @@ namespace QLVT
                 }
             }
 
-
-            Console.WriteLine("Debug:");
-            Console.WriteLine(Program.serverName);
-            Console.WriteLine(Program.serverNameLeft);
-
             if (Program.KetNoi() == 0)
                 return;
             /* Step 3*/
@@ -173,10 +168,11 @@ namespace QLVT
             Program.myReader.Close();
             Program.conn.Close();
 
-            Program.formChinh.MANHANVIEN.Text = "MÃ NHÂN VIÊN: " + Program.userName;
-            Program.formChinh.HOTEN.Text = "HỌ TÊN: " + Program.staff;
-            Program.formChinh.NHOM.Text = "VAI TRÒ: " + Program.role;
-            Program.formChinh.SERVER.Text = "Server: " + Program.serverName;
+            Program.formChinh.txtMaNV.Text = Program.userName;
+            Program.formChinh.txtHoTen.Text = Program.staff;
+            Program.formChinh.txtVaiTro.Text = Program.role;
+            Program.formChinh.txtServer.Text = Program.serverName;
+            Program.formChinh.panelInfo.Visible = true;
 
             /* Step 6*/
             this.Visible = false;
@@ -191,19 +187,6 @@ namespace QLVT
             Program.formChinh.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtMATKHAU_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

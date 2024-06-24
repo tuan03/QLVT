@@ -91,6 +91,8 @@ namespace QLVT
 
             pageNhapXuat.Visible = false;
             pageBaoCao.Visible = false;
+
+            Program.formChinh.panelInfo.Visible = false;
             //pageTaiKhoan.Visible = false;
 
             Form f = this.CheckExists(typeof(FormDangNhap));
@@ -104,10 +106,6 @@ namespace QLVT
                 //form.MdiParent = this;
                 form.Show();
             }
-
-            Program.formChinh.MANHANVIEN.Text = "MÃ NHÂN VIÊN:";
-            Program.formChinh.HOTEN.Text = "HỌ TÊN:";
-            Program.formChinh.NHOM.Text = "VAI TRÒ:";
         }
 
 

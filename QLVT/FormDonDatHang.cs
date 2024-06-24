@@ -885,5 +885,10 @@ namespace QLVT
                 this.phieuNhapTableAdapter.Fill(this.dataSet.PhieuNhap);
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

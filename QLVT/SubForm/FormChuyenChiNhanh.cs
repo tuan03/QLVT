@@ -22,15 +22,18 @@ namespace QLVT.SubForm
        
 
         private void FormChuyenChiNhanh_Load(object sender, EventArgs e)
-        { 
-            /*Lấy dữ liệu từ form đăng nhập đổ vào nhưng chỉ lấn đúng danh sách
-             phân mảnh mà thôi*/
-            cmbChiNhanh.DataSource  = Program.bindingSource.DataSource;
-            /*sao chep bingding source tu form dang nhap*/
+        {
+            DataTable dataTable = (DataTable)Program.bindingSource.DataSource;
+
+            // Tạo DataView và lọc bỏ các hàng có tenserver chứa số "1"
+            DataView dataView = new DataView(dataTable);
+            String filter = "tenserver NOT LIKE '%" + (Program.brand + 1).ToString() + "%'";
+            dataView.RowFilter = filter;
+
+            cmbChiNhanh.DataSource = dataView;
             cmbChiNhanh.DisplayMember = "tencn";
             cmbChiNhanh.ValueMember = "tenserver";
-            cmbChiNhanh.SelectedIndex = Program.brand;
-
+            //cmbChiNhanh.SelectedIndex = Program.brand;
         }
         private Form CheckExists(Type ftype)
         {

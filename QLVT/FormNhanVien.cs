@@ -772,66 +772,30 @@ namespace QLVT
             
         }
 
-
-        /**************************************************************
-         * Step 1: kiêm tra xem có nằm trên cùng chi nhánh không
-         * Step 2: chuẩn bị các biến để lưu tên chi nhánh hiện tại và chi nhánh chuyển tới, tên nhân viên được chuyển
-         * Step 3: trước khi thực hiện, lưu sẵn câu lệnh hoàn tác vào undoList + tên chi nhánh tới
-         * Step 4: thực hiện chuyển chi nhánh với sp_ChuyenChiNhanh
-         **************************************************************/
         public void chuyenChiNhanh(String ChiNhanh )
         {
-            //Console.WriteLine("Chi nhánh được chọn là " + ChiNhanh);
-            
             /*Step 1*/
             if ( Program.serverName == ChiNhanh)
             {
                 MessageBox.Show("Hãy chọn chi nhánh khác chi nhánh bạn đang đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
-
-
             /*Step 2*/
-            String maChiNhanhHienTai = "";
             String maChiNhanhMoi = "";
             int viTriHienTai = bdsNhanVien.Position;
             String maNhanVien = ((DataRowView)bdsNhanVien[viTriHienTai])["MANV"].ToString();
 
-            if (ChiNhanh.Contains("1"))
+            if (ChiNhanh.Contains("1") || ChiNhanh.Contains("2"))
             {
-                maChiNhanhHienTai = "CN2";
-                maChiNhanhMoi = "CN1";
-            }
-            else if( ChiNhanh.Contains("2"))
-            {
-                maChiNhanhHienTai = "CN1";
-                maChiNhanhMoi = "CN2";
             }
             else
             {
                 MessageBox.Show("Mã chi nhánh không hợp lệ","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
-            Console.WriteLine("Ma chi nhanh hien tai : " + maChiNhanhHienTai);
-            Console.WriteLine("Ma chi nhanh Moi : " + maChiNhanhMoi);
-
-
-
-            /*Step 3*/
-            String cauTruyVanHoanTac = "EXEC sp_ChuyenChiNhanh "+maNhanVien+",'"+maChiNhanhHienTai+"'";
-            //undoList.Push(cauTruyVanHoanTac);
-           
-            Program.serverNameLeft = ChiNhanh; /*Lấy tên chi nhánh tới để làm tính năng hoàn tác*/
-            Console.WriteLine("Ten server con lai" + Program.serverNameLeft);
-
-
 
             /*Step 4*/
             String cauTruyVan = "EXEC sp_ChuyenChiNhanh " + maNhanVien + ",'" + maChiNhanhMoi + "'";
-            Console.WriteLine("Cau Truy Van: " + cauTruyVan);
-            Console.WriteLine("Cau Truy Van Hoan Tac: " + cauTruyVanHoanTac);
-
             SqlCommand sqlcommand = new SqlCommand(cauTruyVan, Program.conn);
             try
             {
@@ -868,7 +832,6 @@ namespace QLVT
                 return;
             }    
 
-            /*Step 1 - Kiem tra trang thai xoa*/
             if ( trangThaiXoa == true )
             {
                 MessageBox.Show("Nhân viên này không có ở chi nhánh này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -884,18 +847,7 @@ namespace QLVT
             }
             FormChuyenChiNhanh form = new FormChuyenChiNhanh();
             form.Show();
-
-            /*Step 3*/
-            /*đóng gói hàm chuyenChiNhanh từ formNHANVIEN đem về formChuyenChiNhanh để làm việc*/
             form.branchTransfer = new FormChuyenChiNhanh.MyDelegate(chuyenChiNhanh);
-            
-            /*Step 4*/
-            //this.btnHOANTAC.Enabled = true;
-        }
-
-        private void gcNhanVien_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

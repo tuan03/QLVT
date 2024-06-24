@@ -62,16 +62,20 @@ namespace QLVT
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.MANHANVIEN = new System.Windows.Forms.ToolStripStatusLabel();
-            this.HOTEN = new System.Windows.Forms.ToolStripStatusLabel();
-            this.NHOM = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SERVER = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panelInfo = new DevExpress.XtraEditors.PanelControl();
+            this.txtServer = new DevExpress.XtraEditors.LabelControl();
+            this.txtVaiTro = new DevExpress.XtraEditors.LabelControl();
+            this.txtHoTen = new DevExpress.XtraEditors.LabelControl();
+            this.txtMaNV = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
-            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelInfo)).BeginInit();
+            this.panelInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbon
@@ -112,7 +116,6 @@ namespace QLVT
             this.pageBaoCao,
             this.pageHeThong});
             this.ribbon.Size = new System.Drawing.Size(1598, 193);
-            this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // btnNhanVien
             // 
@@ -368,77 +371,122 @@ namespace QLVT
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "QUẢN LÝ TÀI KHOẢN";
             // 
-            // ribbonStatusBar
-            // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 854);
-            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(6);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1598, 30);
-            // 
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // statusStrip1
+            // panelInfo
             // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MANHANVIEN,
-            this.HOTEN,
-            this.SERVER,
-            this.NHOM});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 828);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1598, 26);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
+            this.panelInfo.Controls.Add(this.txtServer);
+            this.panelInfo.Controls.Add(this.txtVaiTro);
+            this.panelInfo.Controls.Add(this.txtHoTen);
+            this.panelInfo.Controls.Add(this.txtMaNV);
+            this.panelInfo.Controls.Add(this.labelControl4);
+            this.panelInfo.Controls.Add(this.labelControl3);
+            this.panelInfo.Controls.Add(this.labelControl2);
+            this.panelInfo.Controls.Add(this.labelControl1);
+            this.panelInfo.Location = new System.Drawing.Point(1280, 72);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(318, 121);
+            this.panelInfo.TabIndex = 6;
+            this.panelInfo.Visible = false;
             // 
-            // MANHANVIEN
+            // txtServer
             // 
-            this.MANHANVIEN.Name = "MANHANVIEN";
-            this.MANHANVIEN.Size = new System.Drawing.Size(115, 20);
-            this.MANHANVIEN.Text = "MÃ NHÂN VIÊN";
-            this.MANHANVIEN.Click += new System.EventHandler(this.toolStripStatusLabel1_Click_1);
+            this.txtServer.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.txtServer.Appearance.Options.UseFont = true;
+            this.txtServer.Location = new System.Drawing.Point(117, 86);
+            this.txtServer.Name = "txtServer";
+            this.txtServer.Size = new System.Drawing.Size(0, 18);
+            this.txtServer.TabIndex = 14;
             // 
-            // HOTEN
+            // txtVaiTro
             // 
-            this.HOTEN.Name = "HOTEN";
-            this.HOTEN.Size = new System.Drawing.Size(62, 20);
-            this.HOTEN.Text = "HỌ TÊN";
+            this.txtVaiTro.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.txtVaiTro.Appearance.Options.UseFont = true;
+            this.txtVaiTro.Location = new System.Drawing.Point(117, 62);
+            this.txtVaiTro.Name = "txtVaiTro";
+            this.txtVaiTro.Size = new System.Drawing.Size(0, 18);
+            this.txtVaiTro.TabIndex = 13;
             // 
-            // NHOM
+            // txtHoTen
             // 
-            this.NHOM.Name = "NHOM";
-            this.NHOM.Size = new System.Drawing.Size(63, 20);
-            this.NHOM.Text = "VAI TRÒ";
+            this.txtHoTen.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.txtHoTen.Appearance.Options.UseFont = true;
+            this.txtHoTen.Location = new System.Drawing.Point(117, 38);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(0, 18);
+            this.txtHoTen.TabIndex = 12;
             // 
-            // SERVER
+            // txtMaNV
             // 
-            this.SERVER.Name = "SERVER";
-            this.SERVER.Size = new System.Drawing.Size(60, 20);
-            this.SERVER.Text = "SERVER";
+            this.txtMaNV.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.txtMaNV.Appearance.Options.UseFont = true;
+            this.txtMaNV.Location = new System.Drawing.Point(117, 14);
+            this.txtMaNV.Name = "txtMaNV";
+            this.txtMaNV.Size = new System.Drawing.Size(0, 18);
+            this.txtMaNV.TabIndex = 11;
+            this.txtMaNV.UseWaitCursor = true;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(5, 86);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(57, 18);
+            this.labelControl4.TabIndex = 10;
+            this.labelControl4.Text = "Server : ";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(5, 62);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(62, 18);
+            this.labelControl3.TabIndex = 9;
+            this.labelControl3.Text = "Vai Trò : ";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(5, 38);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(85, 18);
+            this.labelControl2.TabIndex = 8;
+            this.labelControl2.Text = "Họ và Tên : ";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(5, 14);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(106, 18);
+            this.labelControl1.TabIndex = 7;
+            this.labelControl1.Text = "Mã Nhân Viên : ";
             // 
             // FormChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1598, 884);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.ribbonStatusBar);
+            this.Controls.Add(this.panelInfo);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("FormChinh.IconOptions.Image")));
             this.IsMdiContainer = true;
             this.Name = "FormChinh";
             this.Ribbon = this.ribbon;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.StatusBar = this.ribbonStatusBar;
             this.Text = "QUẢN LÝ VẬT TƯ";
             this.Load += new System.EventHandler(this.FormChinh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelInfo)).EndInit();
+            this.panelInfo.ResumeLayout(false);
+            this.panelInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,7 +497,6 @@ namespace QLVT
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage pageNhapXuat;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarButtonItem btnNhanVien;
         private DevExpress.XtraBars.BarButtonItem btnVatTu;
         private DevExpress.XtraBars.BarButtonItem btnKho;
@@ -473,16 +520,20 @@ namespace QLVT
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem btnTaoTaiKhoan;
         private DevExpress.XtraBars.BarButtonItem btnXoaTaiKhoan;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        public System.Windows.Forms.ToolStripStatusLabel MANHANVIEN;
-        public System.Windows.Forms.ToolStripStatusLabel HOTEN;
-        public System.Windows.Forms.ToolStripStatusLabel NHOM;
         private DevExpress.XtraBars.BarSubItem btnMENU;
         private DevExpress.XtraBars.BarButtonItem btnDonDatHang;
         private DevExpress.XtraBars.BarButtonItem btnPhieuNhap;
         private DevExpress.XtraBars.BarButtonItem btnPhieuXuat;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem btnLapTaiKhoan;
-        public System.Windows.Forms.ToolStripStatusLabel SERVER;
+        public DevExpress.XtraEditors.PanelControl panelInfo;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        public DevExpress.XtraEditors.LabelControl txtServer;
+        public DevExpress.XtraEditors.LabelControl txtVaiTro;
+        public DevExpress.XtraEditors.LabelControl txtHoTen;
+        public DevExpress.XtraEditors.LabelControl txtMaNV;
     }
 }
