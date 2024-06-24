@@ -101,7 +101,7 @@ namespace QLVT
                 this.panelNhapLieu.Enabled = false;
             }
 
-            /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
+            /* CHI NHANH & User co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
             if (Program.role == "ChiNhanh" || Program.role == "User")
             {
