@@ -106,6 +106,7 @@ namespace QLVT
          **********************************************/
         public static string maKhoDuocChon = "";
         public static string maVatTuDuocChon = "";
+        public static string maPhieuNhapDuocChon = "";
 
 
 
@@ -131,6 +132,7 @@ namespace QLVT
         /*bidSou: BindingSource -> liên kết dữ liệu từ bảng dữ liệu vào chương trình*/
         public static BindingSource bindingSource = new BindingSource();//bds_dspm
 
+        public static List<DataRow> rowsToKeep = new List<DataRow>();
 
         /*các form của toàn dữ án cũng được coi như 1 một biến toàn cục*/
         public static FormDangNhap formDangNhap;

@@ -30,19 +30,7 @@ namespace QLVT
         bool dangThemMoi = false;
         public string makho = "";
         string maChiNhanh = "";
-        /**********************************************************
-         * undoList - phục vụ cho btnHOANTAC -  chứa các thông tin của đối tượng bị tác động 
-         * 
-         * nó là nơi lưu trữ các đối tượng cần thiết để hoàn tác các thao tác
-         * 
-         * nếu btnGHI sẽ ứng với INSERT
-         * nếu btnXOA sẽ ứng với DELETE
-         * nếu btnCHUYENChiNhanh sẽ ứng với CHANGEBRAND
-         **********************************************************/
-        Stack undoList = new Stack();
-
-
-
+ 
         /********************************************************
          * chứa những dữ liệu hiện tại đang làm việc
          * gc chứa grid view đang làm việc
@@ -52,15 +40,6 @@ namespace QLVT
         string type = "";
 
 
-
-        /************************************************************
-         * CheckExists:
-         * Để tránh việc người dùng ấn vào 1 form đến 2 lần chúng ta 
-         * cần sử dụng hàm này để kiểm tra xem cái form hiện tại đã 
-         * có trong bộ nhớ chưa
-         * Nếu có trả về "f"
-         * Nếu không trả về "null"
-         ************************************************************/
         private Form CheckExists(Type ftype)
         {
             foreach (Form f in this.MdiChildren)
@@ -101,26 +80,6 @@ namespace QLVT
             cmbChiNhanh.DisplayMember = "TENCN";
             cmbChiNhanh.ValueMember = "TENSERVER";
             cmbChiNhanh.SelectedIndex = Program.brand;
-        }
-
-        private void groupBoxDonDatHang_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mAVTTextEdit_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dteNgay_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void cmbChiNhanh_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -168,7 +127,7 @@ namespace QLVT
             bds = bdsPhieuNhap;
             gc = gcPhieuNhap;
 
-            
+
             /*Step 2*/
             /*Bat chuc nang cua phieu nhap*/
             txtMaPhieuNhap.Enabled = false;
@@ -196,14 +155,13 @@ namespace QLVT
             /*CONG TY chi xem du lieu*/
             if (Program.role == "CongTy")
             {
-       
+
                 cmbChiNhanh.Enabled = true;
 
                 this.btnTHEM.Enabled = false;
                 this.btnXOA.Enabled = false;
                 this.btnGHI.Enabled = false;
 
-                this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
                 this.btnMENU.Enabled = true;
                 this.btnTHOAT.Enabled = true;
@@ -224,7 +182,6 @@ namespace QLVT
                 this.btnXOA.Enabled = turnOn;
                 this.btnGHI.Enabled = true;
 
-                this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
                 this.btnMENU.Enabled = true;
                 this.btnTHOAT.Enabled = true;
@@ -274,8 +231,6 @@ namespace QLVT
                 this.btnTHEM.Enabled = false;
                 this.btnXOA.Enabled = false;
                 this.btnGHI.Enabled = false;
-
-                this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
                 this.btnMENU.Enabled = true;
                 this.btnTHOAT.Enabled = true;
@@ -292,7 +247,6 @@ namespace QLVT
                 this.btnXOA.Enabled = false;
                 this.btnGHI.Enabled = true;
 
-                this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
                 this.btnMENU.Enabled = true;
                 this.btnTHOAT.Enabled = true;
@@ -323,7 +277,7 @@ namespace QLVT
             /*AddNew tự động nhảy xuống cuối thêm 1 dòng mới*/
             bds.AddNew();
             if (btnMENU.Links[0].Caption == "Phiếu Nhập")
-            { 
+            {
                 this.txtMaPhieuNhap.Enabled = true;
 
                 this.dteNgay.EditValue = DateTime.Now;
@@ -334,7 +288,7 @@ namespace QLVT
 
                 this.txtMaNhanVien.Text = Program.userName;
                 this.txtMaKho.Text = Program.maKhoDuocChon;
-         
+
 
                 /*Gan tu dong may truong du lieu nay*/
                 ((DataRowView)(bdsPhieuNhap.Current))["NGAY"] = DateTime.Now;
@@ -384,8 +338,7 @@ namespace QLVT
             this.btnXOA.Enabled = false;
             this.btnGHI.Enabled = true;
 
-            this.btnHOANTAC.Enabled = true;
-            this.btnLAMMOI.Enabled = false;
+            this.btnLAMMOI.Enabled = true;
             this.btnMENU.Enabled = false;
             this.btnTHOAT.Enabled = false;
 
@@ -402,43 +355,39 @@ namespace QLVT
         {
             try
             {
+                this.btnTHEM.Enabled = true;
+                this.btnXOA.Enabled = true;
+                this.btnGHI.Enabled = true;
+
+                this.btnLAMMOI.Enabled = true;
+                this.btnMENU.Enabled = true;
+                this.btnTHOAT.Enabled = true;
+
+                this.gcPhieuNhap.Enabled = true;
+                this.gcChiTietPhieuNhap.Enabled = true;
+
                 this.phieuNhapTableAdapter.Fill(this.dataSet.PhieuNhap);
                 this.chiTietPhieuNhapTableAdapter.Fill(this.dataSet.CTPN);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Lỗi làm mời dữ liệu\n\n" + ex.Message,"Thông Báo",MessageBoxButtons.OK);
+                MessageBox.Show("Lỗi làm mời dữ liệu\n\n" + ex.Message, "Thông Báo", MessageBoxButtons.OK);
                 Console.WriteLine(ex.Message);
                 return;
             }
         }
 
 
-
-        /*
-         * ta sử dụng maDonDatHangDuocChonChiTiet là vì nếu như ta thêm
-         * phiếu nhập cho đơn đặt hàng 1 nhưng chi tiết phiếu nhập ta lại lập
-         * bằng chi tiết đơn đặt hàng 2 thì sẽ dẫn tới mâu thuẫn.
-         * 
-         * đúng thì phải là lập phiếu bằng mã đơn đặt hàng 1 thì chi tiết 
-         * phiếu nhập cũng phải chọn chi tiết đơn đặt hàng 1 mới hợp lý
-         * 
-         * trong formLapPhieu có maDonHangDuocChon là mã đơn hàng của phiếu
-         * nhập còn maDonDatHangDuocChonChiTiet là mã đơn hàng khi chọn chi 
-         * tiết đơn hàng.
-         * 
-         * 2 mã này phải giống nhau thì mới cho phép ghi
-         */
         private void btnChonChiTietDonHang_Click(object sender, EventArgs e)
         {
             /*Lay MasoDDH hien tai cua gcPhieuNhap de so sanh voi MasoDDH se duoc chon*/
             Program.maDonDatHangDuocChon = ((DataRowView)(bdsPhieuNhap.Current))["MasoDDH"].ToString().Trim();
-
+            Program.maPhieuNhapDuocChon = txtMaPhieuNhap.Text;
             //Console.WriteLine(Program.maDonDatHangDuocChon);
             FormChonChiTietDonHang form = new FormChonChiTietDonHang();
-            form.ShowDialog(); 
+            form.ShowDialog();
 
-            
+
 
             this.txtMaVatChiTietPhieuNhap.Text = Program.maVatTuDuocChon;
             this.txtSoLuongChiTietPhieuNhap.Value = Program.soLuongVatTu;
@@ -447,94 +396,8 @@ namespace QLVT
 
 
 
-        /**********************************************************************
-         * moi lan nhan btnHOANTAC thi nen nhan them btnLAMMOI de 
-         * tranh bi loi khi an btnTHEM lan nua
-         * 
-         * statement: chua cau y nghia chuc nang ngay truoc khi an btnHOANTAC.
-         * Vi du: statement = INSERT | DELETE | CHANGEBRAND
-         * 
-         * bdsNhanVien.CancelEdit() - phuc hoi lai du lieu neu chua an btnGHI
-         * Step 0: trường hợp đã ấn btnTHEM nhưng chưa ấn btnGHI
-         * Step 1: kiểm tra undoList có trông hay không ?
-         * Step 2: Neu undoList khong trống thì lấy ra khôi phục
-         *********************************************************************/
-        private void btnHOANTAC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            /* Step 0 */
-            if (dangThemMoi == true && this.btnTHEM.Enabled == false)
-            {
-                dangThemMoi = false;
-
-                /*dang o che do Phiếu Nhập*/
-                if (btnMENU.Links[0].Caption == "Phiếu Nhập")
-                {
-                    this.txtMaDonDatHang.Enabled = false;
-                    dteNgay.Enabled = false;
-
-                    txtMaDonDatHang.Enabled = false;
-                    txtMaKho.Enabled = false;
-
-                    btnChonDonHang.Enabled = false;
-                    txtMaDonDatHang.Enabled = false;
-                }
-                /*dang o che do Chi Tiết Phiếu Nhập*/
-                if (btnMENU.Links[0].Caption == "Chi Tiết Phiếu Nhập")
-                {
-                    this.txtMaDonDatHang.Enabled = false;
-                    this.btnChonChiTietDonHang.Enabled = false;
-
-                    this.txtMaVatChiTietPhieuNhap.Enabled = false;
-                    this.txtSoLuongChiTietPhieuNhap.Enabled = false;
-                    this.txtDonGiaChiTietPhieuNhap.Enabled = false;
-
-                    this.btnXOA.Enabled = false;
-                }
-
-                this.btnTHEM.Enabled = true;
-                this.btnXOA.Enabled = true;
-                this.btnGHI.Enabled = true;
-
-                //this.btnHOANTAC.Enabled = false;
-                this.btnLAMMOI.Enabled = true;
-                this.btnMENU.Enabled = true;
-                this.btnTHOAT.Enabled = true;
-
-                this.gcPhieuNhap.Enabled = true;
-                this.gcChiTietPhieuNhap.Enabled = true;
-
-                bds.CancelEdit();
-                /*xoa dong hien tai*/
-                bds.RemoveCurrent();
-                /* trở về lúc đầu con trỏ đang đứng*/
-                bds.Position = viTri;
-                return;
-            }
-
-            /*Step 1*/
-            if (undoList.Count == 0)
-            {
-                MessageBox.Show("Không còn thao tác nào để khôi phục", "Thông báo", MessageBoxButtons.OK);
-                btnHOANTAC.Enabled = false;
-                return;
-            }
-
-            /*Step 2*/
-            bds.CancelEdit();
-            String cauTruyVanHoanTac = undoList.Pop().ToString();
-
-            Console.WriteLine(cauTruyVanHoanTac);
-            int n = Program.ExecSqlNonQuery(cauTruyVanHoanTac);
-
-            this.phieuNhapTableAdapter.Fill(this.dataSet.PhieuNhap);
-            this.chiTietPhieuNhapTableAdapter.Fill(this.dataSet.CTPN);
-
-            bdsPhieuNhap.Position = viTri;
-        }
-
-
-
-        private void capNhatSoLuongVatTu(string maVatTu, int soLuong)
+   
+         private void capNhatSoLuongVatTu(string maVatTu, int soLuong)
         {
             string cauTruyVan = "EXEC sp_CapNhatSoLuongVatTu 'IMPORT','" + maVatTu + "', " + soLuong;
 
@@ -542,55 +405,13 @@ namespace QLVT
             int n = Program.ExecSqlNonQuery(cauTruyVan);
             Console.WriteLine(cauTruyVan);
         }
-        private String taoCauTruyVanHoanTac(String cheDo)
-        {
-            String cauTruyVan = "";
-            DataRowView drv;
-
-            /*TH1: dang sua phieu nhap - nhung ko co truong du lieu nao co the cho sua duoc ca*/
-            if(cheDo == "Phiếu Nhập" && dangThemMoi == false)
-            {
-                // khong co gi ca
-            }
-
-            /*TH2: them moi phieu nhap*/
-            if(cheDo == "Phiếu Nhập" && dangThemMoi == true)
-            {
-                // tao trong btnGHI thi hon
-            }
-
-            /*TH3: them moi chi tiet phieu nhap*/
-            if (cheDo == "Chi Tiết Phiếu Nhập" && dangThemMoi == true)
-            {
-                // tao trong btnGHI thi hon
-            }
-
-            /*TH4: dang sua chi tiet phieu nhap*/
-            if (cheDo == "Chi Tiết Phiếu Nhập" && dangThemMoi == false)
-            {
-                drv = ((DataRowView)(bdsChiTietPhieuNhap.Current));
-                int soLuong = int.Parse(drv["SOLUONG"].ToString().Trim());
-                float donGia = float.Parse(drv["DONGIA"].ToString().Trim());
-                String maPhieuNhap = drv["MAPN"].ToString().Trim();
-                String maVatTu = drv["MAVT"].ToString().Trim();
-
-                cauTruyVan = "UPDATE DBO.CTPN " +
-                    "SET " +
-                    "SOLUONG = " + soLuong + ", " +
-                    "DONGIA = " + donGia + " " +
-                    "WHERE MAPN = '"+ maPhieuNhap + "' " +
-                    "AND MAVT = '" + maVatTu + "' ";
-            }
-
-            return cauTruyVan;
-        }
         private bool kiemTraDuLieuDauVao(String cheDo)
         {
-            if( cheDo == "Phiếu Nhập")
+            if (cheDo == "Phiếu Nhập")
             {
-                if( txtMaPhieuNhap.Text == "")
+                if (txtMaPhieuNhap.Text == "")
                 {
-                    MessageBox.Show("Không bỏ trống mã phiếu nhập !","Thông báo",MessageBoxButtons.OK);
+                    MessageBox.Show("Không bỏ trống mã phiếu nhập !", "Thông báo", MessageBoxButtons.OK);
                     txtMaPhieuNhap.Focus();
                     return false;
                 }
@@ -617,25 +438,13 @@ namespace QLVT
 
             if (cheDo == "Chi Tiết Phiếu Nhập")
             {
-                /*Do chung khoa chinh cua no la MAPN + MAVT*/
-                /* tạo 2 phiếu nhập cùng mã đơn hàng thì bị lỗi do maDonHang trong phiếu 
-                 * nhập chỉ được xuất hiện 1 lần duy nhất
-                 */
-                /*
-                if (bdsChiTietPhieuNhap.Count > 1)
-                {
-                    MessageBox.Show("Không thể thêm chi tiết phiếu nhập quá 1 lần", "Thông báo", MessageBoxButtons.OK);
-                    bdsChiTietPhieuNhap.RemoveCurrent();
-                    return false;
-                }*/
-
                 if (txtMaVatChiTietPhieuNhap.Text == "")
                 {
                     MessageBox.Show("Không bỏ trống mã vật tư !", "Thông báo", MessageBoxButtons.OK);
                     return false;
                 }
 
-                if (txtSoLuongChiTietPhieuNhap.Value < 0 || 
+                if (txtSoLuongChiTietPhieuNhap.Value < 0 ||
                     txtSoLuongChiTietPhieuNhap.Value > Program.soLuongVatTu)
                 {
                     MessageBox.Show("Số lượng vật tư không thể lớn hơn số lượng vật tư trong chi tiết đơn hàng !", "Thông báo", MessageBoxButtons.OK);
@@ -643,9 +452,9 @@ namespace QLVT
                     return false;
                 }
 
-                if (txtDonGiaChiTietPhieuNhap.Value < 1 )
+                if (txtDonGiaChiTietPhieuNhap.Value < 0)
                 {
-                    MessageBox.Show("Đơn giá không thể nhỏ hơn 1 VND", "Thông báo", MessageBoxButtons.OK);
+                    MessageBox.Show("Đơn giá không thể nhỏ hơn 0 VND", "Thông báo", MessageBoxButtons.OK);
                     txtDonGiaChiTietPhieuNhap.Focus();
                     return false;
                 }
@@ -655,14 +464,6 @@ namespace QLVT
         }
 
 
-
-        /*
-         *Step 1: xac dinh xem minh dang GHI o che do nao
-         *Step 2: kiem tra du lieu dau vao
-         *Step 3: tao cau truy van hoan tac
-         *Step 4: dung stored procedure kiem tra xem phieu nhap da ton tai chua ?
-         *Step 5: xu ly du lieu neu co
-         */
         private void btnGHI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             /*Step 1*/
@@ -673,12 +474,11 @@ namespace QLVT
             bool ketQua = kiemTraDuLieuDauVao(cheDo);
             if (ketQua == false) return;
 
-            
+
 
             /*Step 3*/
-            string cauTruyVanHoanTac = taoCauTruyVanHoanTac(cheDo);
 
-           
+
             /*Step 4*/
             String maPhieuNhap = txtMaPhieuNhap.Text.Trim();
             //Console.WriteLine(maPhieuNhap);
@@ -714,7 +514,7 @@ namespace QLVT
             int viTriMaPhieuNhap = bdsPhieuNhap.Find("MAPN", maPhieuNhap);
 
             /*Dang them moi phieu nhap*/
-            if( result == 1 && cheDo == "Phiếu Nhập" && viTriMaPhieuNhap != viTriConTro)
+            if (result == 1 && cheDo == "Phiếu Nhập" && viTriMaPhieuNhap != viTriConTro)
             {
                 MessageBox.Show("Mã phiếu nhập đã được sử dụng !", "Thông báo", MessageBoxButtons.OK);
                 txtMaPhieuNhap.Focus();
@@ -732,31 +532,21 @@ namespace QLVT
                         /*TH1: them moi phieu nhap*/
                         if (cheDo == "Phiếu Nhập" && dangThemMoi == true)
                         {
-                            cauTruyVanHoanTac =
-                                "DELETE FROM DBO.PHIEUNHAP " +
-                                "WHERE MAPN = '" + maPhieuNhap + "'";
+
                         }
 
                         /*TH2: them moi chi tiet don hang*/
                         if (cheDo == "Chi Tiết Phiếu Nhập" && dangThemMoi == true)
                         {
-                            cauTruyVanHoanTac =
-                                "DELETE FROM DBO.CTPN " +
-                                "WHERE MAPN = '" + maPhieuNhap + "' " +
-                                "AND MAVT = '" + Program.maVatTuDuocChon + "'";
-
                             string maVatTu = txtMaVatChiTietPhieuNhap.Text.Trim();
                             int soLuong = (int)txtSoLuongChiTietPhieuNhap.Value;
-                     
+
                             capNhatSoLuongVatTu(maVatTu, soLuong);
                         }
 
                         /*TH3: chinh sua phieu nhap -> chang co gi co the chinh sua
                          * duoc -> chang can xu ly*/
                         /*TH4: chinh sua chi tiet phieu nhap - > thi chi can may dong lenh duoi la xong*/
-                        undoList.Push(cauTruyVanHoanTac);
-                        Console.WriteLine("cau truy van hoan tac");
-                        Console.WriteLine(cauTruyVanHoanTac);
 
                         this.bdsPhieuNhap.EndEdit();
                         this.bdsChiTietPhieuNhap.EndEdit();
@@ -767,7 +557,6 @@ namespace QLVT
                         this.btnXOA.Enabled = true;
                         this.btnGHI.Enabled = true;
 
-                        this.btnHOANTAC.Enabled = true;
                         this.btnLAMMOI.Enabled = true;
                         this.btnMENU.Enabled = true;
                         this.btnTHOAT.Enabled = true;
@@ -790,23 +579,15 @@ namespace QLVT
                         return;
                     }
                 }
-            }    
-            
+            }
+
         }
 
-        /**
-         * Step 1: lấy chế độ đang sử dụng và đặt dangThemMoi = true để phục vụ điều kiện tạo câu truy
-         * vấn hoàn tác
-         * Step 2: kiểm tra điều kiện theo chế độ đang sử dụng
-         * Step 3: nạp câu truy vấn hoàn tác vào undolist
-         * Step 4: Thực hiện xóa nếu OK
-         */
         private void btnXOA_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DataRowView drv;
-            string cauTruyVanHoanTac = "";
             string cheDo = (btnMENU.Links[0].Caption == "Phiếu Nhập") ? "Phiếu Nhập" : "Chi Tiết Phiếu Nhập";
-            
+
 
 
             if (cheDo == "Phiếu Nhập")
@@ -828,16 +609,9 @@ namespace QLVT
                 drv = ((DataRowView)bdsPhieuNhap[bdsPhieuNhap.Position]);
                 DateTime ngay = ((DateTime)drv["NGAY"]);
 
-                cauTruyVanHoanTac = "INSERT INTO DBO.PHIEUNHAP(MAPN, NGAY, MasoDDH, MANV, MAKHO) " +
-                    "VALUES( '" + drv["MAPN"].ToString().Trim() + "', '"+
-                    ngay.ToString("yyyy-MM-dd") + "', '" +
-                    drv["MasoDDH"].ToString() + "', '" +
-                    drv["MANV"].ToString() + "', '" +
-                    drv["MAKHO"].ToString() + "')";
-                    
             }
 
-            if(cheDo == "Chi Tiết Phiếu Nhập")
+            if (cheDo == "Chi Tiết Phiếu Nhập")
             {
                 drv = ((DataRowView)bdsPhieuNhap[bdsPhieuNhap.Position]);
                 String maNhanVien = drv["MANV"].ToString();
@@ -849,16 +623,9 @@ namespace QLVT
 
 
                 drv = ((DataRowView)bdsChiTietPhieuNhap[bdsChiTietPhieuNhap.Position]);
-                cauTruyVanHoanTac = "INSERT INTO DBO.CTPN(MAPN, MAVT, SOLUONG, DONGIA) " +
-                    "VALUES('" + drv["MAPN"].ToString().Trim() + "', '" +
-                    drv["MAVT"].ToString().Trim() + "', " +
-                    drv["SOLUONG"].ToString().Trim() + ", " +
-                    drv["DONGIA"].ToString().Trim() + ")";
             }
 
-            undoList.Push(cauTruyVanHoanTac);
-            //Console.WriteLine("Line 842");
-            //Console.WriteLine(cauTruyVanHoanTac);
+
 
             /*Step 2*/
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Thông báo",
@@ -888,7 +655,6 @@ namespace QLVT
                     /*Cap nhat lai do ben tren can tao cau truy van nen da dat dangThemMoi = true*/
                     dangThemMoi = false;
                     MessageBox.Show("Xóa thành công ", "Thông báo", MessageBoxButtons.OK);
-                    this.btnHOANTAC.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -907,8 +673,7 @@ namespace QLVT
             }
             else
             {
-                // xoa cau truy van hoan tac di
-                undoList.Pop();
+
             }
         }
     }

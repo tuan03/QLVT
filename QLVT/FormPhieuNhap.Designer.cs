@@ -36,19 +36,18 @@ namespace QLVT
             System.Windows.Forms.Label mAKHOLabel;
             System.Windows.Forms.Label mAPNLabel;
             System.Windows.Forms.Label nGAYLabel;
-            System.Windows.Forms.Label masoDDHLabel;
-            System.Windows.Forms.Label mAVTLabel1;
-            System.Windows.Forms.Label sOLUONGLabel1;
-            System.Windows.Forms.Label dONGIALabel1;
             System.Windows.Forms.Label mANVLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPhieuNhap));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            this.masoDDHLabel = new System.Windows.Forms.Label();
+            this.mAVTLabel1 = new System.Windows.Forms.Label();
+            this.sOLUONGLabel1 = new System.Windows.Forms.Label();
+            this.dONGIALabel1 = new System.Windows.Forms.Label();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnTHEM = new DevExpress.XtraBars.BarButtonItem();
             this.btnXOA = new DevExpress.XtraBars.BarButtonItem();
             this.btnGHI = new DevExpress.XtraBars.BarButtonItem();
-            this.btnHOANTAC = new DevExpress.XtraBars.BarButtonItem();
             this.btnLAMMOI = new DevExpress.XtraBars.BarButtonItem();
             this.btnMENU = new DevExpress.XtraBars.BarSubItem();
             this.btnCheDoPhieuNhap = new DevExpress.XtraBars.BarButtonItem();
@@ -84,6 +83,7 @@ namespace QLVT
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBoxPhieuNhap = new System.Windows.Forms.GroupBox();
+            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.btnChonChiTietDonHang = new System.Windows.Forms.Button();
             this.txtMaKho = new DevExpress.XtraEditors.TextEdit();
             this.txtMaNhanVien = new System.Windows.Forms.TextBox();
@@ -99,17 +99,12 @@ namespace QLVT
             this.btnChonVatTu = new System.Windows.Forms.Button();
             this.txtMaVatTu = new DevExpress.XtraEditors.TextEdit();
             this.chiTietPhieuNhapTableAdapter = new QLVT.DataSetTableAdapters.CTPNTableAdapter();
-            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             dONGIALabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             mAKHOLabel = new System.Windows.Forms.Label();
             mAPNLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
-            masoDDHLabel = new System.Windows.Forms.Label();
-            mAVTLabel1 = new System.Windows.Forms.Label();
-            sOLUONGLabel1 = new System.Windows.Forms.Label();
-            dONGIALabel1 = new System.Windows.Forms.Label();
             mANVLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -124,17 +119,17 @@ namespace QLVT
             ((System.ComponentModel.ISupportInitialize)(this.bdsChiTietPhieuNhap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCTDDH)).BeginInit();
             this.groupBoxPhieuNhap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKho.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonGiaChiTietPhieuNhap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongChiTietPhieuNhap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaVatChiTietPhieuNhap.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteNgay.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dteNgay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dteNgay.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieuNhap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonGia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaVatTu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // dONGIALabel
@@ -143,7 +138,7 @@ namespace QLVT
             dONGIALabel.Location = new System.Drawing.Point(62, 665);
             dONGIALabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             dONGIALabel.Name = "dONGIALabel";
-            dONGIALabel.Size = new System.Drawing.Size(53, 16);
+            dONGIALabel.Size = new System.Drawing.Size(52, 16);
             dONGIALabel.TabIndex = 16;
             dONGIALabel.Text = "Đơn Giá";
             // 
@@ -153,7 +148,7 @@ namespace QLVT
             sOLUONGLabel.Location = new System.Drawing.Point(61, 588);
             sOLUONGLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             sOLUONGLabel.Name = "sOLUONGLabel";
-            sOLUONGLabel.Size = new System.Drawing.Size(62, 16);
+            sOLUONGLabel.Size = new System.Drawing.Size(61, 16);
             sOLUONGLabel.TabIndex = 14;
             sOLUONGLabel.Text = "Số Lượng";
             // 
@@ -163,7 +158,7 @@ namespace QLVT
             mAVTLabel.Location = new System.Drawing.Point(61, 512);
             mAVTLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             mAVTLabel.Name = "mAVTLabel";
-            mAVTLabel.Size = new System.Drawing.Size(68, 16);
+            mAVTLabel.Size = new System.Drawing.Size(67, 16);
             mAVTLabel.TabIndex = 11;
             mAVTLabel.Text = "Mã Vật Tư";
             // 
@@ -173,7 +168,7 @@ namespace QLVT
             mAKHOLabel.Location = new System.Drawing.Point(13, 125);
             mAKHOLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             mAKHOLabel.Name = "mAKHOLabel";
-            mAKHOLabel.Size = new System.Drawing.Size(50, 16);
+            mAKHOLabel.Size = new System.Drawing.Size(49, 16);
             mAKHOLabel.TabIndex = 8;
             mAKHOLabel.Text = "Mã Kho";
             // 
@@ -183,7 +178,7 @@ namespace QLVT
             mAPNLabel.Location = new System.Drawing.Point(12, 39);
             mAPNLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             mAPNLabel.Name = "mAPNLabel";
-            mAPNLabel.Size = new System.Drawing.Size(93, 16);
+            mAPNLabel.Size = new System.Drawing.Size(92, 16);
             mAPNLabel.TabIndex = 18;
             mAPNLabel.Text = "Mã Phiếu Nhập";
             // 
@@ -193,56 +188,56 @@ namespace QLVT
             nGAYLabel.Location = new System.Drawing.Point(350, 34);
             nGAYLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             nGAYLabel.Name = "nGAYLabel";
-            nGAYLabel.Size = new System.Drawing.Size(36, 16);
+            nGAYLabel.Size = new System.Drawing.Size(35, 16);
             nGAYLabel.TabIndex = 19;
             nGAYLabel.Text = "Ngày";
             // 
             // masoDDHLabel
             // 
-            masoDDHLabel.AutoSize = true;
-            masoDDHLabel.Location = new System.Drawing.Point(14, 192);
-            masoDDHLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            masoDDHLabel.Name = "masoDDHLabel";
-            masoDDHLabel.Size = new System.Drawing.Size(109, 16);
-            masoDDHLabel.TabIndex = 20;
-            masoDDHLabel.Text = "Mã Đơn Đặt Hàng";
+            this.masoDDHLabel.AutoSize = true;
+            this.masoDDHLabel.Location = new System.Drawing.Point(14, 192);
+            this.masoDDHLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.masoDDHLabel.Name = "masoDDHLabel";
+            this.masoDDHLabel.Size = new System.Drawing.Size(108, 16);
+            this.masoDDHLabel.TabIndex = 20;
+            this.masoDDHLabel.Text = "Mã Đơn Đặt Hàng";
             // 
             // mAVTLabel1
             // 
-            mAVTLabel1.AutoSize = true;
-            mAVTLabel1.Location = new System.Drawing.Point(13, 240);
-            mAVTLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            mAVTLabel1.Name = "mAVTLabel1";
-            mAVTLabel1.Size = new System.Drawing.Size(68, 16);
-            mAVTLabel1.TabIndex = 22;
-            mAVTLabel1.Text = "Mã Vật Tư";
+            this.mAVTLabel1.AutoSize = true;
+            this.mAVTLabel1.Location = new System.Drawing.Point(13, 240);
+            this.mAVTLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.mAVTLabel1.Name = "mAVTLabel1";
+            this.mAVTLabel1.Size = new System.Drawing.Size(67, 16);
+            this.mAVTLabel1.TabIndex = 22;
+            this.mAVTLabel1.Text = "Mã Vật Tư";
             // 
             // sOLUONGLabel1
             // 
-            sOLUONGLabel1.AutoSize = true;
-            sOLUONGLabel1.Location = new System.Drawing.Point(10, 283);
-            sOLUONGLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            sOLUONGLabel1.Name = "sOLUONGLabel1";
-            sOLUONGLabel1.Size = new System.Drawing.Size(62, 16);
-            sOLUONGLabel1.TabIndex = 23;
-            sOLUONGLabel1.Text = "Số Lượng";
+            this.sOLUONGLabel1.AutoSize = true;
+            this.sOLUONGLabel1.Location = new System.Drawing.Point(10, 283);
+            this.sOLUONGLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.sOLUONGLabel1.Name = "sOLUONGLabel1";
+            this.sOLUONGLabel1.Size = new System.Drawing.Size(61, 16);
+            this.sOLUONGLabel1.TabIndex = 23;
+            this.sOLUONGLabel1.Text = "Số Lượng";
             // 
             // dONGIALabel1
             // 
-            dONGIALabel1.AutoSize = true;
-            dONGIALabel1.Location = new System.Drawing.Point(13, 324);
-            dONGIALabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            dONGIALabel1.Name = "dONGIALabel1";
-            dONGIALabel1.Size = new System.Drawing.Size(53, 16);
-            dONGIALabel1.TabIndex = 24;
-            dONGIALabel1.Text = "Đơn Giá";
+            this.dONGIALabel1.AutoSize = true;
+            this.dONGIALabel1.Location = new System.Drawing.Point(13, 324);
+            this.dONGIALabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dONGIALabel1.Name = "dONGIALabel1";
+            this.dONGIALabel1.Size = new System.Drawing.Size(52, 16);
+            this.dONGIALabel1.TabIndex = 24;
+            this.dONGIALabel1.Text = "Đơn Giá";
             // 
             // mANVLabel
             // 
             mANVLabel.AutoSize = true;
             mANVLabel.Location = new System.Drawing.Point(12, 83);
             mANVLabel.Name = "mANVLabel";
-            mANVLabel.Size = new System.Drawing.Size(87, 16);
+            mANVLabel.Size = new System.Drawing.Size(86, 16);
             mANVLabel.TabIndex = 25;
             mANVLabel.Text = "Mã Nhân Viên";
             // 
@@ -260,7 +255,6 @@ namespace QLVT
             this.btnTHEM,
             this.btnXOA,
             this.btnGHI,
-            this.btnHOANTAC,
             this.btnLAMMOI,
             this.btnCHUYENChiNhanh,
             this.btnTHOAT,
@@ -282,7 +276,6 @@ namespace QLVT
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnTHEM, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXOA, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGHI, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHOANTAC, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLAMMOI, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnMENU, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnTHOAT, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
@@ -319,15 +312,6 @@ namespace QLVT
             this.btnGHI.Name = "btnGHI";
             this.btnGHI.Size = new System.Drawing.Size(70, 0);
             this.btnGHI.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGHI_ItemClick);
-            // 
-            // btnHOANTAC
-            // 
-            this.btnHOANTAC.Caption = "Hoàn Tác";
-            this.btnHOANTAC.Enabled = false;
-            this.btnHOANTAC.Id = 3;
-            this.btnHOANTAC.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHOANTAC.ImageOptions.SvgImage")));
-            this.btnHOANTAC.Name = "btnHOANTAC";
-            this.btnHOANTAC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHOANTAC_ItemClick);
             // 
             // btnLAMMOI
             // 
@@ -392,7 +376,7 @@ namespace QLVT
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.barDockControlTop.Size = new System.Drawing.Size(1082, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(1082, 30);
             // 
             // barDockControlBottom
             // 
@@ -407,19 +391,19 @@ namespace QLVT
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 721);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 722);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1082, 31);
+            this.barDockControlRight.Location = new System.Drawing.Point(1082, 30);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 721);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 722);
             // 
             // btnCHUYENChiNhanh
             // 
@@ -440,7 +424,7 @@ namespace QLVT
             this.panelControl1.Controls.Add(this.cmbChiNhanh);
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 31);
+            this.panelControl1.Location = new System.Drawing.Point(0, 30);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(8);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1082, 69);
@@ -465,7 +449,7 @@ namespace QLVT
             this.label1.Location = new System.Drawing.Point(131, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 25);
+            this.label1.Size = new System.Drawing.Size(101, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Chi Nhánh";
             // 
@@ -504,7 +488,7 @@ namespace QLVT
             this.gcPhieuNhap.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcPhieuNhap.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6);
             this.gcPhieuNhap.Enabled = false;
-            this.gcPhieuNhap.Location = new System.Drawing.Point(0, 100);
+            this.gcPhieuNhap.Location = new System.Drawing.Point(0, 99);
             this.gcPhieuNhap.MainView = this.gridView1;
             this.gcPhieuNhap.Margin = new System.Windows.Forms.Padding(6);
             this.gcPhieuNhap.MenuManager = this.barManager1;
@@ -586,10 +570,10 @@ namespace QLVT
             this.gcDDH.Controls.Add(this.gcChiTietPhieuNhap);
             this.gcDDH.Controls.Add(this.groupBoxPhieuNhap);
             this.gcDDH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcDDH.Location = new System.Drawing.Point(0, 310);
+            this.gcDDH.Location = new System.Drawing.Point(0, 309);
             this.gcDDH.Margin = new System.Windows.Forms.Padding(6);
             this.gcDDH.Name = "gcDDH";
-            this.gcDDH.Size = new System.Drawing.Size(1082, 442);
+            this.gcDDH.Size = new System.Drawing.Size(1082, 443);
             this.gcDDH.TabIndex = 25;
             this.gcDDH.Text = "Đặt Hàng";
             // 
@@ -603,12 +587,12 @@ namespace QLVT
             gridLevelNode1.RelationName = "Level1";
             this.gcChiTietPhieuNhap.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gcChiTietPhieuNhap.Location = new System.Drawing.Point(589, 31);
+            this.gcChiTietPhieuNhap.Location = new System.Drawing.Point(589, 28);
             this.gcChiTietPhieuNhap.MainView = this.gvCTDDH;
             this.gcChiTietPhieuNhap.Margin = new System.Windows.Forms.Padding(6);
             this.gcChiTietPhieuNhap.MenuManager = this.barManager1;
             this.gcChiTietPhieuNhap.Name = "gcChiTietPhieuNhap";
-            this.gcChiTietPhieuNhap.Size = new System.Drawing.Size(491, 409);
+            this.gcChiTietPhieuNhap.Size = new System.Drawing.Size(491, 413);
             this.gcChiTietPhieuNhap.TabIndex = 1;
             this.gcChiTietPhieuNhap.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTDDH});
@@ -680,14 +664,14 @@ namespace QLVT
             this.groupBoxPhieuNhap.Controls.Add(this.txtMaKho);
             this.groupBoxPhieuNhap.Controls.Add(mANVLabel);
             this.groupBoxPhieuNhap.Controls.Add(this.txtMaNhanVien);
-            this.groupBoxPhieuNhap.Controls.Add(dONGIALabel1);
+            this.groupBoxPhieuNhap.Controls.Add(this.dONGIALabel1);
             this.groupBoxPhieuNhap.Controls.Add(this.txtDonGiaChiTietPhieuNhap);
-            this.groupBoxPhieuNhap.Controls.Add(sOLUONGLabel1);
+            this.groupBoxPhieuNhap.Controls.Add(this.sOLUONGLabel1);
             this.groupBoxPhieuNhap.Controls.Add(this.txtSoLuongChiTietPhieuNhap);
-            this.groupBoxPhieuNhap.Controls.Add(mAVTLabel1);
+            this.groupBoxPhieuNhap.Controls.Add(this.mAVTLabel1);
             this.groupBoxPhieuNhap.Controls.Add(this.txtMaVatChiTietPhieuNhap);
             this.groupBoxPhieuNhap.Controls.Add(this.btnChonDonHang);
-            this.groupBoxPhieuNhap.Controls.Add(masoDDHLabel);
+            this.groupBoxPhieuNhap.Controls.Add(this.masoDDHLabel);
             this.groupBoxPhieuNhap.Controls.Add(this.txtMaDonDatHang);
             this.groupBoxPhieuNhap.Controls.Add(nGAYLabel);
             this.groupBoxPhieuNhap.Controls.Add(this.dteNgay);
@@ -702,15 +686,21 @@ namespace QLVT
             this.groupBoxPhieuNhap.Controls.Add(this.txtMaVatTu);
             this.groupBoxPhieuNhap.Controls.Add(mAKHOLabel);
             this.groupBoxPhieuNhap.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBoxPhieuNhap.Location = new System.Drawing.Point(2, 31);
+            this.groupBoxPhieuNhap.Location = new System.Drawing.Point(2, 28);
             this.groupBoxPhieuNhap.Margin = new System.Windows.Forms.Padding(6);
             this.groupBoxPhieuNhap.Name = "groupBoxPhieuNhap";
             this.groupBoxPhieuNhap.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBoxPhieuNhap.Size = new System.Drawing.Size(587, 409);
+            this.groupBoxPhieuNhap.Size = new System.Drawing.Size(587, 413);
             this.groupBoxPhieuNhap.TabIndex = 0;
             this.groupBoxPhieuNhap.TabStop = false;
             this.groupBoxPhieuNhap.Text = "Thông Tin";
-            this.groupBoxPhieuNhap.Enter += new System.EventHandler(this.groupBoxDonDatHang_Enter);
+            // 
+            // separatorControl1
+            // 
+            this.separatorControl1.Location = new System.Drawing.Point(64, 150);
+            this.separatorControl1.Name = "separatorControl1";
+            this.separatorControl1.Size = new System.Drawing.Size(462, 30);
+            this.separatorControl1.TabIndex = 29;
             // 
             // btnChonChiTietDonHang
             // 
@@ -730,7 +720,7 @@ namespace QLVT
             this.txtMaKho.Location = new System.Drawing.Point(181, 120);
             this.txtMaKho.MenuManager = this.barManager1;
             this.txtMaKho.Name = "txtMaKho";
-            this.txtMaKho.Size = new System.Drawing.Size(131, 24);
+            this.txtMaKho.Size = new System.Drawing.Size(131, 22);
             this.txtMaKho.TabIndex = 27;
             // 
             // txtMaNhanVien
@@ -771,7 +761,7 @@ namespace QLVT
             0,
             0,
             0});
-            this.txtDonGiaChiTietPhieuNhap.Size = new System.Drawing.Size(130, 26);
+            this.txtDonGiaChiTietPhieuNhap.Size = new System.Drawing.Size(130, 24);
             this.txtDonGiaChiTietPhieuNhap.TabIndex = 25;
             // 
             // txtSoLuongChiTietPhieuNhap
@@ -803,7 +793,7 @@ namespace QLVT
             0,
             0,
             0});
-            this.txtSoLuongChiTietPhieuNhap.Size = new System.Drawing.Size(131, 26);
+            this.txtSoLuongChiTietPhieuNhap.Size = new System.Drawing.Size(131, 24);
             this.txtSoLuongChiTietPhieuNhap.TabIndex = 24;
             // 
             // txtMaVatChiTietPhieuNhap
@@ -814,7 +804,7 @@ namespace QLVT
             this.txtMaVatChiTietPhieuNhap.Margin = new System.Windows.Forms.Padding(5);
             this.txtMaVatChiTietPhieuNhap.MenuManager = this.barManager1;
             this.txtMaVatChiTietPhieuNhap.Name = "txtMaVatChiTietPhieuNhap";
-            this.txtMaVatChiTietPhieuNhap.Size = new System.Drawing.Size(130, 24);
+            this.txtMaVatChiTietPhieuNhap.Size = new System.Drawing.Size(130, 22);
             this.txtMaVatChiTietPhieuNhap.TabIndex = 23;
             // 
             // btnChonDonHang
@@ -852,9 +842,8 @@ namespace QLVT
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dteNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dteNgay.Size = new System.Drawing.Size(165, 24);
+            this.dteNgay.Size = new System.Drawing.Size(165, 22);
             this.dteNgay.TabIndex = 20;
-            this.dteNgay.EditValueChanged += new System.EventHandler(this.dteNgay_EditValueChanged);
             // 
             // txtMaPhieuNhap
             // 
@@ -864,7 +853,7 @@ namespace QLVT
             this.txtMaPhieuNhap.Margin = new System.Windows.Forms.Padding(5);
             this.txtMaPhieuNhap.MenuManager = this.barManager1;
             this.txtMaPhieuNhap.Name = "txtMaPhieuNhap";
-            this.txtMaPhieuNhap.Size = new System.Drawing.Size(129, 24);
+            this.txtMaPhieuNhap.Size = new System.Drawing.Size(129, 22);
             this.txtMaPhieuNhap.TabIndex = 19;
             // 
             // txtDonGia
@@ -891,7 +880,7 @@ namespace QLVT
             0,
             0,
             0});
-            this.txtDonGia.Size = new System.Drawing.Size(244, 26);
+            this.txtDonGia.Size = new System.Drawing.Size(244, 24);
             this.txtDonGia.TabIndex = 17;
             // 
             // txtSoLuong
@@ -922,7 +911,7 @@ namespace QLVT
             0,
             0,
             0});
-            this.txtSoLuong.Size = new System.Drawing.Size(244, 26);
+            this.txtSoLuong.Size = new System.Drawing.Size(244, 24);
             this.txtSoLuong.TabIndex = 15;
             // 
             // btnChonVatTu
@@ -943,19 +932,12 @@ namespace QLVT
             this.txtMaVatTu.Margin = new System.Windows.Forms.Padding(6);
             this.txtMaVatTu.MenuManager = this.barManager1;
             this.txtMaVatTu.Name = "txtMaVatTu";
-            this.txtMaVatTu.Size = new System.Drawing.Size(244, 24);
+            this.txtMaVatTu.Size = new System.Drawing.Size(244, 22);
             this.txtMaVatTu.TabIndex = 12;
             // 
             // chiTietPhieuNhapTableAdapter
             // 
             this.chiTietPhieuNhapTableAdapter.ClearBeforeFill = true;
-            // 
-            // separatorControl1
-            // 
-            this.separatorControl1.Location = new System.Drawing.Point(64, 150);
-            this.separatorControl1.Name = "separatorControl1";
-            this.separatorControl1.Size = new System.Drawing.Size(462, 30);
-            this.separatorControl1.TabIndex = 29;
             // 
             // FormPhieuNhap
             // 
@@ -987,6 +969,7 @@ namespace QLVT
             ((System.ComponentModel.ISupportInitialize)(this.gvCTDDH)).EndInit();
             this.groupBoxPhieuNhap.ResumeLayout(false);
             this.groupBoxPhieuNhap.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKho.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonGiaChiTietPhieuNhap.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongChiTietPhieuNhap.Properties)).EndInit();
@@ -997,7 +980,6 @@ namespace QLVT
             ((System.ComponentModel.ISupportInitialize)(this.txtDonGia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaVatTu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1010,7 +992,6 @@ namespace QLVT
         private DevExpress.XtraBars.BarButtonItem btnTHEM;
         private DevExpress.XtraBars.BarButtonItem btnXOA;
         private DevExpress.XtraBars.BarButtonItem btnGHI;
-        private DevExpress.XtraBars.BarButtonItem btnHOANTAC;
         private DevExpress.XtraBars.BarButtonItem btnLAMMOI;
         public DevExpress.XtraBars.BarSubItem btnMENU;
         private DevExpress.XtraBars.BarButtonItem btnCheDoPhieuNhap;
@@ -1062,5 +1043,9 @@ namespace QLVT
         private DevExpress.XtraGrid.Columns.GridColumn colDONGIA;
         private System.Windows.Forms.Button btnChonChiTietDonHang;
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
+        private System.Windows.Forms.Label masoDDHLabel;
+        private System.Windows.Forms.Label mAVTLabel1;
+        private System.Windows.Forms.Label sOLUONGLabel1;
+        private System.Windows.Forms.Label dONGIALabel1;
     }
 }

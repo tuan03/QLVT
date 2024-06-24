@@ -29,7 +29,7 @@ namespace QLVT.SubForm
         {
             dataSet.EnforceConstraints = false;
             this.cTDDHTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.cTDDHTableAdapter.Fill(this.dataSet.CTDDH);
+            this.cTDDHTableAdapter.FillByMaSoDDH(this.dataSet.CTDDH, Program.maDonDatHangDuocChon, Program.maPhieuNhapDuocChon);
 
         }
         /*
@@ -49,17 +49,18 @@ namespace QLVT.SubForm
         private void btnCHON_Click(object sender, EventArgs e)
         {
             DataRowView drv = ((DataRowView)(bdsChiTietDonHang.Current));
+            if (drv == null) return; //case: không còn cái gì để thêm
             string maDonHang = drv["MasoDDH"].ToString().Trim();
             string maVatTu = drv["MaVT"].ToString().Trim();
-            int soLuong = int.Parse( drv["SOLUONG"].ToString().Trim() );
-            int donGia = int.Parse( drv["DONGIA"].ToString().Trim());
+            int soLuong = int.Parse(drv["SOLUONG"].ToString().Trim());
+            int donGia = int.Parse(drv["DONGIA"].ToString().Trim());
 
 
             /*Kiem tra xem ma don hang cua gcPhieuNhap co trung voi ma don hang duoc chon hay khong ?*/
             Program.maDonDatHangDuocChonChiTiet = maDonHang;
-            if( Program.maDonDatHangDuocChon != Program.maDonDatHangDuocChonChiTiet)
+            if (Program.maDonDatHangDuocChon != Program.maDonDatHangDuocChonChiTiet)
             {
-                MessageBox.Show("Bạn phải chọn chi tiết đơn hàng có mã đơn hàng là " + Program.maDonDatHangDuocChon, "Thông báo",MessageBoxButtons.OK);
+                MessageBox.Show("Bạn phải chọn chi tiết đơn hàng có mã đơn hàng là " + Program.maDonDatHangDuocChon, "Thông báo", MessageBoxButtons.OK);
                 return;
             }
 
