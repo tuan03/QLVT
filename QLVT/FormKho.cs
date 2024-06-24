@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.ChartRangeControlClient.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,8 +11,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QLTVT.DataSet;
 
-namespace QLVT
+namespace QLTVT
 {
     public partial class FormKho : Form
     {
@@ -36,9 +38,11 @@ namespace QLVT
          * 
          * nếu btnGHI sẽ ứng với INSERT
          * nếu btnXOA sẽ ứng với DELETE
-         * nếu btnCHUYENChiNhanh sẽ ứng với CHANGEBRAND
+         * nếu btnCHUYENCHINHANH sẽ ứng với CHANGEBRAND
          **********************************************************/
         Stack undoList = new Stack();
+
+        List<DataRow> khoData = new List<DataRow>();
 
 
         public FormKho()
@@ -46,13 +50,62 @@ namespace QLVT
             InitializeComponent();
         }
 
-        private void khoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void initKhoData()
         {
-            this.Validate();
-            this.bdsKho.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dataSet);
-
+            if (this.dataSet.Kho.Rows.Count > 0)
+            {
+                Console.WriteLine("\n\n>>> DataTable filled with data");
+                khoData.Clear();
+                // Duyệt qua từng hàng trong DataTable
+                foreach (DataRow row in this.dataSet.Kho.Rows)
+                {
+                    DataTable table = new DataTable();
+                    table.Columns.Add("MAKHO", typeof(string));
+                    table.Columns.Add("DIACHI", typeof(string));
+                    table.Columns.Add("TENKHO", typeof(string));
+                    table.Columns.Add("MACN", typeof(string));
+                    DataRow newKhoRow = table.NewRow();
+                    newKhoRow["MAKHO"] = row["MAKHO"];
+                    newKhoRow["DIACHI"] = row["DIACHI"];
+                    newKhoRow["TENKHO"] = row["TENKHO"];
+                    newKhoRow["MACN"] = row["MACN"];
+                    khoData.Add(newKhoRow);
+                }
+            }
+            else
+            {
+                Console.WriteLine("\n\n>>> DataTable aren't be filled with data !!!\n");
+            }
         }
+
+        private DataRow GetKhoRowInKhoData(string ma_kho)
+        {
+            if (this.dataSet.Kho.Rows.Count > 0)
+            {
+                Console.WriteLine("\n\n>>> Get KHO ROW filled with data");
+                // Duyệt qua từng hàng trong DataTable
+                foreach (DataRow row in this.khoData)
+                {
+                    if ((string)row["MAKHO"] == ma_kho)
+                    {
+                        return row;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("\n\n>>> Get KHO ROW aren't be filled with data !!!\n");
+            }
+            return null;
+        }
+
+        //private void khoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        //{
+        //    this.Validate();
+        //    this.bdsKho.EndEdit();
+        //    this.tableAdapterManager.UpdateAll(this.dataSet);
+
+        //}
         /*
          *Step 1: tat kiem tra khoa ngoai & do du lieu vao form
          *Step 2: lay du lieu dang nhap tu form dang nhap
@@ -76,19 +129,22 @@ namespace QLVT
             this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
             this.khoTableAdapter.Fill(this.dataSet.Kho);
 
+            initKhoData();
+
             /*van con ton tai loi chua sua duoc*/
             maChiNhanh = ((DataRowView)bdsKho[0])["MACN"].ToString();
             /*Step 2*/
-            cmbChiNhanh.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
-            cmbChiNhanh.DisplayMember = "TENCN";
-            cmbChiNhanh.ValueMember = "TENSERVER";
-            cmbChiNhanh.SelectedIndex = Program.brand;
+            cmbCHINHANH.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
+            cmbCHINHANH.DisplayMember = "TENCN";
+            cmbCHINHANH.ValueMember = "TENSERVER";
+            Console.WriteLine($"\n\n>>> FormKho - brand: {Program.brand}\n");
+            cmbCHINHANH.SelectedIndex = Program.brand;
 
             /*Step 3*/
             /*CONG TY chi xem du lieu*/
-            if (Program.role == "CongTy")
+            if (Program.role == "CONGTY")
             {
-                cmbChiNhanh.Enabled = true;
+                cmbCHINHANH.Enabled = true;
 
                 this.btnTHEM.Enabled = false;
                 this.btnXOA.Enabled = false;
@@ -96,17 +152,17 @@ namespace QLVT
 
                 this.btnHOANTAC.Enabled = false;
                 this.btnLAMMOI.Enabled = true;
-                this.btnCHUYENChiNhanh.Enabled = true;
+                this.btnCHUYENCHINHANH.Enabled = true;
                 this.btnTHOAT.Enabled = true;
 
                 this.panelNhapLieu.Enabled = false;
             }
 
-            /* CHI NHANH & User co the xem - xoa - sua du lieu nhung khong the 
+            /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
-            if (Program.role == "ChiNhanh" || Program.role == "User")
+            if (Program.role == "CHINHANH" || Program.role == "USER")
             {
-                cmbChiNhanh.Enabled = false;
+                cmbCHINHANH.Enabled = false;
 
                 this.btnTHEM.Enabled = true;
                 this.btnXOA.Enabled = true;
@@ -122,17 +178,17 @@ namespace QLVT
 
         }
 
-        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbCHINHANH_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
             /*Neu combobox khong co so lieu thi ket thuc luon*/
-            if (cmbChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView")
+            if (cmbCHINHANH.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
 
-            Program.serverName = cmbChiNhanh.SelectedValue.ToString();
+            Program.serverName = cmbCHINHANH.SelectedValue.ToString();
 
             /*Neu chon sang chi nhanh khac voi chi nhanh hien tai*/
-            if (cmbChiNhanh.SelectedIndex != Program.brand)
+            if (cmbCHINHANH.SelectedIndex != Program.brand)
             {
                 Program.loginName = Program.remoteLogin;
                 Program.loginPassword = Program.remotePassword;
@@ -176,7 +232,7 @@ namespace QLVT
             /*Step 2*/
             /*AddNew tự động nhảy xuống cuối thêm 1 dòng mới*/
             bdsKho.AddNew();
-            txtMAChiNhanh.Text = maChiNhanh;
+            txtMACHINHANH.Text = maChiNhanh;
 
             /*Step 3*/
             this.txtMAKHO.Enabled = true;
@@ -243,14 +299,14 @@ namespace QLVT
                 return false;
             }
 
-            if (Regex.IsMatch(txtTENKHO.Text, @"^[\p{L}0-9 ]+$") == false)
+            if (Regex.IsMatch(txtTENKHO.Text, @"^[a-zA-Z0-9 ]+$") == false)
             {
-                MessageBox.Show("Tên kho chỉ chấp nhận chữ cái, số và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Mã kho chỉ chấp nhận chữ cái, số và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
                 txtTENKHO.Focus();
                 return false;
             }
 
-            if ( txtTENKHO.Text.Length > 30)
+            if (txtTENKHO.Text.Length > 30)
             {
                 MessageBox.Show("Tên kho không thể quá 30 kí tự", "Thông báo", MessageBoxButtons.OK);
                 txtTENKHO.Focus();
@@ -264,7 +320,7 @@ namespace QLVT
                 return false;
             }
 
-            if (Regex.IsMatch(txtDIACHI.Text, @"^[\p{L}0-9, ]+$") == false)
+            if (Regex.IsMatch(txtDIACHI.Text, @"^[a-zA-Z0-9, -]+$") == false)
             {
                 MessageBox.Show("Địa chỉ chỉ gồm chữ cái, số và khoảng trắng", "Thông báo", MessageBoxButtons.OK);
                 txtDIACHI.Focus();
@@ -293,9 +349,6 @@ namespace QLVT
             /*Step 1*/
             /*Lay du lieu truoc khi chon btnGHI - phuc vu btnHOANTAC*/
             String maKhoHang = txtMAKHO.Text.Trim();// Trim() de loai bo khoang trang thua
-            DataRowView drv = ((DataRowView)bdsKho[bdsKho.Position]);
-            String tenKhoHang = drv["TENKHO"].ToString();
-            String diaChi = drv["DIACHI"].ToString();
 
             /*declare @returnedResult int
               exec @returnedResult = sp_KiemTraMaVatTu '20'
@@ -324,12 +377,13 @@ namespace QLVT
             }
             Program.myReader.Read();
             int result = int.Parse(Program.myReader.GetValue(0).ToString());
-            //Console.WriteLine(result);
+            Console.WriteLine($"\n\n>>> ghi kho - result: {result}\n");
             Program.myReader.Close();
 
             /*Step 2*/
             int viTriConTro = bdsKho.Position;
             int viTriMaKhoHang = bdsKho.Find("MAKHO", txtMAKHO.Text);
+            Console.WriteLine($"\n>>> ghi kho - vi tri con tro: {result} , vi tri ma kho hang: {viTriMaKhoHang}\n");
 
             if (result == 1 && viTriConTro != viTriMaKhoHang)
             {
@@ -351,7 +405,7 @@ namespace QLVT
                         btnHOANTAC.Enabled = true;
 
                         btnLAMMOI.Enabled = true;
-                        btnCHUYENChiNhanh.Enabled = true;
+                        btnCHUYENCHINHANH.Enabled = true;
                         btnTHOAT.Enabled = true;
 
                         this.txtMAKHO.Enabled = false;
@@ -369,6 +423,10 @@ namespace QLVT
                         /*trước khi ấn btnGHI là sửa thông tin kho*/
                         else
                         {
+                            DataRow khoRow = GetKhoRowInKhoData(maKhoHang);
+                            string diaChi = (string)khoRow["DIACHI"];
+                            string tenKhoHang = (string)khoRow["TENKHO"];
+                            Console.Write($"\n\n>>> ten kho - dia chi: {tenKhoHang} - {diaChi}\n");
                             cauTruyVanHoanTac =
                                 "UPDATE DBO.KHO " +
                                 "SET " +
@@ -384,9 +442,29 @@ namespace QLVT
                         undoList.Push(cauTruyVanHoanTac);
 
                         this.bdsKho.EndEdit();
+                        if (this.dataSet.Kho.Rows.Count > 0)
+                        {
+                            Console.WriteLine("\n\n>>> DataTable filled with data");
+
+                            // Duyệt qua từng hàng trong DataTable
+                            foreach (DataRow row in this.dataSet.Kho.Rows)
+                            {
+                                // In ra từng cột trong hàng
+                                foreach (DataColumn column in this.dataSet.Kho.Columns)
+                                {
+                                    Console.Write($"{column.ColumnName}: {row[column]} , ");
+                                }
+                                Console.WriteLine();
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n\n>>> DataTable aren't be filled with data !!!\n");
+                        }
                         this.khoTableAdapter.Update(this.dataSet.Kho);
                         /*cập nhật lại trạng thái thêm mới cho chắc*/
                         dangThemMoi = false;
+                        initKhoData();
                         MessageBox.Show("Ghi thành công", "Thông báo", MessageBoxButtons.OK);
                     }
                     catch (Exception ex)
@@ -423,6 +501,7 @@ namespace QLVT
 
                 bdsKho.CancelEdit();
                 /*xoa dong hien tai*/
+                Console.WriteLine($"\n\n>>> before remove current: {bdsKho.Current}\n");
                 bdsKho.RemoveCurrent();
                 /* trở về lúc đầu con trỏ đang đứng*/
                 bdsKho.Position = viTri;
@@ -440,7 +519,7 @@ namespace QLVT
             /*Step 2*/
             bdsKho.CancelEdit();
             String cauTruyVanHoanTac = undoList.Pop().ToString();
-            Console.WriteLine(cauTruyVanHoanTac);
+            Console.WriteLine($"\n\n>>> cau hoan tac btnHOAN_TAC: {cauTruyVanHoanTac}\n");
             int n = Program.ExecSqlNonQuery(cauTruyVanHoanTac);
             bdsKho.Position = viTri;
             this.khoTableAdapter.Fill(this.dataSet.Kho);
@@ -480,11 +559,11 @@ namespace QLVT
             string cauTruyVanHoanTac =
             "INSERT INTO DBO.KHO( MAKHO,TENKHO,DIACHI,MACN) " +
             " VALUES( '" + txtMAKHO.Text + "','" +
-                        txtDIACHI.Text + "','" +
+                        txtTENKHO.Text + "','" +
                         txtDIACHI.Text + "', '" +
-                        txtMAChiNhanh.Text.Trim() + "' ) ";
+                        txtMACHINHANH.Text.Trim() + "' ) ";
 
-            Console.WriteLine(cauTruyVanHoanTac);
+            Console.WriteLine($"\n\n>>> cau hoan tac btnXOA: {cauTruyVanHoanTac}\n");
             undoList.Push(cauTruyVanHoanTac);
 
             /*Step 2*/
@@ -519,9 +598,17 @@ namespace QLVT
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void gridViewKho_focusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-
+            //int selectedRowHandle = e.FocusedRowHandle;
+            //if (selectedRowHandle >= 0)
+            //{
+            //    this.btnGHI.Enabled = true;
+            //    clickedRow = selectedRowHandle;
+            //    clickedDiaChi = (string)gridViewKho.GetRowCellValue(selectedRowHandle, "DIACHI");
+            //    clickedTenKhoHang = (string)gridViewKho.GetRowCellValue(selectedRowHandle, "TENKHO");
+            //    Console.WriteLine($"\n\n>>> grid view kho, focused data: {clickedDiaChi} , {clickedTenKhoHang} , {clickedRow}\n");
+            //}
         }
     }
 }
