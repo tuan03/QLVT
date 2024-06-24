@@ -85,7 +85,7 @@ namespace QLVT
 
 
         /**********************************************
-         * role: tên nhóm quyền đang đăng nhập: CongTy - ChiNhanh - USER
+         * role: tên nhóm quyền đang đăng nhập: CongTy - ChiNhanh - User
          * staff: tên nhân viên đang đăng nhập
          * brand: chi nhánh đang đăng nhập
          **********************************************/

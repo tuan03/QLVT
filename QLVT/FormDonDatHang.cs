@@ -269,7 +269,7 @@ namespace QLTVT
 
             }
 
-            /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
+            /* CHI NHANH & User co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
             if (Program.role == "CHINHANH" || Program.role == "USER")
             {
@@ -344,7 +344,7 @@ namespace QLTVT
 
             }
 
-            /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
+            /* CHI NHANH & User co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
             if (Program.role == "CHINHANH" || Program.role == "USER")
             {

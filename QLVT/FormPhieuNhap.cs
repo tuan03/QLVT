@@ -213,7 +213,7 @@ namespace QLVT
 
             }
 
-            /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
+            /* CHI NHANH & User co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
             if (Program.role == "ChiNhanh" || Program.role == "User")
             {
@@ -281,7 +281,7 @@ namespace QLVT
                 this.btnTHOAT.Enabled = true;
             }
 
-            /* CHI NHANH & USER co the xem - xoa - sua du lieu nhung khong the 
+            /* CHI NHANH & User co the xem - xoa - sua du lieu nhung khong the 
              chuyen sang chi nhanh khac*/
             if (Program.role == "ChiNhanh" || Program.role == "User")
             {
