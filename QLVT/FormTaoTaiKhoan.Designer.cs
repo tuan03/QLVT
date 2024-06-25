@@ -163,7 +163,6 @@ namespace QLVT
             this.btnThoat.TabIndex = 25;
             this.btnThoat.Text = "THOÁT";
             this.btnThoat.UseVisualStyleBackColor = false;
-            this.btnThoat.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 

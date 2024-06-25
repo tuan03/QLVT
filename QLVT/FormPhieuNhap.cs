@@ -243,7 +243,6 @@ namespace QLVT
                 cmbChiNhanh.Enabled = false;
 
                 this.btnTHEM.Enabled = true;
-                //bool turnOn = (bdsChiTietPhieuNhap.Count > 0) ? true : false;
                 this.btnXOA.Enabled = false;
                 this.btnGHI.Enabled = true;
 
@@ -358,10 +357,14 @@ namespace QLVT
                 this.btnTHEM.Enabled = true;
                 this.btnXOA.Enabled = true;
                 this.btnGHI.Enabled = true;
+                String cheDo = (btnMENU.Links[0].Caption == "Phiếu Nhập") ? "Phiếu Nhập" : "Chi Tiết Phiếu Nhập";
+
+                if (cheDo == "Chi Tiết Phiếu Nhập") this.btnXOA.Enabled = false;
 
                 this.btnLAMMOI.Enabled = true;
                 this.btnMENU.Enabled = true;
                 this.btnTHOAT.Enabled = true;
+
 
                 this.gcPhieuNhap.Enabled = true;
                 this.gcChiTietPhieuNhap.Enabled = true;
@@ -611,38 +614,18 @@ namespace QLVT
 
             }
 
-            if (cheDo == "Chi Tiết Phiếu Nhập")
-            {
-                drv = ((DataRowView)bdsPhieuNhap[bdsPhieuNhap.Position]);
-                String maNhanVien = drv["MANV"].ToString();
-                if (Program.userName != maNhanVien)
-                {
-                    MessageBox.Show("Bạn không xóa chi tiết phiếu nhập không phải do mình tạo", "Thông báo", MessageBoxButtons.OK);
-                    return;
-                }
-
-
-                drv = ((DataRowView)bdsChiTietPhieuNhap[bdsChiTietPhieuNhap.Position]);
-            }
-
-
-
             /*Step 2*/
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Thông báo",
                 MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 try
                 {
-                    /*Step 3*/
                     viTri = bds.Position;
                     if (cheDo == "Phiếu Nhập")
                     {
                         bdsPhieuNhap.RemoveCurrent();
                     }
-                    if (cheDo == "Chi Tiết Phiếu Nhập")
-                    {
-                        bdsChiTietPhieuNhap.RemoveCurrent();
-                    }
+
 
 
                     this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;

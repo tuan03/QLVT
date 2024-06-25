@@ -18,35 +18,10 @@ namespace QLVT
     {
         /* vị trí của con trỏ trên grid view*/
         int viTri = 0;
-        /********************************************
-         * đang thêm mới -> true -> đang dùng btnTHEM
-         *              -> false -> có thể là btnGHI( chỉnh sửa) hoặc btnXOA
-         *              
-         * Mục đích: dùng biến này để phân biệt giữa btnTHEM - thêm mới hoàn toàn
-         * và việc chỉnh sửa nhân viên( do mình ko dùng thêm btnXOA )
-         * Trạng thái true or false sẽ được sử dụng 
-         * trong btnGHI - việc này để phục vụ cho btnHOANTAC
-         ********************************************/
         bool dangThemMoi = false;
         public string makho = "";
         string maChiNhanh = "";
-        /**********************************************************
-         * undoList - phục vụ cho btnHOANTAC -  chứa các thông tin của đối tượng bị tác động 
-         * 
-         * nó là nơi lưu trữ các đối tượng cần thiết để hoàn tác các thao tác
-         * 
-         * nếu btnGHI sẽ ứng với INSERT
-         * nếu btnXOA sẽ ứng với DELETE
-         * nếu btnCHUYENChiNhanh sẽ ứng với CHANGEBRAND
-         **********************************************************/
-        Stack undoList = new Stack();
 
-
-
-        /********************************************************
-         * chứa những dữ liệu hiện tại đang làm việc
-         * gc chứa grid view đang làm việc
-         ********************************************************/
         BindingSource bds = null;
         GridControl gc = null;
         string type = "";
@@ -323,7 +298,7 @@ namespace QLVT
 
 
 
-
+                this.btnLAMMOI.Enabled = true;
                 this.txtMaVatTuChiTietPhieuXuat.Enabled = false;
                 this.btnChonVatTu.Enabled = true;
 
@@ -342,7 +317,7 @@ namespace QLVT
             this.btnGHI.Enabled = true;
 
             this.btnHOANTAC.Enabled = true;
-            this.btnLAMMOI.Enabled = false;
+            this.btnLAMMOI.Enabled = true;
             this.btnMENU.Enabled = false;
             this.btnTHOAT.Enabled = false;
 
@@ -471,70 +446,10 @@ namespace QLVT
             return true;
         }
 
-        private string taoCauTruyVanHoanTac(string cheDo)
-        {
-            String cauTruyVan = "";
-            DataRowView drv;
-            
-            /*TH1: dang sua phieu xuat*/
-            if (cheDo == "Phiếu Xuất" && dangThemMoi == false)
-            {
-                drv = ((DataRowView)(bdsPhieuXuat.Current));
-                DateTime ngay = (DateTime) drv["NGAY"];
-
-
-                cauTruyVan = "UPDATE DBO.PHIEUXUAT " +
-                    "SET " +
-                    "NGAY = CAST('" + ngay.ToString("yyyy-MM-dd") + "' AS DATETIME), " +
-                    "HOTENKH = '" + drv["HOTENKH"].ToString().Trim() + "', " +
-                    "MANV = '" + drv["MANV"].ToString().Trim() + "', " +
-                    "MAKHO = '" + drv["MAKHO"].ToString().Trim() + "' " +
-                    "WHERE MAPX = '" + drv["MAPX"].ToString().Trim() + "' "; 
-            }
-
-            /*TH2: them moi phieu xuat*/
-            if (cheDo == "Phiếu Xuất" && dangThemMoi == true)
-            {
-                // tao trong btnGHI thi hon
-            }
-
-            /*TH3: them moi chi tiet phieu xuat*/
-            if (cheDo == "Chi Tiết Phiếu Xuất" && dangThemMoi == true)
-            {
-                // tao trong btnGHI thi hon
-            }
-
-            /*TH4: dang sua chi tiet phieu nhap*/
-            if (cheDo == "Chi Tiết Phiếu Xuất" && dangThemMoi == false)
-            {
-                drv = ((DataRowView)(bdsChiTietPhieuXuat.Current));
-                int soLuong = int.Parse(drv["SOLUONG"].ToString().Trim());
-                float donGia = float.Parse(drv["DONGIA"].ToString().Trim());
-                String maPhieuXuat = drv["MAPN"].ToString().Trim();
-                String maVatTu = drv["MAVT"].ToString().Trim();
-
-                cauTruyVan = "UPDATE DBO.CTPX " +
-                    "SET " +
-                    "SOLUONG = " + soLuong + " " +
-                    "DOGIA = " + donGia + " " +
-                    "WHERE MAPX = '" + maPhieuXuat + "' " +
-                    "AND MAVT = '" + maVatTu + "' ";
-            }
-
-            return cauTruyVan;
-        }
-
-
-
-
         private void capNhatSoLuongVatTu(string maVatTu, string soLuong)
         {
-            string cauTruyVan = "EXEC sp_CapNhatSoLuongVatTu 'EXPORT','" + maVatTu + "', " + soLuong;
-
-
+            string cauTruyVan = $"EXEC sp_CapNhatSoLuongVatTu 'EXPORT', '{maVatTu}', {soLuong}";
             int n = Program.ExecSqlNonQuery(cauTruyVan);
-            //Console.WriteLine("Line 536");
-            //Console.WriteLine(cauTruyVan);
         }
         /*
          *Step 1: xac dinh xem minh dang GHI o che do nao
@@ -551,14 +466,6 @@ namespace QLVT
             /*Step 2*/
             bool ketQua = kiemTraDuLieuDauVao(cheDo);
             if (ketQua == false) return;
-
-            
-
-            /*Step 3*/
-            string cauTruyVanHoanTac = taoCauTruyVanHoanTac(cheDo);
-            //Console.WriteLine("CAU TRUY VAN HOAN TAC");
-            //Console.WriteLine(cauTruyVanHoanTac);
-
 
             /*Step 4*/
             String maPhieuXuat = txtMaPhieuXuat.Text.Trim();
@@ -611,19 +518,12 @@ namespace QLVT
                         /*TH1: them moi phieu nhap*/
                         if (cheDo == "Phiếu Xuất" && dangThemMoi == true)
                         {
-                            cauTruyVanHoanTac =
-                                "DELETE FROM DBO.PHIEUXUAT " +
-                                "WHERE MAPX = '" + maPhieuXuat + "'";
+
                         }
 
                         /*TH2: them moi chi tiet don hang*/
                         if (cheDo == "Chi Tiết Phiếu Xuất" && dangThemMoi == true)
                         {
-                            cauTruyVanHoanTac =
-                                "DELETE FROM DBO.CTPN " +
-                                "WHERE MAPN = '" + maPhieuXuat + "' " +
-                                "AND MAVT = '" + Program.maVatTuDuocChon + "'";
-
                             string maVatTu = txtMaVatTuChiTietPhieuXuat.Text.Trim();
                             string soLuong = txtSoLuongChiTietPhieuXuat.Text.Trim();
 
@@ -633,9 +533,6 @@ namespace QLVT
                         /*TH3: chinh sua phieu nhap -> chang co gi co the chinh sua
                          * duoc -> chang can xu ly*/
                         /*TH4: chinh sua chi tiet phieu nhap - > thi chi can may dong lenh duoi la xong*/
-                        undoList.Push(cauTruyVanHoanTac);
-                        Console.WriteLine("cau truy van hoan tac");
-                        Console.WriteLine(cauTruyVanHoanTac);
 
                         this.bdsPhieuXuat.EndEdit();
                         this.bdsChiTietPhieuXuat.EndEdit();
@@ -672,94 +569,26 @@ namespace QLVT
         }
 
 
-
-        /**********************************************************************
-         * moi lan nhan btnHOANTAC thi nen nhan them btnLAMMOI de 
-         * tranh bi loi khi an btnTHEM lan nua
-         * 
-         * statement: chua cau y nghia chuc nang ngay truoc khi an btnHOANTAC.
-         * Vi du: statement = INSERT | DELETE | CHANGEBRAND
-         * 
-         * bdsNhanVien.CancelEdit() - phuc hoi lai du lieu neu chua an btnGHI
-         * Step 0: trường hợp đã ấn btnTHEM nhưng chưa ấn btnGHI
-         * Step 1: kiểm tra undoList có trông hay không ?
-         * Step 2: Neu undoList khong trống thì lấy ra khôi phục
-         *********************************************************************/
         private void btnHOANTAC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /* Step 0 */
-            if (dangThemMoi == true && this.btnTHEM.Enabled == false)
-            {
-                dangThemMoi = false;
 
-                /*dang o che do Phiếu Nhập*/
-                if (btnMENU.Links[0].Caption == "Phiếu Xuất")
-                {
-                    this.txtMaPhieuXuat.Enabled = false;
-                    this.dteNgay.Enabled = false;
-                    this.txtTenKhachHang.Enabled = true;
-
-                    this.txtMaNhanVien.Enabled = false;
-                    
-                    this.txtMaKho.Enabled = false;
-                    this.btnChonKhoHang.Enabled = true;
-                }
-                /*dang o che do Chi Tiết Phiếu Nhập*/
-                if (btnMENU.Links[0].Caption == "Chi Tiết Phiếu Nhập")
-                {
-                    this.txtMaPhieuXuat.Enabled = false;
-                    this.txtMaVatTuChiTietPhieuXuat.Enabled = false;
-                    this.btnChonVatTu.Enabled = false;
-
-                    this.txtSoLuongChiTietPhieuXuat.Enabled = true;
-                    this.txtDonGiaChiTietPhieuXuat.Enabled = true;
-                }
-
-                this.btnTHEM.Enabled = true;
-                this.btnXOA.Enabled = true;
-                this.btnGHI.Enabled = true;
-
-                //this.btnHOANTAC.Enabled = false;
-                this.btnLAMMOI.Enabled = true;
-                this.btnMENU.Enabled = true;
-                this.btnTHOAT.Enabled = true;
-
-                this.gcPhieuXuat.Enabled = true;
-                this.gcChiTietPhieuXuat.Enabled = true;
-
-                bds.CancelEdit();
-                /*xoa dong hien tai*/
-                bds.RemoveCurrent();
-                /* trở về lúc đầu con trỏ đang đứng*/
-                bds.Position = viTri;
-                return;
-            }
-
-            /*Step 1*/
-            if (undoList.Count == 0)
-            {
-                MessageBox.Show("Không còn thao tác nào để khôi phục", "Thông báo", MessageBoxButtons.OK);
-                btnHOANTAC.Enabled = false;
-                return;
-            }
-
-            /*Step 2*/
-            bds.CancelEdit();
-            String cauTruyVanHoanTac = undoList.Pop().ToString();
-
-            Console.WriteLine(cauTruyVanHoanTac);
-            int n = Program.ExecSqlNonQuery(cauTruyVanHoanTac);
-
-            this.phieuXuatTableAdapter.Fill(this.dataSet.PhieuXuat);
-            this.chiTietPhieuXuatTableAdapter.Fill(this.dataSet.CTPX);
-
-            bdsPhieuXuat.Position = viTri;
         }
 
         private void btnLAMMOI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
+                this.btnXOA.Enabled = true;
+                string cheDo = (btnMENU.Links[0].Caption == "Phiếu Xuất") ? "Phiếu Xuất" : "Chi Tiết Phiếu Xuất";
+                this.btnTHEM.Enabled = true;
+                this.btnGHI.Enabled = true;
+                this.btnLAMMOI.Enabled = true;
+                this.btnMENU.Enabled = true;
+                this.btnTHOAT.Enabled = true;
+
+                gcPhieuXuat.Enabled = true;
+                gcChiTietPhieuXuat.Enabled = true;
+                if (cheDo == "Chi Tiết Phiếu Xuất") this.btnXOA.Enabled = false;
                 this.phieuXuatTableAdapter.Fill(this.dataSet.PhieuXuat);
                 this.chiTietPhieuXuatTableAdapter.Fill(this.dataSet.CTPX);
             }
@@ -772,7 +601,6 @@ namespace QLVT
         private void btnXOA_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DataRowView drv;
-            string cauTruyVanHoanTac = "";
             string cheDo = (btnMENU.Links[0].Caption == "Phiếu Xuất") ? "Phiếu Xuất" : "Chi Tiết Phiếu Xuất";
 
             if (cheDo == "Phiếu Xuất")
@@ -794,12 +622,6 @@ namespace QLVT
 
                 DateTime ngay = ((DateTime)drv["NGAY"]);
 
-                cauTruyVanHoanTac = "INSERT INTO DBO.PHIEUXUAT(MAPX, NGAY, HOTENKH, MANV, MAKHO) " +
-                    "VALUES( '" + drv["MAPX"].ToString().Trim() + "', '" +
-                    ngay.ToString("yyyy-MM-dd") + "', '" +
-                    drv["HOTENKH"].ToString() + "', '" +
-                    drv["MANV"].ToString() + "', '" +
-                    drv["MAKHO"].ToString() + "')";
             }
 
             if (cheDo == "Chi Tiết Phiếu Xuất")
@@ -814,16 +636,8 @@ namespace QLVT
 
 
                 drv = ((DataRowView)bdsChiTietPhieuXuat[bdsChiTietPhieuXuat.Position]);
-                cauTruyVanHoanTac = "INSERT INTO DBO.CTPX(MAPX, MAVT, SOLUONG, DONGIA) " +
-                    "VALUES('" + drv["MAPX"].ToString().Trim() + "', '" +
-                    drv["MAVT"].ToString().Trim() + "', " +
-                    drv["SOLUONG"].ToString().Trim() + ", " +
-                    drv["DONGIA"].ToString().Trim() + ")";
             }
 
-            undoList.Push(cauTruyVanHoanTac);
-            //Console.WriteLine("Line 825");
-            //Console.WriteLine(cauTruyVanHoanTac);
 
 
             /*Step 2*/
@@ -873,8 +687,6 @@ namespace QLVT
             }
             else
             {
-                // xoa cau truy van hoan tac di
-                undoList.Pop();
             }
         }
     }

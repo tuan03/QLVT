@@ -19,14 +19,10 @@ namespace QLVT
         private string matKhau = "";
         private string maNhanVien = "";
         private string vaiTro = "";
+
         public FormTaoTaiKhoan()
         {
             InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
         }
 
         private void btnChonNhanVien_Click(object sender, EventArgs e)
@@ -37,15 +33,49 @@ namespace QLVT
             txtMaNhanVien.Text = Program.maNhanVienDuocChon;
         }
 
+        private string RemoveVietnameseDiacritics(string input)
+        {
+            // Bảng các ký tự tiếng Việt có dấu và tương ứng là ký tự không dấu
+            string[] VietnameseSigns = new string[]
+            {
+            "aAeEoOuUiIdDyY",
+            "áàạảãâấầậẩẫăắằặẳẵ",
+            "ÁÀẠẢÃÂẤẦẬẨẪĂẮẰẶẲẴ",
+            "éèẹẻẽêếềệểễ",
+            "ÉÈẸẺẼÊẾỀỆỂỄ",
+            "óòọỏõôốồộổỗơớờợởỡ",
+            "ÓÒỌỎÕÔỐỒỘỔỖƠỚỜỢỞỠ",
+            "úùụủũưứừựửữ",
+            "ÚÙỤỦŨƯỨỪỰỬỮ",
+            "íìịỉĩ",
+            "ÍÌỊỈĨ",
+            "đ",
+            "Đ",
+            "ýỳỵỷỹ",
+            "ÝỲỴỶỸ"
+            };
+
+            // Chuyển đổi các ký tự có dấu về ký tự không dấu
+            for (int i = 1; i < VietnameseSigns.Length; i++)
+            {
+                for (int j = 0; j < VietnameseSigns[i].Length; j++)
+                {
+                    input = input.Replace(VietnameseSigns[i][j], VietnameseSigns[0][i - 1]);
+                }
+            }
+
+            return input;
+        }
+
         private bool kiemTraDuLieuDauVao()
         {
-            if( txtMaNhanVien.Text == "")
+            if (txtMaNhanVien.Text == "")
             {
-                MessageBox.Show("Thiếu mã nhân viên","Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Thiếu mã nhân viên", "Thông báo", MessageBoxButtons.OK);
                 return false;
             }
 
-            if( txtMatKhau.Text == "" )
+            if (txtMatKhau.Text == "")
             {
                 MessageBox.Show("Thiếu mật khẩu", "Thông báo", MessageBoxButtons.OK);
                 return false;
@@ -57,42 +87,57 @@ namespace QLVT
                 return false;
             }
 
-            if( txtMatKhau.Text != txtXacNhanMatKhau.Text)
+            if (txtMatKhau.Text != txtXacNhanMatKhau.Text)
             {
                 MessageBox.Show("Mật khẩu không khớp với mật khẩu xác nhận", "Thông báo", MessageBoxButtons.OK);
                 return false;
-            }    
+            }
 
             return true;
-        } 
+        }
+
+        private string GetLoginName(string hoTen, string maNhanVien)
+        {
+            string ho_ten_nv = RemoveVietnameseDiacritics(hoTen);
+            return maNhanVien + ho_ten_nv.Replace(" ", "");
+        }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             bool ketQua = kiemTraDuLieuDauVao();
             if (ketQua == false) return;
 
-             taiKhoan = Program.hoTen;
-             matKhau = txtMatKhau.Text;
-             maNhanVien = Program.maNhanVienDuocChon;
-             vaiTro = (rdChiNhanh.Checked == true) ? "ChiNhanh" : "User";
+            maNhanVien = Program.maNhanVienDuocChon;
+            taiKhoan = GetLoginName(Program.hoTen, maNhanVien);
+            matKhau = txtMatKhau.Text;
+            if (Program.role == "CONGTY")
+            {
+                vaiTro = "CONGTY";
+            }
+            else
+            {
+                vaiTro = (rdChiNhanh.Checked == true) ? "CHINHANH" : "USER";
+            }
 
-            Console.WriteLine(taiKhoan);
-            Console.WriteLine(matKhau);
-            Console.WriteLine(maNhanVien);
-            Console.WriteLine(vaiTro);
+            Console.WriteLine($"\n\n>>> Tai khoan: {taiKhoan}");
+            Console.WriteLine($">>> Mat khau: {matKhau}");
+            Console.WriteLine($">>> Ma nhan vien: {maNhanVien}");
+            Console.WriteLine($">>> Vai tro: {vaiTro}\n");
 
             /*declare @returnedResult int
              exec @returnedResult = sp_TraCuu_KiemTraMaNhanVien '20'
              select @returnedResult*/
             String cauTruyVan =
-                    "EXEC sp_TaoTaiKhoan '" + taiKhoan + "' , '" + matKhau + "', '"
+                    "EXEC sp_TaoTaiKhoanA '" + taiKhoan + "' , '" + matKhau + "', '"
                     + maNhanVien + "', '" + vaiTro + "'";
 
             SqlCommand sqlCommand = new SqlCommand(cauTruyVan, Program.conn);
+            if (Program.conn.State == ConnectionState.Open)
+            {
+                Program.conn.Close();
+            }
             try
             {
-                
-
                 Program.myReader = Program.ExecSqlDataReader(cauTruyVan);
                 /*khong co ket qua tra ve thi ket thuc luon*/
                 if (Program.myReader == null)
@@ -100,7 +145,7 @@ namespace QLVT
                     return;
                 }
 
-                MessageBox.Show("Đăng kí tài khoản thành công\n\nTài khoản: "+taiKhoan+"\nMật khẩu: " + matKhau + "\n Mã Nhân Viên: " + maNhanVien + "\n Vai Trò: " + vaiTro,"Thông Báo",MessageBoxButtons.OK);
+                MessageBox.Show("ĐĂNG KÝ TÀI KHOẢN THÀNH CÔNG.\n\nTài khoản: " + taiKhoan + "\nMật khẩu: " + matKhau + "\n Mã Nhân Viên: " + maNhanVien + "\n Vai Trò: " + vaiTro, "Thông Báo", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {
@@ -109,24 +154,28 @@ namespace QLVT
                 Console.WriteLine(ex.Message);
                 return;
             }
-            
-        }
-
-        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
 
         private void FormTaoTaiKhoan_Load(object sender, EventArgs e)
         {
-            if( Program.role == "CongTy")
+            if (Program.role == "CONGTY")
             {
-                vaiTro = "CongTy";
-                rdChiNhanh.Enabled = false;
-                rdUser.Enabled = false;
+                vaiTro = "CONGTY";
+                rdChiNhanh.Visible = true;
+                rdChiNhanh.Text = "CONGTY";
+                rdUser.Visible = false;
             }
-            rdChiNhanh.Enabled = true;
-            rdUser.Enabled = true;
+            else
+            {
+                rdChiNhanh.Visible = true;
+                rdUser.Visible = true;
+            }
+        }
+
+        private void btnTHOAT_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
