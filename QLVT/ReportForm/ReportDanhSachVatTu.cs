@@ -11,6 +11,8 @@ namespace QLVT.ReportForm
         public ReportDanhSachVatTu()
         {
             InitializeComponent();
+            this.txtLapBaoCaoBoi.Text = Program.hoTen;
+            this.txtMaNguoiLapBaoCao.Text = Program.userName;
             this.sqlDataSource1.Connection.ConnectionString = Program.connstr;
             this.sqlDataSource1.Fill();
         }

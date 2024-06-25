@@ -71,11 +71,15 @@ namespace QLVT.ReportForm
             this.tableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.calculatedField1 = new DevExpress.XtraReports.UI.CalculatedField();
-            this.calculatedField2 = new DevExpress.XtraReports.UI.CalculatedField();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
+            this.calculatedField1 = new DevExpress.XtraReports.UI.CalculatedField();
+            this.calculatedField2 = new DevExpress.XtraReports.UI.CalculatedField();
+            this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
+            this.txtLapBaoCaoBoi = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
+            this.txtMaNguoiLapBaoCao = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -91,8 +95,9 @@ namespace QLVT.ReportForm
             queryParameter2.Name = "@ToDate";
             queryParameter2.Type = typeof(System.DateTime);
             queryParameter2.ValueInfo = "2021-09-30";
-            storedProcQuery1.Parameters.Add(queryParameter1);
-            storedProcQuery1.Parameters.Add(queryParameter2);
+            storedProcQuery1.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
+            queryParameter1,
+            queryParameter2});
             storedProcQuery1.StoredProcName = "sp_TongHopNhapXuat";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
@@ -181,6 +186,10 @@ namespace QLVT.ReportForm
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.txtMaNguoiLapBaoCao,
+            this.xrLabel9,
+            this.txtLapBaoCaoBoi,
+            this.xrLabel7,
             this.txtChiNhanh,
             this.xrLabel2,
             this.txtToiNgay,
@@ -188,12 +197,13 @@ namespace QLVT.ReportForm
             this.txtTuNgay,
             this.xrLabel1,
             this.label1});
-            this.ReportHeader.HeightF = 157.5F;
+            this.ReportHeader.HeightF = 179.1667F;
             this.ReportHeader.Name = "ReportHeader";
             // 
             // txtChiNhanh
             // 
-            this.txtChiNhanh.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.txtChiNhanh.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
             this.txtChiNhanh.LocationFloat = new DevExpress.Utils.PointFloat(382.633F, 62.66668F);
             this.txtChiNhanh.Multiline = true;
             this.txtChiNhanh.Name = "txtChiNhanh";
@@ -206,7 +216,8 @@ namespace QLVT.ReportForm
             // 
             // xrLabel2
             // 
-            this.xrLabel2.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.xrLabel2.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(168.3333F, 62.66668F);
             this.xrLabel2.Multiline = true;
             this.xrLabel2.Name = "xrLabel2";
@@ -219,8 +230,9 @@ namespace QLVT.ReportForm
             // 
             // txtToiNgay
             // 
-            this.txtToiNgay.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
-            this.txtToiNgay.LocationFloat = new DevExpress.Utils.PointFloat(542.5F, 110.1667F);
+            this.txtToiNgay.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.txtToiNgay.LocationFloat = new DevExpress.Utils.PointFloat(517.5F, 146.1667F);
             this.txtToiNgay.Multiline = true;
             this.txtToiNgay.Name = "txtToiNgay";
             this.txtToiNgay.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -232,8 +244,9 @@ namespace QLVT.ReportForm
             // 
             // xrLabel3
             // 
-            this.xrLabel3.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(366.6667F, 110.1667F);
+            this.xrLabel3.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(366.6667F, 146.1667F);
             this.xrLabel3.Multiline = true;
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -245,8 +258,9 @@ namespace QLVT.ReportForm
             // 
             // txtTuNgay
             // 
-            this.txtTuNgay.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
-            this.txtTuNgay.LocationFloat = new DevExpress.Utils.PointFloat(219.7293F, 110.1667F);
+            this.txtTuNgay.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.txtTuNgay.LocationFloat = new DevExpress.Utils.PointFloat(220F, 146.1667F);
             this.txtTuNgay.Multiline = true;
             this.txtTuNgay.Name = "txtTuNgay";
             this.txtTuNgay.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -258,8 +272,9 @@ namespace QLVT.ReportForm
             // 
             // xrLabel1
             // 
-            this.xrLabel1.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(60F, 110.1667F);
+            this.xrLabel1.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(60F, 146.1667F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -271,7 +286,8 @@ namespace QLVT.ReportForm
             // 
             // label1
             // 
-            this.label1.Font = new DevExpress.Drawing.DXFont("Tahoma", 19.8F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.label1.Font = new DevExpress.Drawing.DXFont("Tahoma", 19.8F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
             this.label1.LocationFloat = new DevExpress.Utils.PointFloat(5F, 5F);
             this.label1.Name = "label1";
             this.label1.SizeF = new System.Drawing.SizeF(640F, 45F);
@@ -448,16 +464,6 @@ namespace QLVT.ReportForm
             this.ReportFooter.HeightF = 67.83335F;
             this.ReportFooter.Name = "ReportFooter";
             // 
-            // calculatedField1
-            // 
-            this.calculatedField1.DataMember = "sp_TongHopNhapXuat";
-            this.calculatedField1.Name = "calculatedField1";
-            // 
-            // calculatedField2
-            // 
-            this.calculatedField2.DataMember = "sp_TongHopNhapXuat";
-            this.calculatedField2.Name = "calculatedField2";
-            // 
             // xrLabel6
             // 
             this.xrLabel6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
@@ -492,7 +498,8 @@ namespace QLVT.ReportForm
             // 
             // xrLabel4
             // 
-            this.xrLabel4.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.xrLabel4.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 10F);
             this.xrLabel4.Multiline = true;
             this.xrLabel4.Name = "xrLabel4";
@@ -502,6 +509,72 @@ namespace QLVT.ReportForm
             this.xrLabel4.StylePriority.UseTextAlignment = false;
             this.xrLabel4.Text = "Tổng";
             this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // calculatedField1
+            // 
+            this.calculatedField1.DataMember = "sp_TongHopNhapXuat";
+            this.calculatedField1.Name = "calculatedField1";
+            // 
+            // calculatedField2
+            // 
+            this.calculatedField2.DataMember = "sp_TongHopNhapXuat";
+            this.calculatedField2.Name = "calculatedField2";
+            // 
+            // xrLabel7
+            // 
+            this.xrLabel7.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(10F, 106.1666F);
+            this.xrLabel7.Multiline = true;
+            this.xrLabel7.Name = "xrLabel7";
+            this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel7.SizeF = new System.Drawing.SizeF(160.8333F, 22.99999F);
+            this.xrLabel7.StylePriority.UseFont = false;
+            this.xrLabel7.StylePriority.UseTextAlignment = false;
+            this.xrLabel7.Text = "Người Lập Báo Cáo";
+            this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // txtLapBaoCaoBoi
+            // 
+            this.txtLapBaoCaoBoi.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.txtLapBaoCaoBoi.LocationFloat = new DevExpress.Utils.PointFloat(180.8333F, 106.1666F);
+            this.txtLapBaoCaoBoi.Multiline = true;
+            this.txtLapBaoCaoBoi.Name = "txtLapBaoCaoBoi";
+            this.txtLapBaoCaoBoi.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.txtLapBaoCaoBoi.SizeF = new System.Drawing.SizeF(180.8333F, 22.99999F);
+            this.txtLapBaoCaoBoi.StylePriority.UseFont = false;
+            this.txtLapBaoCaoBoi.StylePriority.UseTextAlignment = false;
+            this.txtLapBaoCaoBoi.Text = "...";
+            this.txtLapBaoCaoBoi.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel9
+            // 
+            this.xrLabel9.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(394.3521F, 106.1666F);
+            this.xrLabel9.Multiline = true;
+            this.xrLabel9.Name = "xrLabel9";
+            this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel9.SizeF = new System.Drawing.SizeF(139.9475F, 22.99999F);
+            this.xrLabel9.StylePriority.UseFont = false;
+            this.xrLabel9.StylePriority.UseTextAlignment = false;
+            this.xrLabel9.Text = "Mã Người Lập:";
+            this.xrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // txtMaNguoiLapBaoCao
+            // 
+            this.txtMaNguoiLapBaoCao.Font = new DevExpress.Drawing.DXFont("Tahoma", 10.2F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {
+            new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.txtMaNguoiLapBaoCao.LocationFloat = new DevExpress.Utils.PointFloat(545.8333F, 106.1666F);
+            this.txtMaNguoiLapBaoCao.Multiline = true;
+            this.txtMaNguoiLapBaoCao.Name = "txtMaNguoiLapBaoCao";
+            this.txtMaNguoiLapBaoCao.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.txtMaNguoiLapBaoCao.SizeF = new System.Drawing.SizeF(94.16669F, 22.99999F);
+            this.txtMaNguoiLapBaoCao.StylePriority.UseFont = false;
+            this.txtMaNguoiLapBaoCao.StylePriority.UseTextAlignment = false;
+            this.txtMaNguoiLapBaoCao.Text = "...";
+            this.txtMaNguoiLapBaoCao.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // ReportTongHopNhapXuat
             // 
@@ -526,7 +599,7 @@ namespace QLVT.ReportForm
             this.DetailData1,
             this.DetailData3_Odd,
             this.PageInfo});
-            this.Version = "19.2";
+            this.Version = "23.2";
             ((System.ComponentModel.ISupportInitialize)(this.table1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -575,5 +648,9 @@ namespace QLVT.ReportForm
         private DevExpress.XtraReports.UI.XRLabel xrLabel4;
         private DevExpress.XtraReports.UI.CalculatedField calculatedField1;
         private DevExpress.XtraReports.UI.CalculatedField calculatedField2;
+        public DevExpress.XtraReports.UI.XRLabel txtMaNguoiLapBaoCao;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel9;
+        public DevExpress.XtraReports.UI.XRLabel txtLapBaoCaoBoi;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel7;
     }
 }

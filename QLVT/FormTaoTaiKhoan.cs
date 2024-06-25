@@ -110,9 +110,9 @@ namespace QLVT
             maNhanVien = Program.maNhanVienDuocChon;
             taiKhoan = GetLoginName(Program.hoTen, maNhanVien);
             matKhau = txtMatKhau.Text;
-            if (Program.role == "CONGTY")
+            if (Program.role == "CongTy")
             {
-                vaiTro = "CONGTY";
+                vaiTro = "CongTy";
             }
             else
             {
@@ -128,7 +128,7 @@ namespace QLVT
              exec @returnedResult = sp_TraCuu_KiemTraMaNhanVien '20'
              select @returnedResult*/
             String cauTruyVan =
-                    "EXEC sp_TaoTaiKhoanA '" + taiKhoan + "' , '" + matKhau + "', '"
+                    "EXEC sp_TaoTaiKhoan '" + taiKhoan + "' , '" + matKhau + "', '"
                     + maNhanVien + "', '" + vaiTro + "'";
 
             SqlCommand sqlCommand = new SqlCommand(cauTruyVan, Program.conn);
@@ -159,11 +159,11 @@ namespace QLVT
 
         private void FormTaoTaiKhoan_Load(object sender, EventArgs e)
         {
-            if (Program.role == "CONGTY")
+            if (Program.role == "CongTy")
             {
-                vaiTro = "CONGTY";
+                vaiTro = "CongTy";
                 rdChiNhanh.Visible = true;
-                rdChiNhanh.Text = "CONGTY";
+                rdChiNhanh.Text = "CongTy";
                 rdUser.Visible = false;
             }
             else
