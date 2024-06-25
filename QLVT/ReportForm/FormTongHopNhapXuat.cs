@@ -67,9 +67,7 @@ namespace QLVT.ReportForm
         {
             DateTime fromDate = (DateTime)dteTuNgay.DateTime;
             DateTime toDate = (DateTime)dteToiNgay.DateTime;
-            string ChiNhanh = cmbChiNhanh.SelectedValue.ToString();
-
-            
+            string ChiNhanh = cmbChiNhanh.SelectedValue.ToString().Contains("1") ? "Chi Nhánh 1" : "Chi Nhánh 2";
 
             ReportTongHopNhapXuat report = new ReportTongHopNhapXuat(fromDate, toDate);
             report.txtTuNgay.Text = dteTuNgay.EditValue.ToString();

@@ -15,7 +15,7 @@ namespace QLVT.ReportForm
         public ReportChiTietSoLuongTriGiaHangHoa(String vaiTro, String loaiPhieu, DateTime fromDate,DateTime toDate)
         {
             InitializeComponent();
-            this.txtLapBaoCaoBoi.Text = Program.hoTen;
+            this.txtLapBaoCaoBoi.Text = Program.staff;
             this.txtMaNguoiLapBaoCao.Text = Program.userName;
             this.sqlDataSource1.Connection.ConnectionString = Program.connstr;
             this.sqlDataSource1.Queries[0].Parameters[0].Value = vaiTro;

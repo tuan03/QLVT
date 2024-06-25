@@ -18,31 +18,10 @@ namespace QLVT
     {
         /* vị trí của con trỏ trên grid view*/
         int viTri = 0;
-        /********************************************
-         * đang thêm mới -> true -> đang dùng btnTHEM
-         *              -> false -> có thể là btnGHI( chỉnh sửa) hoặc btnXOA
-         *              
-         * Mục đích: dùng biến này để phân biệt giữa btnTHEM - thêm mới hoàn toàn
-         * và việc chỉnh sửa nhân viên( do mình ko dùng thêm btnXOA )
-         * Trạng thái true or false sẽ được sử dụng 
-         * trong btnGHI - việc này để phục vụ cho btnHOANTAC
-         ********************************************/
         bool dangThemMoi = false;
                     
         String maChiNhanh = "";
-        /**********************************************************
-         * undoList - phục vụ cho btnHOANTAC -  chứa các thông tin của đối tượng bị tác động 
-         * 
-         * nó là nơi lưu trữ các đối tượng cần thiết để hoàn tác các thao tác
-         * 
-         * nếu btnGHI sẽ ứng với INSERT
-         * nếu btnXOA sẽ ứng với DELETE
-         * nếu btnCHUYENChiNhanh sẽ ứng với CHANGEBRAND
-         **********************************************************/
         Stack undoList = new Stack();
-
-
-
         private static int CalculateAge(DateTime dateOfBirth)
         {
             int age = 0;
@@ -53,16 +32,6 @@ namespace QLVT
             return age;
         }
 
-
-
-        /************************************************************
-         * CheckExists:
-         * Để tránh việc người dùng ấn vào 1 form đến 2 lần chúng ta 
-         * cần sử dụng hàm này để kiểm tra xem cái form hiện tại đã 
-         * có trong bộ nhớ chưa
-         * Nếu có trả về "f"
-         * Nếu không trả về "null"
-         ************************************************************/
         private Form CheckExists(Type ftype)
         {
             foreach (Form f in this.MdiChildren)
@@ -87,15 +56,10 @@ namespace QLVT
             this.tableAdapterManager.UpdateAll(this.dataSet);
 
         }
-        /*
-         *Step 1: tat kiem tra khoa ngoai & do du lieu vao form
-         *Step 2: lay du lieu dang nhap tu form dang nhap
-         *Step 3: bat nut chuc nang theo vai tro khi dang nhap
-         */
+ 
         private void FormNhanVien_Load(object sender, EventArgs e)
         {
-            /*Step 1*/
-            /*không kiểm tra khóa ngoại nữa*/
+
             dataSet.EnforceConstraints = false;
 
             this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -110,10 +74,10 @@ namespace QLVT
             this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
             this.phieuXuatTableAdapter.Fill(this.dataSet.PhieuXuat);
 
-            /*van con ton tai loi chua sua duoc*/
+
             maChiNhanh = ((DataRowView)bdsNhanVien[0])["MACN"].ToString();
             /*Step 2*/
-            cmbChiNhanh.DataSource = Program.bindingSource;/*sao chep bingding source tu form dang nhap*/
+            cmbChiNhanh.DataSource = Program.bindingSource;
             cmbChiNhanh.DisplayMember = "TENCN";
             cmbChiNhanh.ValueMember = "TENSERVER";
             cmbChiNhanh.SelectedIndex = Program.brand;
@@ -163,20 +127,6 @@ namespace QLVT
         }
 
 
-
-        /*********************************************************************
-         * bdsNhanVien.Position - vitri phuc vu cho btnHOANTAC. Gia su, co 5 nhan vien, con tro chuot
-         * dang dung o vi tri nhan vien thu 2 thi chung ta an nut THEM
-         * nhung neu chon btnHOANTAC, con tro chuot phai quay lai vi 
-         * tri nhan vien thu 2, thay vi o vi tri duoi cung - tuc nhan vien so 5
-         * 
-         * neu nhap chu cho txtMANV thi se khong chuyen sang cac o khac duoc nua - bat buoc ghi so
-         * 
-         * Step 1: Kich hoat panel Nhap lieu & lay vi tri cua nhan vien hien tai
-         * dat dangThemMoi = true
-         * Step 2: gui lenh them moi toi bdsNHANVIEN - tu dong lay maChiNhanh - bo trong dteNGAYSINH
-         * Step 3: vo hieu hoa cac nut chuc nang & gridControl - chi btnGHI & btnHOANTAC moi duoc hoat dong
-         *********************************************************************/
         private void btnTHEM_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             /*Step 1*/
@@ -211,20 +161,6 @@ namespace QLVT
             this.panelNhapLieu.Enabled = true;
         }
 
-
-
-        /**********************************************************************
-         * moi lan nhan btnHOANTAC thi nen nhan them btnLAMMOI de 
-         * tranh bi loi khi an btnTHEM lan nua
-         * 
-         * statement: chua cau y nghia chuc nang ngay truoc khi an btnHOANTAC.
-         * Vi du: statement = INSERT | DELETE | CHANGEBRAND
-         * 
-         * bdsNhanVien.CancelEdit() - phuc hoi lai du lieu neu chua an btnGHI
-         * Step 0: trường hợp đã ấn btnTHEM nhưng chưa ấn btnGHI
-         * Step 1: kiểm tra undoList có trông hay không ?
-         * Step 2: Neu undoList khong trống thì lấy ra khôi phục
-         *********************************************************************/
         private void btnHOANTAC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             /* Step 0 - */
@@ -311,17 +247,6 @@ namespace QLVT
                 
             }
             this.nhanVienTableAdapter.Fill(this.dataSet.NhanVien);
-
-
-
-
-            /*
-            bdsNhanVien.CancelEdit();
-            String cauTruyVanHoanTac = undoList.Pop().ToString();
-            Console.WriteLine(cauTruyVanHoanTac);
-            int n = Program.ExecSqlNonQuery(cauTruyVanHoanTac);
-            this.nhanVienTableAdapter.Fill(this.dataSet.NhanVien);
-             */
         }
 
         private void btnLAMMOI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -338,19 +263,7 @@ namespace QLVT
                 return;
            }
         }
-
-
-
-        /***************************************************************************
-         * Step 1: tu biding source kiem tra xem nhan vien nay da lap don hang - 
-         * phieu nhap - phieu xuat chua ?
-         *          Neu co thi thong bao la khong the xoa va ket thuc
-         *          Neu khong thi bat dau xoa
-         * Step 2: Neu chon OK thi tien hanh xoa
-         * Step 3: Lay ma nhan vien bi xoa roi luu lai trong manv
-         * Step 4: Truong hop xoa nhan vien bi loi thi quay lai dung vi tri manv bi loi
-         ***************************************************************************/
-        private void btnXOA_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+         private void btnXOA_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             String tenNV = ((DataRowView)bdsNhanVien[bdsNhanVien.Position])["MANV"].ToString();
             /*Step 1*/
@@ -612,24 +525,6 @@ namespace QLVT
             return true;
         }
 
-
-
-        /**
-         * viTriConTro: vi tri con tro chuot dang dung
-         * viTriMaNhanVien: vi tri cua ma nhan vien voi btnTHEM or hanh dong sua du lieu
-         * sp_TRACUU_KIEMTRAMANHANVIEN tra ve 0 neu khong ton tai
-         *                                    1 neu ton tai
-         *                                    
-         * Step 0 : Kiem tra du lieu dau vao
-         * Step 1 : Dung stored procedure sp_TRACUU_KIEMTRAMANHANVIEN de kiem tra txtMANV
-         * Step 2 : Ket hop ket qua tu Step 1 & vi tri cua txtMANV co 2 truong hop xay ra
-         * + TH0: ketQua = 1 && viTriConTro != viTriMaNhanVien -> them moi nhung MANV da ton tai
-         * + TH1: ketQua = 1 && viTriConTro == viTriMaNhanVien -> sua nhan vien cu
-         * + TH2: ketQua = 0 && viTriConTro == viTriMaNhanVien -> co the them moi nhan vien
-         * + TH3: ketQua = 0 && viTriConTro != viTriMaNhanVien -> co the them moi nhan vien
-         *          
-         * Step 3 : Neu khong phai TH0 thi cac TH1 - TH2 - TH3 deu hop le 
-         */
         private void btnGHI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             /* Step 0 */
@@ -737,10 +632,10 @@ namespace QLVT
                             cauTruyVanHoanTac = 
                                 "UPDATE DBO.NhanVien "+
                                 "SET " +
-                                "HO = '" + ho + "'," +
-                                "TEN = '" + ten + "'," +
+                                "HO = N'" + ho + "'," +
+                                "TEN = N'" + ten + "'," +
                                 "SOCMND = '" + cmnd + "'," +
-                                "DIACHI = '" + diaChi + "'," +
+                                "DIACHI = N'" + diaChi + "'," +
                                 "NGAYSINH = CAST('" + ngaySinh.ToString("yyyy-MM-dd") + "' AS DATETIME)," +
                                 "LUONG = '" + luong + "',"+
                                 "TrangThaiXoa = " + trangThai + " " +
@@ -785,20 +680,23 @@ namespace QLVT
             int viTriHienTai = bdsNhanVien.Position;
             String maNhanVien = ((DataRowView)bdsNhanVien[viTriHienTai])["MANV"].ToString();
 
-            if (ChiNhanh.Contains("1") || ChiNhanh.Contains("2"))
+            if (ChiNhanh.Contains("1") )
             {
+                maChiNhanhMoi = "CN1";
             }
             else
             {
-                MessageBox.Show("Mã chi nhánh không hợp lệ","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
+                if (ChiNhanh.Contains("2"))
+                {
+                    maChiNhanhMoi = "CN2";
+                }
             }
 
             /*Step 4*/
-            String cauTruyVan = "EXEC sp_ChuyenChiNhanh " + maNhanVien + ",'" + maChiNhanhMoi + "'";
-            SqlCommand sqlcommand = new SqlCommand(cauTruyVan, Program.conn);
             try
             {
+                String cauTruyVan = "EXEC sp_ChuyenChiNhanh " + maNhanVien + ",'" + maChiNhanhMoi + "'";
+            SqlCommand sqlcommand = new SqlCommand(cauTruyVan, Program.conn);
                 Program.myReader = Program.ExecSqlDataReader(cauTruyVan);
                 MessageBox.Show("Chuyển chi nhánh thành công", "thông báo", MessageBoxButtons.OK);
                 if (Program.myReader == null)

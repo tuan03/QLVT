@@ -16,7 +16,7 @@ namespace QLVT.ReportForm
         public XtraReport1(String maNhanVien, DateTime fromDate, DateTime toDate)
         {
             InitializeComponent();
-            this.txtLapBaoCaoBoi.Text = Program.hoTen;
+            this.txtLapBaoCaoBoi.Text = Program.staff;
             this.txtMaNguoiLapBaoCao.Text = Program.userName;
 
             this.sqlDataSource1.Connection.ConnectionString = Program.connstr;

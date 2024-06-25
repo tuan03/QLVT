@@ -32,8 +32,8 @@ namespace QLVT.ReportForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string maNhanVien = txtMaNhanVien.Text;
-            if (maNhanVien.Length > 0)
+            string maNhanVien = Program.maNhanVienDuocChon;
+            if (maNhanVien.Length <= 0)
             {
                 MessageBox.Show("Vui lòng chọn Nhân Viên",
                 "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
@@ -73,7 +73,7 @@ namespace QLVT.ReportForm
             {
                 string maNhanVien = txtMaNhanVien.Text;
 
-                if (maNhanVien.Length > 0)
+                if (maNhanVien.Length <= 0)
                 {
                     MessageBox.Show("Vui lòng chọn Nhân Viên",
                     "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);

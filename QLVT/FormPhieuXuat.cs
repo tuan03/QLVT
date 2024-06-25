@@ -446,9 +446,10 @@ namespace QLVT
             return true;
         }
 
-        private void capNhatSoLuongVatTu(string maVatTu, string soLuong)
+        private void capNhatSoLuongVatTu(string maVatTu, int soLuong)
         {
-            string cauTruyVan = $"EXEC sp_CapNhatSoLuongVatTu 'EXPORT', '{maVatTu}', {soLuong}";
+
+            string cauTruyVan = "EXEC sp_CapNhatSoLuongVatTu 'EXPORT','" + maVatTu + "', " + soLuong.ToString();
             int n = Program.ExecSqlNonQuery(cauTruyVan);
         }
         /*
@@ -525,7 +526,7 @@ namespace QLVT
                         if (cheDo == "Chi Tiết Phiếu Xuất" && dangThemMoi == true)
                         {
                             string maVatTu = txtMaVatTuChiTietPhieuXuat.Text.Trim();
-                            string soLuong = txtSoLuongChiTietPhieuXuat.Text.Trim();
+                            int soLuong =(int) txtSoLuongChiTietPhieuXuat.Value;
 
                             capNhatSoLuongVatTu(maVatTu, soLuong);
                         }
